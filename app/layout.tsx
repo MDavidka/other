@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Discreet Pleasure, Delivered Fast",
-  description: "Premium adult toys, lingerie, and wellness products. Private browsing, fast shipping, and expert-curated collections for every desire.",
+  title: "other — Blazing Fast, Unwavering Reliability. Your Digital Presence, Elevated.",
+  description: "CloudWave Hosting provides cutting-edge web hosting solutions designed for speed, security, and scalability. From shared hosting to dedicated servers, empower your online presence with our robust infrastructure and 24/7 expert support.",
   openGraph: {
-    title: "other — Discreet Pleasure, Delivered Fast",
-    description: "Premium adult toys, lingerie, and wellness products. Private browsing, fast shipping, and expert-curated collections for every desire.",
+    title: "other — Blazing Fast, Unwavering Reliability. Your Digital Presence, Elevated.",
+    description: "CloudWave Hosting provides cutting-edge web hosting solutions designed for speed, security, and scalability. From shared hosting to dedicated servers, empower your online presence with our robust infrastructure and 24/7 expert support.",
     siteName: "other",
     type: "website",
   },
