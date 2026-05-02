@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Stories that spark ideas, insights that drive action",
-  description: "A curated blog sharing actionable insights on design, technology, and creative work. Weekly posts from industry practitioners covering tools, workflows, and trends.",
+  title: "other — Discreet Pleasure, Delivered Fast",
+  description: "Premium adult toys, lingerie, and wellness products. Private browsing, fast shipping, and expert-curated collections for every desire.",
   openGraph: {
-    title: "other — Stories that spark ideas, insights that drive action",
-    description: "A curated blog sharing actionable insights on design, technology, and creative work. Weekly posts from industry practitioners covering tools, workflows, and trends.",
+    title: "other — Discreet Pleasure, Delivered Fast",
+    description: "Premium adult toys, lingerie, and wellness products. Private browsing, fast shipping, and expert-curated collections for every desire.",
     siteName: "other",
     type: "website",
   },
