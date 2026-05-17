@@ -1,97 +1,287 @@
 import Link from "next/link"
-import Image from "next/image"
+import { Check, Globe, Quote, Sparkles, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CloudWave Hosting | High-Performance Web Hosting Solutions",
-  description: "Experience blazing fast speeds and unwavering reliability with CloudWave Hosting. Secure, scalable web hosting for businesses and developers.",
+  title: "other — Deploy static sites in seconds",
+  description: "Push your build and host static websites on a global edge network. Free tier available.",
 }
 
 export default function HomePage() {
   return (
     <>
-<section id="hero-main" className="py-16 md:py-24 bg-gradient-to-b from-background to-card-foreground"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="grid-cols-1 md:grid-cols-2 gap-12 items-center"><div className="text-center md:text-left space-y-6"><h1 className="text-4xl md:text-5xl font-bold leading-tight">Launch Your Vision with CloudWave Hosting</h1>
-<p className="text-lg text-muted-foreground max-w-xl mx-auto md:mx-0">Experience unparalleled speed, security, and support. CloudWave empowers your online presence, from personal blogs to enterprise applications.</p>
-<div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"><Button size="lg"><Link href="/pricing">View Hosting Plans</Link></Button>
-<Button variant="outline" size="lg"><Link href="/services">Explore Features</Link></Button></div></div>
-<Image src="/placeholder-dashboard.png" alt="CloudWave Hosting Dashboard Screenshot" width={800} height={600} className="rounded-lg shadow-xl border" /></div></div></section>
+<section className="relative w-full overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_hsl(var(--primary)/0.18),_transparent_60%)]" aria-hidden="true" />
+      <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 md:py-32 lg:px-8">
+        
+        <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Ship something people remember.</h1>
+        
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Button asChild size="lg"><Link href="#">Get started</Link></Button>
+          <Button asChild size="lg" variant="outline"><Link href="/docs">Read the docs</Link></Button>
+        </div>
+        
+      </div>
+    </section>
 
-<section id="logos-section" className="py-12 md:py-16 bg-muted"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><h3 className="text-center text-xl font-semibold text-muted-foreground mb-8">Trusted by Leading Innovators</h3>
-<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center justify-items-center"><p className="text-2xl font-bold text-gray-700 dark:text-gray-300">Google Cloud</p>
-<p className="text-2xl font-bold text-gray-700 dark:text-gray-300">AWS</p>
-<p className="text-2xl font-bold text-gray-700 dark:text-gray-300">Vercel</p>
-<p className="text-2xl font-bold text-gray-700 dark:text-gray-300">Stripe</p>
-<p className="text-2xl font-bold text-gray-700 dark:text-gray-300">Docker</p>
-<p className="text-2xl font-bold text-gray-700 dark:text-gray-300">Cloudflare</p>
-<p className="text-2xl font-bold text-gray-700 dark:text-gray-300">DigitalOcean</p></div></div></section>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <p className="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">Trusted by teams everywhere</p>
+        <div className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Vercel</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Netlify</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Cloudflare</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Railway</div>
+        </div>
+      </div>
+    </section>
 
-<section id="features-bento" className="py-16 md:py-24"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="text-center space-y-4 mb-12"><h2 className="text-3xl md:text-4xl font-bold">Why Choose CloudWave Hosting?</h2>
-<p className="text-lg text-muted-foreground max-w-2xl mx-auto">We combine cutting-edge technology with unparalleled support to deliver a hosting experience you can trust.</p></div>
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><Card className="p-6 flex flex-col items-center text-center space-y-3"><p className="text-primary text-4xl">⚡</p>
-<CardTitle>Unmatched Speed</CardTitle>
-<CardDescription>Leverage NVMe SSDs and global CDN integration for lightning-fast website load times.</CardDescription></Card>
-<Card className="p-6 flex flex-col items-center text-center space-y-3"><p className="text-primary text-4xl">🔒</p>
-<CardTitle>Ironclad Security</CardTitle>
-<CardDescription>Advanced DDoS protection, free SSL certificates, and daily backups keep your data safe and sound.</CardDescription></Card>
-<Card className="p-6 flex flex-col items-center text-center space-y-3"><p className="text-primary text-4xl">🧑‍💻</p>
-<CardTitle>24/7 Expert Support</CardTitle>
-<CardDescription>Our dedicated team of hosting specialists is always on standby, ready to assist you around the clock.</CardDescription></Card>
-<Card className="p-6 flex flex-col items-center text-center space-y-3"><p className="text-primary text-4xl">📈</p>
-<CardTitle>Scalable Solutions</CardTitle>
-<CardDescription>Easily upgrade your resources as your traffic grows, ensuring your site always performs optimally.</CardDescription></Card>
-<Card className="p-6 flex flex-col items-center text-center space-y-3"><p className="text-primary text-4xl">🖥️</p>
-<CardTitle>Intuitive Control Panel</CardTitle>
-<CardDescription>Manage your websites, databases, and emails with ease using our user-friendly control panel.</CardDescription></Card>
-<Card className="p-6 flex flex-col items-center text-center space-y-3"><p className="text-primary text-4xl">⚙️</p>
-<CardTitle>Developer Friendly</CardTitle>
-<CardDescription>Support for multiple programming languages, Git integration, and SSH access for seamless development workflows.</CardDescription></Card></div></div></section>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center space-y-4">
+          
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Built for teams who care about the details</h2>
+          
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+            <CardHeader>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Globe className="h-5 w-5" /></div>
+              <CardTitle>Global edge</CardTitle>
+              <CardDescription>Serve from 300+ locations. 50ms median TTFB worldwide.</CardDescription>
+            </CardHeader>
+            
+          </Card>
+          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+            <CardHeader>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Zap className="h-5 w-5" /></div>
+              <CardTitle>Instant deploys</CardTitle>
+              <CardDescription>Git push triggers a build and live site in under a minute.</CardDescription>
+            </CardHeader>
+            
+          </Card>
+          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+            <CardHeader>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
+              <CardTitle>Custom domains</CardTitle>
+              <CardDescription>Point any domain. Automatic SSL and DNS included.</CardDescription>
+            </CardHeader>
+            
+          </Card>
+          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+            <CardHeader>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
+              <CardTitle>Preview URLs</CardTitle>
+              <CardDescription>Every pull request gets its own shareable preview.</CardDescription>
+            </CardHeader>
+            
+          </Card>
+        </div>
+      </div>
+    </section>
 
-<section id="stats-split-callout" className="py-16 md:py-24 bg-primary text-primary-foreground"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"><div className="text-center md:text-left space-y-4"><h2 className="text-3xl md:text-4xl font-bold">Our Commitment to Excellence</h2>
-<p className="text-lg opacity-90 max-w-xl mx-auto md:mx-0">We are dedicated to providing the highest quality hosting experience, backed by robust infrastructure and customer-centric values.</p></div>
-<div className="grid grid-cols-2 gap-8"><div className="text-center"><div className="text-3xl font-semibold">99.99</div></div>
-<div className="text-center"><div className="text-3xl font-semibold">10</div></div>
-<div className="text-center"><div className="text-3xl font-semibold">20</div></div>
-<div className="text-center"><div className="text-3xl font-semibold">5</div></div></div></div></div></section>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+        <div className="mx-auto max-w-3xl space-y-4 text-center">
+          
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
+          
+        </div>
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">1</div>
+            <h3 className="text-lg font-semibold">Connect Git</h3>
+            <p className="text-sm text-muted-foreground">Link your GitHub or GitLab repo in one click.</p>
+          </div>
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">2</div>
+            <h3 className="text-lg font-semibold">Choose framework</h3>
+            <p className="text-sm text-muted-foreground">Select Next.js, Vite, Hugo, or any static generator.</p>
+          </div>
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">3</div>
+            <h3 className="text-lg font-semibold">Go live</h3>
+            <p className="text-sm text-muted-foreground">Push code and other publishes to the edge instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="testimonials-spotlight" className="py-16 md:py-24 bg-muted"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="text-center space-y-4 mb-12"><h2 className="text-3xl md:text-4xl font-bold">What Our Customers Say</h2>
-<p className="text-lg text-muted-foreground max-w-2xl mx-auto">Hear directly from businesses and developers who trust CloudWave Hosting for their critical online operations.</p></div>
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><Card className="p-6 flex flex-col space-y-4"><p className="text-lg italic leading-relaxed">“CloudWave Hosting transformed our online presence. The speed is incredible, and their support team is truly exceptional.”</p>
-<div className="flex items-center space-x-3"><Avatar className="h-10 w-10"><AvatarFallback>SY</AvatarFallback></Avatar>
-<div className="flex flex-col gap-4"><p className="font-semibold">Jane Doe</p>
-<p className="text-sm text-muted-foreground">CEO, InnovateTech</p></div></div></Card>
-<Card className="p-6 flex flex-col space-y-4"><p className="text-lg italic leading-relaxed">“As a developer, I appreciate the flexibility and robust features CloudWave offers. It's a game-changer for my projects.”</p>
-<div className="flex items-center space-x-3"><Avatar className="h-10 w-10"><AvatarFallback>SY</AvatarFallback></Avatar>
-<div className="flex flex-col gap-4"><p className="font-semibold">John Smith</p>
-<p className="text-sm text-muted-foreground">Lead Developer, CodeCraft</p></div></div></Card>
-<Card className="p-6 flex flex-col space-y-4"><p className="text-lg italic leading-relaxed">“Reliability is key for our e-commerce store. CloudWave delivers consistent uptime and peace of mind.”</p>
-<div className="flex items-center space-x-3"><Avatar className="h-10 w-10"><AvatarFallback>SY</AvatarFallback></Avatar>
-<div className="flex flex-col gap-4"><p className="font-semibold">Emily Chen</p>
-<p className="text-sm text-muted-foreground">Founder, StyleHub</p></div></div></Card></div></div></section>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center space-y-4">
+          
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Loved by people who care about quality</h2>
+          
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Card className="border-border/60">
+            <CardContent className="p-6">
+              <Quote className="h-6 w-6 text-primary/40" />
+              <p className="mt-4 text-pretty text-base leading-relaxed">"Deployed three client sites in one afternoon. The preview URLs alone saved me hours."</p>
+              <div className="mt-6 flex items-center gap-3">
+                <Avatar className="h-9 w-9"><AvatarFallback>MP</AvatarFallback></Avatar>
+                <div>
+                  <p className="text-sm font-semibold">Maya Patel</p>
+                  <p className="text-xs text-muted-foreground">Freelance developer</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="border-border/60">
+            <CardContent className="p-6">
+              <Quote className="h-6 w-6 text-primary/40" />
+              <p className="mt-4 text-pretty text-base leading-relaxed">"Finally a host that feels fast and stays out of the way."</p>
+              <div className="mt-6 flex items-center gap-3">
+                <Avatar className="h-9 w-9"><AvatarFallback>LT</AvatarFallback></Avatar>
+                <div>
+                  <p className="text-sm font-semibold">Liam Torres</p>
+                  <p className="text-xs text-muted-foreground">Indie founder</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="border-border/60">
+            <CardContent className="p-6">
+              <Quote className="h-6 w-6 text-primary/40" />
+              <p className="mt-4 text-pretty text-base leading-relaxed">"other is my default for every static project now. Zero config, reliable edge."</p>
+              <div className="mt-6 flex items-center gap-3">
+                <Avatar className="h-9 w-9"><AvatarFallback>SK</AvatarFallback></Avatar>
+                <div>
+                  <p className="text-sm font-semibold">Sara Kim</p>
+                  <p className="text-xs text-muted-foreground">Product engineer</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
 
-<section id="pricing-three-tier" className="py-16 md:py-24"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="text-center space-y-4 mb-12"><h2 className="text-3xl md:text-4xl font-bold">Simple, Transparent Hosting Pricing</h2>
-<p className="text-lg text-muted-foreground max-w-2xl mx-auto">Choose a plan that fits your needs, from personal projects to high-traffic business sites. No hidden fees, just powerful hosting.</p></div>
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"><Card className="border-border/60"><CardHeader><CardTitle>Starter</CardTitle></CardHeader><CardContent><Button className="w-full"><Link href="/pricing">Get Started</Link></Button></CardContent><CardFooter></CardFooter></Card>
-<Card className="border-border/60"><CardHeader><CardTitle>Pro</CardTitle></CardHeader><CardContent><Button className="w-full"><Link href="/pricing">Choose Pro</Link></Button></CardContent><CardFooter></CardFooter></Card>
-<Card className="border-border/60"><CardHeader><CardTitle>Business</CardTitle></CardHeader><CardContent><Button className="w-full"><Link href="/pricing">Go Business</Link></Button></CardContent><CardFooter></CardFooter></Card></div></div></section>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center space-y-4">
+          
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Pricing built for every stage</h2>
+          
+        </div>
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <Card className="relative ">
+            
+            <CardHeader>
+              <CardTitle className="text-xl">Hobby</CardTitle>
+              <CardDescription></CardDescription>
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="text-4xl font-semibold tracking-tight">0</span>
+                <span className="text-sm text-muted-foreground">forever</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Separator className="mb-6" />
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />5 sites</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />100k requests/mo</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Custom domains</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Community support</li>
+              </ul>
+              <Button asChild variant="outline" className="mt-6 w-full"><Link href="#">Choose plan</Link></Button>
+            </CardContent>
+          </Card>
+          <Card className="relative ring-2 ring-primary shadow-xl shadow-primary/10 scale-[1.02]">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2"><Badge>Most popular</Badge></div>
+            <CardHeader>
+              <CardTitle className="text-xl">Pro</CardTitle>
+              <CardDescription></CardDescription>
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="text-4xl font-semibold tracking-tight">20</span>
+                <span className="text-sm text-muted-foreground">per month</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Separator className="mb-6" />
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Unlimited sites</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />10M requests/mo</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Team seats</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Priority support</li>
+              </ul>
+              <Button asChild variant="default" className="mt-6 w-full"><Link href="#">Choose plan</Link></Button>
+            </CardContent>
+          </Card>
+          <Card className="relative ">
+            
+            <CardHeader>
+              <CardTitle className="text-xl">Team</CardTitle>
+              <CardDescription></CardDescription>
+              <div className="mt-4 flex items-baseline gap-1">
+                <span className="text-4xl font-semibold tracking-tight">99</span>
+                <span className="text-sm text-muted-foreground">per month</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Separator className="mb-6" />
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Unlimited sites</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Unlimited requests</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />SSO &amp; audit logs</li>
+                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Dedicated support</li>
+              </ul>
+              <Button asChild variant="outline" className="mt-6 w-full"><Link href="#">Choose plan</Link></Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
 
-<section id="faq-accordion" className="py-16 md:py-24 bg-muted"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="text-center space-y-4 mb-12"><h2 className="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
-<p className="text-lg text-muted-foreground max-w-2xl mx-auto">Find quick answers to common questions about our hosting services, billing, and support.</p></div>
-<Accordion type="single" collapsible className="w-full max-w-3xl mx-auto"><AccordionItem value="item-1"><AccordionTrigger>What types of hosting do you offer?</AccordionTrigger>
-<AccordionContent>We offer Shared Hosting for beginners, VPS Hosting for more control and resources, and Dedicated Servers for ultimate performance and customization.</AccordionContent></AccordionItem>
-<AccordionItem value="item-2"><AccordionTrigger>Do you offer a money-back guarantee?</AccordionTrigger>
-<AccordionContent>Yes, we offer a 30-day money-back guarantee on all our shared and VPS hosting plans. Your satisfaction is our priority.</AccordionContent></AccordionItem>
-<AccordionItem value="item-3"><AccordionTrigger>How do I migrate my existing website?</AccordionTrigger>
-<AccordionContent>Our expert support team offers free website migration services. Simply contact us after signing up, and we'll handle the entire process for you.</AccordionContent></AccordionItem>
-<AccordionItem value="item-4"><AccordionTrigger>What kind of support can I expect?</AccordionTrigger>
-<AccordionContent>We provide 24/7/365 expert support via live chat, email, and phone. Our specialists are always ready to assist with any hosting-related queries.</AccordionContent></AccordionItem></Accordion></div></section>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+        <div className="text-center space-y-4">
+          
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Frequently asked</h2>
+          
+        </div>
+        <Accordion type="single" collapsible className="mt-12 w-full">
+          <AccordionItem value="item-0">
+            <AccordionTrigger className="text-left text-base">Can I use my own custom domain?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Yes. Add any domain in the dashboard. Automatic SSL and DNS records included.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-left text-base">What frameworks do I build with?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Next.js, Vite, Hugo, Gatsby, Eleventy, and any static output folder.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger className="text-left text-base">How fast are builds?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Most builds finish in 20-30 seconds. Cold builds take under a minute.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger className="text-left text-base">Do I have a free tier?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Yes. The Hobby plan is free forever with 5 sites and 100k requests per month.</AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+    </section>
 
-<section id="cta-banner-home" className="py-16 md:py-24 bg-gradient-to-r from-primary to-blue-600 text-primary-foreground"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="text-center space-y-6"><h2 className="text-3xl md:text-4xl font-bold">Ready to Elevate Your Online Presence?</h2>
-<p className="text-lg opacity-90 max-w-2xl mx-auto">Join thousands of satisfied customers who trust CloudWave Hosting for their websites and applications.</p>
-<Button size="lg" variant="secondary"><Link href="/pricing">Get Started Today</Link></Button></div></div></section>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+        <div className="relative overflow-hidden rounded-[2rem] border bg-gradient-to-br from-primary to-primary/70 p-10 text-primary-foreground sm:p-16">
+          <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
+          <div className="relative max-w-2xl space-y-5">
+            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Ready when you are</h2>
+            <p className="text-pretty text-base text-primary-foreground/90">Start now and feel the difference within minutes.</p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg" variant="secondary"><Link href="#">Get started</Link></Button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     </>
   )
 }

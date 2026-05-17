@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Blazing Fast, Unwavering Reliability. Your Digital Presence, Elevated.",
-  description: "CloudWave Hosting provides cutting-edge web hosting solutions designed for speed, security, and scalability. From shared hosting to dedicated servers, empower your online presence with our robust infrastructure and 24/7 expert support.",
+  title: "other — Deploy static sites in seconds",
+  description: "other is the fastest way for developers and teams to host static websites. Push your build, get a global edge network, and ship without managing servers.",
   openGraph: {
-    title: "other — Blazing Fast, Unwavering Reliability. Your Digital Presence, Elevated.",
-    description: "CloudWave Hosting provides cutting-edge web hosting solutions designed for speed, security, and scalability. From shared hosting to dedicated servers, empower your online presence with our robust infrastructure and 24/7 expert support.",
+    title: "other — Deploy static sites in seconds",
+    description: "other is the fastest way for developers and teams to host static websites. Push your build, get a global edge network, and ship without managing servers.",
     siteName: "other",
     type: "website",
   },
