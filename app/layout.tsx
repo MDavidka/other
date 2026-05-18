@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Deploy static sites in seconds",
-  description: "other is the fastest way for developers and teams to host static websites. Push your build, get a global edge network, and ship without managing servers.",
+  title: "other — Curated Essentials for Modern Living",
+  description: "Discover a meticulously selected collection of high-quality, thoughtfully designed products that elevate your everyday. Aura Atelier champions craftsmanship, timeless aesthetics, and conscious consumption, bringing beauty and utility into your home and life.",
   openGraph: {
-    title: "other — Deploy static sites in seconds",
-    description: "other is the fastest way for developers and teams to host static websites. Push your build, get a global edge network, and ship without managing servers.",
+    title: "other — Curated Essentials for Modern Living",
+    description: "Discover a meticulously selected collection of high-quality, thoughtfully designed products that elevate your everyday. Aura Atelier champions craftsmanship, timeless aesthetics, and conscious consumption, bringing beauty and utility into your home and life.",
     siteName: "other",
     type: "website",
   },

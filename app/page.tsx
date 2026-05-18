@@ -1,43 +1,33 @@
 import Link from "next/link"
-import { Check, Globe, Quote, Sparkles, Zap } from "lucide-react"
+import { ArrowUpRight, Brush, Heart, Leaf, Palette, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "other — Deploy static sites in seconds",
-  description: "Push your build and host static websites on a global edge network. Free tier available.",
+  title: "Aura Atelier | Thoughtfully Curated Home & Lifestyle Goods",
+  description: "Discover Aura Atelier's exquisite selection of handcrafted and timeless essentials designed to elevate your home and daily rituals. Quality, craftsmanship, and conscious living.",
 }
 
 export default function HomePage() {
   return (
     <>
-<section className="relative w-full overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_hsl(var(--primary)/0.18),_transparent_60%)]" aria-hidden="true" />
-      <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 md:py-32 lg:px-8">
-        
-        <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Ship something people remember.</h1>
-        
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="lg"><Link href="#">Get started</Link></Button>
-          <Button asChild size="lg" variant="outline"><Link href="/docs">Read the docs</Link></Button>
-        </div>
-        
-      </div>
-    </section>
-
 <section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">Trusted by teams everywhere</p>
-        <div className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Vercel</div>
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Netlify</div>
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Cloudflare</div>
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Railway</div>
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7 space-y-5">
+            
+            <h1 className="text-balance text-5xl font-semibold tracking-tight sm:text-6xl">Ship something people remember.</h1>
+          </div>
+          <div className="lg:col-span-5 space-y-5">
+            
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <Button asChild size="lg"><Link href="/shop">Shop New Arrivals</Link></Button>
+        <Button asChild size="lg" variant="outline"><Link href="/about">Our Philosophy</Link></Button>
+      </div>
+          </div>
         </div>
       </div>
     </section>
@@ -49,36 +39,40 @@ export default function HomePage() {
           <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Built for teams who care about the details</h2>
           
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+        <div className="mt-12 grid gap-4 lg:grid-cols-4 lg:auto-rows-fr">
+          <Card className="lg:col-span-2 lg:row-span-2 relative overflow-hidden border-border/60">
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Globe className="h-5 w-5" /></div>
-              <CardTitle>Global edge</CardTitle>
-              <CardDescription>Serve from 300+ locations. 50ms median TTFB worldwide.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Brush className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Artisan Craftsmanship</CardTitle>
+              <CardDescription className="text-base">Every piece is meticulously chosen for its superior quality and the skilled artistry behind its creation, ensuring lasting beauty and enduring appeal.</CardDescription>
             </CardHeader>
             
           </Card>
-          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+          <Card className="lg:col-span-1 relative overflow-hidden border-border/60">
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Zap className="h-5 w-5" /></div>
-              <CardTitle>Instant deploys</CardTitle>
-              <CardDescription>Git push triggers a build and live site in under a minute.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Palette className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Enduring Design</CardTitle>
+              <CardDescription className="text-base">Discover pieces that gracefully transcend fleeting trends, offering elegant simplicity and functional beauty that enriches your space for years.</CardDescription>
             </CardHeader>
             
           </Card>
-          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+          <Card className="lg:col-span-1 relative overflow-hidden border-border/60">
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
-              <CardTitle>Custom domains</CardTitle>
-              <CardDescription>Point any domain. Automatic SSL and DNS included.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Leaf className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Conscious Sourcing</CardTitle>
+              <CardDescription className="text-base">Our commitment to ethical practices means partnering exclusively with artisans and brands who share our vision for a more sustainable and equitable future.</CardDescription>
             </CardHeader>
             
           </Card>
-          <Card className="border-border/60 transition hover:border-primary/40 hover:shadow-lg">
+          <Card className="lg:col-span-2 relative overflow-hidden border-border/60">
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
-              <CardTitle>Preview URLs</CardTitle>
-              <CardDescription>Every pull request gets its own shareable preview.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Heart className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Elevated Everyday Rituals</CardTitle>
+              <CardDescription className="text-base">Thoughtfully designed products to transform your daily routines into moments of serenity and cultivate an inspiring environment within your home.</CardDescription>
             </CardHeader>
             
           </Card>
@@ -90,180 +84,81 @@ export default function HomePage() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
         <div className="mx-auto max-w-3xl space-y-4 text-center">
           
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Selected work</h2>
           
         </div>
-        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="space-y-3">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">1</div>
-            <h3 className="text-lg font-semibold">Connect Git</h3>
-            <p className="text-sm text-muted-foreground">Link your GitHub or GitLab repo in one click.</p>
+        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <div className="group relative aspect-square overflow-hidden rounded-3xl border bg-gradient-to-br from-primary/20 via-accent/20 to-background p-6 lg:col-span-2 lg:aspect-[16/10]">
+            <div className="flex h-full flex-col justify-end gap-1">
+              <span className="text-xs font-medium uppercase tracking-wider text-primary">Featured</span>
+              <p className="text-2xl font-semibold tracking-tight">Handcrafted Ceramic Collection</p>
+              <p className="max-w-md text-sm text-muted-foreground">Artfully hand-thrown pottery, bringing understated elegance to your daily rituals.</p>
+            </div>
           </div>
-          <div className="space-y-3">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">2</div>
-            <h3 className="text-lg font-semibold">Choose framework</h3>
-            <p className="text-sm text-muted-foreground">Select Next.js, Vite, Hugo, or any static generator.</p>
-          </div>
-          <div className="space-y-3">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">3</div>
-            <h3 className="text-lg font-semibold">Go live</h3>
-            <p className="text-sm text-muted-foreground">Push code and other publishes to the edge instantly.</p>
+          <div className="grid gap-4">
+            <div className="aspect-[4/3] rounded-2xl border bg-gradient-to-br from-muted to-background p-4 text-sm">
+              <span className="text-xs font-medium uppercase tracking-wider text-primary"></span>
+              <p className="mt-2 font-semibold">Luxurious Textile Weaves</p>
+            </div>
+            <div className="aspect-[4/3] rounded-2xl border bg-gradient-to-br from-muted to-background p-4 text-sm">
+              <span className="text-xs font-medium uppercase tracking-wider text-primary"></span>
+              <p className="mt-2 font-semibold">Refined Workspace Essentials</p>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+<section className="relative w-full ">
+      <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        
+        <h2 className="mx-auto max-w-3xl text-balance text-center text-3xl font-semibold tracking-tight sm:text-4xl">Loved by people who care about quality</h2>
+        <figure className="mt-12 rounded-3xl border bg-card p-8 sm:p-12">
+          <Quote className="h-10 w-10 text-primary/40" />
+          <blockquote className="mt-6 text-pretty text-2xl font-medium leading-relaxed sm:text-3xl">"Aura Atelier has transformed my home. Every piece feels special and thoughtfully chosen. The quality is simply unmatched."</blockquote>
+          <figcaption className="mt-8 flex items-center gap-4">
+            <Avatar><AvatarFallback>EV</AvatarFallback></Avatar>
+            <div>
+              <p className="font-semibold">Eleanor V.</p>
+              <p className="text-sm text-muted-foreground">Interior Designer</p>
+            </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
 <section className="relative w-full ">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Loved by people who care about quality</h2>
-          
+        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">From the blog</h2>
+        
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
+          <Card className="overflow-hidden">
+            <div className="aspect-[16/10] w-full bg-gradient-to-br from-primary/20 via-accent/20 to-background"></div>
+            <CardContent className="space-y-2 p-6">
+              <p className="text-xs font-medium uppercase tracking-wider text-primary">Lifestyle · </p>
+              <p className="text-xl font-semibold">The Art of Slow Living: Curating Your Personal Sanctuary</p>
+              <p className="text-sm text-muted-foreground">Explore how intentional design choices and mindful consumption can cultivate a profound sense of peace and spark creativity within your personal sanctuary.</p>
+            </CardContent>
+          </Card>
+          <ul className="divide-y rounded-2xl border bg-card">
+            <li className="flex items-start justify-between gap-4 p-6">
+              <div className="space-y-1">
+                <p className="text-xs font-medium uppercase tracking-wider text-primary">Craftsmanship · </p>
+                <p className="font-semibold">Behind the Loom: A Visit to Our Artisan Textile Workshop</p>
+                <p className="text-sm text-muted-foreground">An exclusive, intimate glimpse into the traditional techniques and unwavering passion that define our exquisite woven goods.</p>
+              </div>
+              <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
+            </li>
+            <li className="flex items-start justify-between gap-4 p-6">
+              <div className="space-y-1">
+                <p className="text-xs font-medium uppercase tracking-wider text-primary">Design · </p>
+                <p className="font-semibold">Minimalist Design Principles for a Clutter-Free Home</p>
+                <p className="text-sm text-muted-foreground">Unlock practical, elegant principles to embrace simplicity and cultivate truly serene, clutter-free living spaces.</p>
+              </div>
+              <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
+            </li>
+          </ul>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Card className="border-border/60">
-            <CardContent className="p-6">
-              <Quote className="h-6 w-6 text-primary/40" />
-              <p className="mt-4 text-pretty text-base leading-relaxed">"Deployed three client sites in one afternoon. The preview URLs alone saved me hours."</p>
-              <div className="mt-6 flex items-center gap-3">
-                <Avatar className="h-9 w-9"><AvatarFallback>MP</AvatarFallback></Avatar>
-                <div>
-                  <p className="text-sm font-semibold">Maya Patel</p>
-                  <p className="text-xs text-muted-foreground">Freelance developer</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="border-border/60">
-            <CardContent className="p-6">
-              <Quote className="h-6 w-6 text-primary/40" />
-              <p className="mt-4 text-pretty text-base leading-relaxed">"Finally a host that feels fast and stays out of the way."</p>
-              <div className="mt-6 flex items-center gap-3">
-                <Avatar className="h-9 w-9"><AvatarFallback>LT</AvatarFallback></Avatar>
-                <div>
-                  <p className="text-sm font-semibold">Liam Torres</p>
-                  <p className="text-xs text-muted-foreground">Indie founder</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="border-border/60">
-            <CardContent className="p-6">
-              <Quote className="h-6 w-6 text-primary/40" />
-              <p className="mt-4 text-pretty text-base leading-relaxed">"other is my default for every static project now. Zero config, reliable edge."</p>
-              <div className="mt-6 flex items-center gap-3">
-                <Avatar className="h-9 w-9"><AvatarFallback>SK</AvatarFallback></Avatar>
-                <div>
-                  <p className="text-sm font-semibold">Sara Kim</p>
-                  <p className="text-xs text-muted-foreground">Product engineer</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Pricing built for every stage</h2>
-          
-        </div>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          <Card className="relative ">
-            
-            <CardHeader>
-              <CardTitle className="text-xl">Hobby</CardTitle>
-              <CardDescription></CardDescription>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-semibold tracking-tight">0</span>
-                <span className="text-sm text-muted-foreground">forever</span>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Separator className="mb-6" />
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />5 sites</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />100k requests/mo</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Custom domains</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Community support</li>
-              </ul>
-              <Button asChild variant="outline" className="mt-6 w-full"><Link href="#">Choose plan</Link></Button>
-            </CardContent>
-          </Card>
-          <Card className="relative ring-2 ring-primary shadow-xl shadow-primary/10 scale-[1.02]">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2"><Badge>Most popular</Badge></div>
-            <CardHeader>
-              <CardTitle className="text-xl">Pro</CardTitle>
-              <CardDescription></CardDescription>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-semibold tracking-tight">20</span>
-                <span className="text-sm text-muted-foreground">per month</span>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Separator className="mb-6" />
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Unlimited sites</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />10M requests/mo</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Team seats</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Priority support</li>
-              </ul>
-              <Button asChild variant="default" className="mt-6 w-full"><Link href="#">Choose plan</Link></Button>
-            </CardContent>
-          </Card>
-          <Card className="relative ">
-            
-            <CardHeader>
-              <CardTitle className="text-xl">Team</CardTitle>
-              <CardDescription></CardDescription>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-semibold tracking-tight">99</span>
-                <span className="text-sm text-muted-foreground">per month</span>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Separator className="mb-6" />
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Unlimited sites</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Unlimited requests</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />SSO &amp; audit logs</li>
-                <li className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 text-primary" />Dedicated support</li>
-              </ul>
-              <Button asChild variant="outline" className="mt-6 w-full"><Link href="#">Choose plan</Link></Button>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="text-center space-y-4">
-          
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Frequently asked</h2>
-          
-        </div>
-        <Accordion type="single" collapsible className="mt-12 w-full">
-          <AccordionItem value="item-0">
-            <AccordionTrigger className="text-left text-base">Can I use my own custom domain?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">Yes. Add any domain in the dashboard. Automatic SSL and DNS records included.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-left text-base">What frameworks do I build with?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">Next.js, Vite, Hugo, Gatsby, Eleventy, and any static output folder.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger className="text-left text-base">How fast are builds?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">Most builds finish in 20-30 seconds. Cold builds take under a minute.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger className="text-left text-base">Do I have a free tier?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">Yes. The Hobby plan is free forever with 5 sites and 100k requests per month.</AccordionContent>
-          </AccordionItem>
-        </Accordion>
       </div>
     </section>
 
@@ -275,7 +170,7 @@ export default function HomePage() {
             <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Ready when you are</h2>
             <p className="text-pretty text-base text-primary-foreground/90">Start now and feel the difference within minutes.</p>
             <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" variant="secondary"><Link href="#">Get started</Link></Button>
+              <Button asChild size="lg" variant="secondary"><Link href="/shop">Shop All Collections</Link></Button>
               
             </div>
           </div>
