@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — The most addictive bird-clicking game you'll ever play!",
-  description: "Dive into a world of feathered fun! A cockie clikker is a delightful, fast-paced game where you tap and click on adorable cockatoos to earn points, unlock upgrades, and climb the global leaderboard. Simple to learn, impossible to put down.",
+  title: "other — Click Your Way to a Cookie Empire!",
+  description: "An incredibly addictive incremental idle game where you bake an endless supply of cookies by clicking, upgrading your production, and competing with friends.",
   openGraph: {
-    title: "other — The most addictive bird-clicking game you'll ever play!",
-    description: "Dive into a world of feathered fun! A cockie clikker is a delightful, fast-paced game where you tap and click on adorable cockatoos to earn points, unlock upgrades, and climb the global leaderboard. Simple to learn, impossible to put down.",
+    title: "other — Click Your Way to a Cookie Empire!",
+    description: "An incredibly addictive incremental idle game where you bake an endless supply of cookies by clicking, upgrading your production, and competing with friends.",
     siteName: "other",
     type: "website",
   },
