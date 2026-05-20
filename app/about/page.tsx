@@ -4,28 +4,24 @@ import { Badge } from "@/components/ui/badge"
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "About Us | Aura Atelier - Craftsmanship, Design & Conscious Living",
-  description: "Learn about Aura Atelier's commitment to quality, timeless design, and sustainable practices. Discover our passion for curating beautiful and functional essentials.",
+  title: "About Us | The Story Behind A Cockie Clikker",
+  description: "Learn about the passionate team behind A Cockie Clikker, our mission to create fun, and the journey of bringing feathered friends to your screen.",
 }
 
 export default function AboutPage() {
   return (
     <>
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7 space-y-5">
-            
-            <h1 className="text-balance text-5xl font-semibold tracking-tight sm:text-6xl">Ship something people remember.</h1>
-          </div>
-          <div className="lg:col-span-5 space-y-5">
-            
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button asChild size="lg"><Link href="#">Get started</Link></Button>
+<section className="relative w-full overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_hsl(var(--primary)/0.18),_transparent_60%)]" aria-hidden="true" />
+      <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 md:py-32 lg:px-8">
         
-      </div>
-          </div>
+        <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Ship something people remember.</h1>
+        <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">Discover the passion and creativity that brought A cockie clikker to life, from a simple idea to a global phenomenon.</p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Button asChild size="lg"><Link href="#">Get started</Link></Button>
+          
         </div>
+        
       </div>
     </section>
 
@@ -34,66 +30,50 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl space-y-4 text-center">
           
           <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
-          
+          <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">Follow our journey from concept to launch, driven by a love for fun and feathered friends.</p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">01</p>
-            <h3 className="mt-4 text-lg font-semibold">Curated with Intention</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Every product within our meticulously assembled collection is handpicked with purpose, chosen not only for its inherent aesthetic appeal but also for its unique story, the skilled hands that crafted it, and its profound potential to enrich your daily life.</p>
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">1</div>
+            <h3 className="text-lg font-semibold">The Spark of an Idea</h3>
+            <p className="text-sm text-muted-foreground">It all started with a simple thought: what if clicking could be truly delightful? A cute cockatoo seemed like the perfect subject.</p>
           </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">02</p>
-            <h3 className="mt-4 text-lg font-semibold">Championing Craftsmanship</h3>
-            <p className="mt-2 text-sm text-muted-foreground">At Aura Atelier, we deeply celebrate the profound skill and unwavering dedication of master artisans. Our exquisite products reflect meticulous attention to every detail and an unyielding commitment to enduring quality, far surpassing fleeting trends.</p>
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">2</div>
+            <h3 className="text-lg font-semibold">Designing the Fun</h3>
+            <p className="text-sm text-muted-foreground">Our small team of designers and developers crafted engaging mechanics, vibrant visuals, and satisfying sound effects.</p>
           </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">03</p>
-            <h3 className="mt-4 text-lg font-semibold">Sustainable &amp; Ethical</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Our unwavering commitment to sustainability and ethics guides every partnership. We collaborate exclusively with suppliers who champion fair labor practices and prioritize environmentally conscious materials, ensuring a positive impact from creation to your cherished home.</p>
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">3</div>
+            <h3 className="text-lg font-semibold">Building the Engine</h3>
+            <p className="text-sm text-muted-foreground">Using modern web technologies, we built a robust and performant game engine capable of handling millions of clicks.</p>
           </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">04</p>
-            <h3 className="mt-4 text-lg font-semibold">Inspiring Mindful Living</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Aura Atelier exists to inspire a more thoughtful, intentional way of living. We believe every object should serve a meaningful purpose, bringing a profound sense of calm, beauty, and utility to your personal environment.</p>
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">4</div>
+            <h3 className="text-lg font-semibold">Community Beta &amp; Feedback</h3>
+            <p className="text-sm text-muted-foreground">Early players helped us refine the experience, providing invaluable feedback that shaped the game you see today.</p>
+          </div>
+          <div className="space-y-3">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">5</div>
+            <h3 className="text-lg font-semibold">Global Launch!</h3>
+            <p className="text-sm text-muted-foreground">With polish and passion, A cockie clikker was launched to the world, bringing joy to clikkers everywhere.</p>
           </div>
         </div>
       </div>
     </section>
 
 <section className="relative w-full ">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:px-8">
-        <div className="space-y-4">
-          
-          
-          
-        </div>
-        <dl className="grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border bg-card p-6">
-            <dt className="text-sm text-muted-foreground">Ethically Sourced Materials</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">100%</dd>
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+        <div className="relative overflow-hidden rounded-[2rem] border bg-gradient-to-br from-primary to-primary/70 p-10 text-primary-foreground sm:p-16">
+          <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
+          <div className="relative max-w-2xl space-y-5">
+            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Ready when you are</h2>
+            <p className="text-pretty text-base text-primary-foreground/90">Be part of the A cockie clikker story. Connect with other players and share your high scores!</p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg" variant="secondary"><Link href="/play">Start Clikking Now!</Link></Button>
+              
+            </div>
           </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <dt className="text-sm text-muted-foreground">Artisan Partnerships</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">25+</dd>
-          </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <dt className="text-sm text-muted-foreground">Happy Homes Transformed</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">5K</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:px-8">
-        <div className="space-y-3">
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Ready when you are</h2>
-          <p className="text-pretty text-muted-foreground">Start now and feel the difference within minutes.</p>
-        </div>
-        <div className="flex flex-wrap gap-3 lg:justify-end">
-          <Button asChild size="lg"><Link href="/shop">Shop Now</Link></Button>
-          
         </div>
       </div>
     </section>

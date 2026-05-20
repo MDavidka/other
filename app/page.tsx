@@ -1,78 +1,64 @@
 import Link from "next/link"
-import { ArrowUpRight, Brush, Heart, Leaf, Palette, Quote } from "lucide-react"
+import Image from "next/image"
+import { Palette, Quote, Rocket, Sparkles, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Aura Atelier | Thoughtfully Curated Home & Lifestyle Goods",
-  description: "Discover Aura Atelier's exquisite selection of handcrafted and timeless essentials designed to elevate your home and daily rituals. Quality, craftsmanship, and conscious living.",
+  title: "A Cockie Clikker | Tap, Click, Score!",
+  description: "Discover A Cockie Clikker, the fun and addictive game where you click on cockatoos to earn points and climb the global leaderboard. Play now for free!",
 }
 
 export default function HomePage() {
   return (
     <>
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7 space-y-5">
-            
-            <h1 className="text-balance text-5xl font-semibold tracking-tight sm:text-6xl">Ship something people remember.</h1>
-          </div>
-          <div className="lg:col-span-5 space-y-5">
-            
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button asChild size="lg"><Link href="/shop">Shop New Arrivals</Link></Button>
-        <Button asChild size="lg" variant="outline"><Link href="/about">Our Philosophy</Link></Button>
-      </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="hero-main" className="py-20 md:py-32 bg-gradient-to-br from-blue-100 to-purple-100"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="grid-cols-1 md:grid-cols-2 gap-8 items-center"><div className="text-center md:text-left space-y-6"><h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">Unleash the Clikking Fun!</h1>
+<p className="text-xl text-gray-700 max-w-lg mx-auto md:mx-0">Tap, click, and collect points with our delightful feathered friends. How high can you score on the global leaderboard?</p>
+<div className="justify-center md:justify-start space-x-4"><Button size="lg">Start Clicking!</Button>
+<Button variant="outline" size="lg">Learn More</Button></div></div>
+<Image src="/images/hero-cockatoo.png" alt="Playful Cockatoo Illustration" width={600} height={600} className="mx-auto md:ml-auto" /></div></div></section>
 
 <section className="relative w-full ">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
         <div className="mx-auto max-w-3xl text-center space-y-4">
           
           <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Built for teams who care about the details</h2>
-          
+          <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">Discover what makes A cockie clikker the ultimate casual game experience.</p>
         </div>
-        <div className="mt-12 grid gap-4 lg:grid-cols-4 lg:auto-rows-fr">
-          <Card className="lg:col-span-2 lg:row-span-2 relative overflow-hidden border-border/60">
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
+        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          <Card className="lg:col-span-2 relative overflow-hidden border-border/60">
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Brush className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Artisan Craftsmanship</CardTitle>
-              <CardDescription className="text-base">Every piece is meticulously chosen for its superior quality and the skilled artistry behind its creation, ensuring lasting beauty and enduring appeal.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Zap className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Fast-Paced Gameplay</CardTitle>
+              <CardDescription className="text-base">Quick rounds, instant fun. Perfect for a few minutes or hours of engaging play.</CardDescription>
             </CardHeader>
             
           </Card>
           <Card className="lg:col-span-1 relative overflow-hidden border-border/60">
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Palette className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Enduring Design</CardTitle>
-              <CardDescription className="text-base">Discover pieces that gracefully transcend fleeting trends, offering elegant simplicity and functional beauty that enriches your space for years.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Unlockable Cockies</CardTitle>
+              <CardDescription className="text-base">Discover and collect rare and unique cockatoo varieties as you progress.</CardDescription>
             </CardHeader>
             
           </Card>
           <Card className="lg:col-span-1 relative overflow-hidden border-border/60">
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Leaf className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Conscious Sourcing</CardTitle>
-              <CardDescription className="text-base">Our commitment to ethical practices means partnering exclusively with artisans and brands who share our vision for a more sustainable and equitable future.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Global Leaderboards</CardTitle>
+              <CardDescription className="text-base">Compete with friends and players worldwide to claim the top spot.</CardDescription>
             </CardHeader>
             
           </Card>
           <Card className="lg:col-span-2 relative overflow-hidden border-border/60">
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-accent/10 to-transparent" aria-hidden="true" />
             <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Heart className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Elevated Everyday Rituals</CardTitle>
-              <CardDescription className="text-base">Thoughtfully designed products to transform your daily routines into moments of serenity and cultivate an inspiring environment within your home.</CardDescription>
+              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
+              <CardTitle className="text-xl">Daily Challenges</CardTitle>
+              <CardDescription className="text-base">New objectives every day to earn bonus points and exclusive rewards.</CardDescription>
             </CardHeader>
             
           </Card>
@@ -81,31 +67,26 @@ export default function HomePage() {
     </section>
 
 <section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl space-y-4 text-center">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:px-8">
+        <div className="space-y-4">
           
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Selected work</h2>
           
+          <p className="text-pretty text-muted-foreground">Join thousands of players enjoying the fun, and see how much clikking happens every day!</p>
         </div>
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
-          <div className="group relative aspect-square overflow-hidden rounded-3xl border bg-gradient-to-br from-primary/20 via-accent/20 to-background p-6 lg:col-span-2 lg:aspect-[16/10]">
-            <div className="flex h-full flex-col justify-end gap-1">
-              <span className="text-xs font-medium uppercase tracking-wider text-primary">Featured</span>
-              <p className="text-2xl font-semibold tracking-tight">Handcrafted Ceramic Collection</p>
-              <p className="max-w-md text-sm text-muted-foreground">Artfully hand-thrown pottery, bringing understated elegance to your daily rituals.</p>
-            </div>
+        <dl className="grid gap-6 sm:grid-cols-2">
+          <div className="rounded-2xl border bg-card p-6">
+            <dt className="text-sm text-muted-foreground">Total Cliks</dt>
+            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">120k+</dd>
           </div>
-          <div className="grid gap-4">
-            <div className="aspect-[4/3] rounded-2xl border bg-gradient-to-br from-muted to-background p-4 text-sm">
-              <span className="text-xs font-medium uppercase tracking-wider text-primary"></span>
-              <p className="mt-2 font-semibold">Luxurious Textile Weaves</p>
-            </div>
-            <div className="aspect-[4/3] rounded-2xl border bg-gradient-to-br from-muted to-background p-4 text-sm">
-              <span className="text-xs font-medium uppercase tracking-wider text-primary"></span>
-              <p className="mt-2 font-semibold">Refined Workspace Essentials</p>
-            </div>
+          <div className="rounded-2xl border bg-card p-6">
+            <dt className="text-sm text-muted-foreground">Active Players</dt>
+            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">15k+</dd>
           </div>
-        </div>
+          <div className="rounded-2xl border bg-card p-6">
+            <dt className="text-sm text-muted-foreground">Unique Cockies Unlocked</dt>
+            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">500+</dd>
+          </div>
+        </dl>
       </div>
     </section>
 
@@ -115,50 +96,15 @@ export default function HomePage() {
         <h2 className="mx-auto max-w-3xl text-balance text-center text-3xl font-semibold tracking-tight sm:text-4xl">Loved by people who care about quality</h2>
         <figure className="mt-12 rounded-3xl border bg-card p-8 sm:p-12">
           <Quote className="h-10 w-10 text-primary/40" />
-          <blockquote className="mt-6 text-pretty text-2xl font-medium leading-relaxed sm:text-3xl">"Aura Atelier has transformed my home. Every piece feels special and thoughtfully chosen. The quality is simply unmatched."</blockquote>
+          <blockquote className="mt-6 text-pretty text-2xl font-medium leading-relaxed sm:text-3xl">"A cockie clikker is my go-to game for a quick break. So simple, yet so incredibly addictive!"</blockquote>
           <figcaption className="mt-8 flex items-center gap-4">
-            <Avatar><AvatarFallback>EV</AvatarFallback></Avatar>
+            <Avatar><AvatarFallback>AR</AvatarFallback></Avatar>
             <div>
-              <p className="font-semibold">Eleanor V.</p>
-              <p className="text-sm text-muted-foreground">Interior Designer</p>
+              <p className="font-semibold">Ava R.</p>
+              <p className="text-sm text-muted-foreground">Casual Gamer</p>
             </div>
           </figcaption>
         </figure>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">From the blog</h2>
-        
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
-          <Card className="overflow-hidden">
-            <div className="aspect-[16/10] w-full bg-gradient-to-br from-primary/20 via-accent/20 to-background"></div>
-            <CardContent className="space-y-2 p-6">
-              <p className="text-xs font-medium uppercase tracking-wider text-primary">Lifestyle · </p>
-              <p className="text-xl font-semibold">The Art of Slow Living: Curating Your Personal Sanctuary</p>
-              <p className="text-sm text-muted-foreground">Explore how intentional design choices and mindful consumption can cultivate a profound sense of peace and spark creativity within your personal sanctuary.</p>
-            </CardContent>
-          </Card>
-          <ul className="divide-y rounded-2xl border bg-card">
-            <li className="flex items-start justify-between gap-4 p-6">
-              <div className="space-y-1">
-                <p className="text-xs font-medium uppercase tracking-wider text-primary">Craftsmanship · </p>
-                <p className="font-semibold">Behind the Loom: A Visit to Our Artisan Textile Workshop</p>
-                <p className="text-sm text-muted-foreground">An exclusive, intimate glimpse into the traditional techniques and unwavering passion that define our exquisite woven goods.</p>
-              </div>
-              <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
-            </li>
-            <li className="flex items-start justify-between gap-4 p-6">
-              <div className="space-y-1">
-                <p className="text-xs font-medium uppercase tracking-wider text-primary">Design · </p>
-                <p className="font-semibold">Minimalist Design Principles for a Clutter-Free Home</p>
-                <p className="text-sm text-muted-foreground">Unlock practical, elegant principles to embrace simplicity and cultivate truly serene, clutter-free living spaces.</p>
-              </div>
-              <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
-            </li>
-          </ul>
-        </div>
       </div>
     </section>
 
@@ -168,13 +114,41 @@ export default function HomePage() {
           <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
           <div className="relative max-w-2xl space-y-5">
             <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Ready when you are</h2>
-            <p className="text-pretty text-base text-primary-foreground/90">Start now and feel the difference within minutes.</p>
+            <p className="text-pretty text-base text-primary-foreground/90">Your next addiction is just a click away. Join the fun and see how high you can score!</p>
             <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" variant="secondary"><Link href="/shop">Shop All Collections</Link></Button>
+              <Button asChild size="lg" variant="secondary"><Link href="/play">Play A Cockie Clikker Now!</Link></Button>
               
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+<section className="relative w-full ">
+      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+        <div className="text-center space-y-4">
+          
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Frequently asked</h2>
+          <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">Got questions about A cockie clikker? We've got answers!</p>
+        </div>
+        <Accordion type="single" collapsible className="mt-12 w-full">
+          <AccordionItem value="item-0">
+            <AccordionTrigger className="text-left text-base">How do I play A cockie clikker?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Simply click on the cockatoo that appears on your screen to earn points. The faster you click, the more points you get! Use points to unlock upgrades and new cockies.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-left text-base">Is the game free to play?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Yes, A cockie clikker is completely free to play. We may offer optional in-app purchases for cosmetic items or boosters, but the core game experience is always free.</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-2">
+            <AccordionTrigger className="text-left text-base">Can I play on multiple devices?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Currently, your game progress is tied to the device you're playing on. We are working on cloud saving and account features for multi-device play in a future update!</AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger className="text-left text-base">How do I get on the leaderboard?</AccordionTrigger>
+            <AccordionContent className="text-muted-foreground">Achieve high scores by clikking efficiently and strategically using power-ups. Your best score will automatically be submitted to the global leaderboard.</AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </section>
     </>

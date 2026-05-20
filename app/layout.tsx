@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Curated Essentials for Modern Living",
-  description: "Discover a meticulously selected collection of high-quality, thoughtfully designed products that elevate your everyday. Aura Atelier champions craftsmanship, timeless aesthetics, and conscious consumption, bringing beauty and utility into your home and life.",
+  title: "other — The most addictive bird-clicking game you'll ever play!",
+  description: "Dive into a world of feathered fun! A cockie clikker is a delightful, fast-paced game where you tap and click on adorable cockatoos to earn points, unlock upgrades, and climb the global leaderboard. Simple to learn, impossible to put down.",
   openGraph: {
-    title: "other — Curated Essentials for Modern Living",
-    description: "Discover a meticulously selected collection of high-quality, thoughtfully designed products that elevate your everyday. Aura Atelier champions craftsmanship, timeless aesthetics, and conscious consumption, bringing beauty and utility into your home and life.",
+    title: "other — The most addictive bird-clicking game you'll ever play!",
+    description: "Dive into a world of feathered fun! A cockie clikker is a delightful, fast-paced game where you tap and click on adorable cockatoos to earn points, unlock upgrades, and climb the global leaderboard. Simple to learn, impossible to put down.",
     siteName: "other",
     type: "website",
   },
