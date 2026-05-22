@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Your next device, delivered with expertise.",
-  description: "Mobile Hub is a premier online store offering the latest smartphones, tablets, and essential accessories with expert advice and fast delivery.",
+  title: "other — Your Next Device, Perfectly Matched.",
+  description: "Explore a curated selection of the latest smartphones, accessories, and expert advice. Find your ideal mobile companion with confidence and ease.",
   openGraph: {
-    title: "other — Your next device, delivered with expertise.",
-    description: "Mobile Hub is a premier online store offering the latest smartphones, tablets, and essential accessories with expert advice and fast delivery.",
+    title: "other — Your Next Device, Perfectly Matched.",
+    description: "Explore a curated selection of the latest smartphones, accessories, and expert advice. Find your ideal mobile companion with confidence and ease.",
     siteName: "other",
     type: "website",
   },

@@ -1,160 +1,163 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { type Metadata } from "next"
+import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "About Mobile Hub | Our Mission & Values",
-  description: "Learn about Mobile Hub's commitment to providing high-quality mobile devices, exceptional customer service, and expert tech guidance.",
+  title: "other: Who We Are",
+  description: "Learn about other's mission to provide the best mobile technology and customer experience. Our story and values.",
 }
 
 export default function AboutPage() {
   return (
     <>
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7 space-y-5">
-            <Badge variant="secondary" className="rounded-full">Our Story</Badge>
-            <h1 className="text-balance text-5xl font-semibold tracking-tight sm:text-6xl">Committed to Mobile Excellence</h1>
-          </div>
-          <div className="lg:col-span-5 space-y-5">
-            <p className="text-pretty text-lg text-muted-foreground">Mobile Hub was founded on the principle of making cutting-edge technology accessible with unparalleled service and genuine expertise.</p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button asChild size="lg"><Link href="#">Get started</Link></Button>
-        
-      </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section className="relative px-4 py-24 sm:py-32 lg:py-40 overflow-hidden">
+  <div className="absolute inset-0 bg-grid opacity-30" />
+  <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center gap-8">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Story</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Redefining Your Mobile Experience.</h2>
+    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Since 2018, we've been dedicated to connecting people with the perfect technology to power their lives.</p>
+    <p className="text-muted-foreground max-w-2xl">We believe in transparency, expert advice, and a seamless journey from discovery to delivery. Join our community of satisfied tech users.</p></div>
 
-<section className="relative w-full ">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:px-8">
-        <div className="space-y-4">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Our Impact</p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Mobile Hub By The Numbers</h2>
-          <p className="text-pretty text-muted-foreground">Proud of the milestones we've achieved and the trust we've built within our growing community.</p>
-        </div>
-        <dl className="grid gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border bg-card p-6">
-            <dt className="text-sm text-muted-foreground">Happy Customers</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">12,500+</dd>
-          </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <dt className="text-sm text-muted-foreground">Order Accuracy</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">99.8%%</dd>
-          </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <dt className="text-sm text-muted-foreground">Average Rating</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">4.9/5</dd>
-          </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <dt className="text-sm text-muted-foreground">Support Hours</dt>
-            <dd className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">24/7</dd>
-          </div>
-        </dl>
-      </div>
-    </section>
+  </div>
+</section>
 
 <section className="px-4 py-16 sm:py-20 lg:py-28 ">
   <div className="mx-auto max-w-7xl">
-    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Visionaries</Badge>
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Meet Our Dedicated Tech Enthusiasts</h2>
-    <p className="text-muted-foreground max-w-2xl">Our passionate team drives Mobile Hub forward, ensuring you receive the best products and support.</p></div>
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Impact</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Making a Difference, One Device at a Time.</h2>
+    <p className="text-muted-foreground max-w-2xl">See the numbers that reflect our commitment to customer satisfaction and growth in the mobile tech industry.</p></div>
+
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+ <Card>
+        <CardContent className="p-6 text-center">
+          <div className="text-4xl font-bold tracking-tight text-primary">12,500+</div>
+          <div className="text-sm text-muted-foreground mt-2">Happy Customers</div>
+          
+        </CardContent>
+      </Card>
+ <Card>
+        <CardContent className="p-6 text-center">
+          <div className="text-4xl font-bold tracking-tight text-primary">4.9/5</div>
+          <div className="text-sm text-muted-foreground mt-2">Average Rating</div>
+          
+        </CardContent>
+      </Card>
+ <Card>
+        <CardContent className="p-6 text-center">
+          <div className="text-4xl font-bold tracking-tight text-primary">150+</div>
+          <div className="text-sm text-muted-foreground mt-2">Devices Shipped Daily</div>
+          
+        </CardContent>
+      </Card>
+ <Card>
+        <CardContent className="p-6 text-center">
+          <div className="text-4xl font-bold tracking-tight text-primary">2018</div>
+          <div className="text-sm text-muted-foreground mt-2">Founded Year</div>
+          
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Values</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">How We Deliver Exceptional Service.</h2>
+    <p className="text-muted-foreground max-w-2xl">Our core principles guide every interaction, ensuring you receive the best advice, products, and support.</p></div>
+
+    <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+ <div className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">1</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 01</Badge>
+          <h3 className="font-semibold text-lg">Curate Quality</h3>
+          <p className="text-sm text-muted-foreground mt-1">We meticulously select devices and accessories, ensuring every product meets our high standards for performance and reliability.</p>
+        </div>
+      </div>
+ <div className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">2</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 02</Badge>
+          <h3 className="font-semibold text-lg">Empower Choices</h3>
+          <p className="text-sm text-muted-foreground mt-1">Our experts provide unbiased information and personalized recommendations, empowering you to make informed decisions.</p>
+        </div>
+      </div>
+ <div className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">3</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 03</Badge>
+          <h3 className="font-semibold text-lg">Simplify Experience</h3>
+          <p className="text-sm text-muted-foreground mt-1">From browsing to checkout to delivery, we streamline every step for a hassle-free and enjoyable shopping journey.</p>
+        </div>
+      </div>
+ <div className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">4</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 04</Badge>
+          <h3 className="font-semibold text-lg">Support Continuously</h3>
+          <p className="text-sm text-muted-foreground mt-1">Our dedicated support team is always ready to assist, ensuring your satisfaction extends far beyond your purchase.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Meet the Team</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Passionate Experts Behind Your Experience.</h2>
+    <p className="text-muted-foreground max-w-2xl">Our diverse team of tech enthusiasts and customer service professionals is dedicated to your satisfaction.</p></div>
 
     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <Card key={i}>
+ <Card>
         <CardContent className="p-6 text-center">
           <Avatar className="h-20 w-20 mx-auto mb-4"><AvatarFallback className="text-xl">U</AvatarFallback></Avatar>
-          <h3 className="font-semibold">Alice Chen</h3>
+          <h3 className="font-semibold">Jane Doe</h3>
           
-          <p className="text-sm text-muted-foreground mt-2">Founder &amp; CEO</p>
+          <p className="text-sm text-muted-foreground mt-2">CEO &amp; Founder</p>
         </CardContent>
       </Card>
-      <Card key={i}>
+ <Card>
         <CardContent className="p-6 text-center">
           <Avatar className="h-20 w-20 mx-auto mb-4"><AvatarFallback className="text-xl">U</AvatarFallback></Avatar>
-          <h3 className="font-semibold">David Lee</h3>
+          <h3 className="font-semibold">John Smith</h3>
           
-          <p className="text-sm text-muted-foreground mt-2">Head of Product</p>
+          <p className="text-sm text-muted-foreground mt-2">Head of Product Curation</p>
         </CardContent>
       </Card>
-      <Card key={i}>
+ <Card>
         <CardContent className="p-6 text-center">
           <Avatar className="h-20 w-20 mx-auto mb-4"><AvatarFallback className="text-xl">U</AvatarFallback></Avatar>
-          <h3 className="font-semibold">Maria Garcia</h3>
+          <h3 className="font-semibold">Emily White</h3>
           
           <p className="text-sm text-muted-foreground mt-2">Customer Success Lead</p>
         </CardContent>
       </Card>
-      <Card key={i}>
+ <Card>
         <CardContent className="p-6 text-center">
           <Avatar className="h-20 w-20 mx-auto mb-4"><AvatarFallback className="text-xl">U</AvatarFallback></Avatar>
-          <h3 className="font-semibold">Omar Khan</h3>
+          <h3 className="font-semibold">David Lee</h3>
           
-          <p className="text-sm text-muted-foreground mt-2">Logistics Manager</p>
+          <p className="text-sm text-muted-foreground mt-2">Logistics &amp; Operations</p>
         </CardContent>
       </Card>
     </div>
   </div>
 </section>
 
-<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+<section className="px-4 py-16 sm:py-20 lg:py-28 bg-primary/5">
   <div className="mx-auto max-w-7xl">
-    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Promise</Badge>
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Ensuring Quality and Customer Satisfaction</h2>
-    <p className="text-muted-foreground max-w-2xl">Our meticulous process guarantees every device and accessory meets the highest standards before reaching you.</p></div>
-
-    <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div key={i} className="flex items-start gap-4">
-        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">1</div>
-        <div>
-          <Badge variant="secondary" className="mb-2">Step 01</Badge>
-          <h3 className="font-semibold text-lg">Curated Selection</h3>
-          <p className="text-sm text-muted-foreground mt-1">We carefully select devices and accessories from trusted brands, focusing on performance and reliability.</p>
-        </div>
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="max-w-2xl">
+        <Badge variant="outline" className="mb-3">Join Our Journey</Badge>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Connect With Us Today.</h2>
+        <p className="text-muted-foreground mt-2">Have questions or want to learn more about our mission? We'd love to hear from you.</p>
       </div>
-      <div key={i} className="flex items-start gap-4">
-        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">2</div>
-        <div>
-          <Badge variant="secondary" className="mb-2">Step 02</Badge>
-          <h3 className="font-semibold text-lg">Rigorous Testing</h3>
-          <p className="text-sm text-muted-foreground mt-1">Every product undergoes thorough quality checks to ensure it meets our strict standards and your expectations.</p>
-        </div>
-      </div>
-      <div key={i} className="flex items-start gap-4">
-        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">3</div>
-        <div>
-          <Badge variant="secondary" className="mb-2">Step 03</Badge>
-          <h3 className="font-semibold text-lg">Expert Support</h3>
-          <p className="text-sm text-muted-foreground mt-1">Our knowledgeable team is always ready to assist you, from purchase advice to post-sale troubleshooting.</p>
-        </div>
-      </div>
-      <div key={i} className="flex items-start gap-4">
-        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">4</div>
-        <div>
-          <Badge variant="secondary" className="mb-2">Step 04</Badge>
-          <h3 className="font-semibold text-lg">Seamless Delivery</h3>
-          <p className="text-sm text-muted-foreground mt-1">We ensure fast, secure, and tracked shipping so your new device arrives safely and on time.</p>
-        </div>
-      </div>
+      <div className="flex flex-wrap gap-4"><Button size="lg" asChild><a href="/contact">Contact Our Team</a></Button></div>
     </div>
-  </div>
-</section>
-
-<section className="px-4 py-16 sm:py-20 lg:py-28 ">
-  <div className="mx-auto max-w-7xl">
-    <Card className="bg-primary/5 border-primary/20 max-w-4xl mx-auto">
-      <CardContent className="p-8 sm:p-12 lg:p-16 flex flex-col items-center text-center gap-6">
-        
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Join Our Growing Community</h2>
-        <p className="text-lg text-muted-foreground max-w-xl">Experience the Mobile Hub difference for yourself. We're here to power your digital life.</p>
-        <div className="flex flex-wrap gap-4"><Button size="lg" asChild><a href="/phones">Start Shopping Today</a></Button></div>
-      </CardContent>
-    </Card>
   </div>
 </section>
     </>
