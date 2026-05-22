@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Your Next Device, Seamlessly Delivered.",
-  description: "Discover the latest smartphones, tablets, and accessories. We offer a curated selection with fast shipping and expert support.",
+  title: "other — Premium phones. Premium experience.",
+  description: "Curated flagship smartphones with transparent pricing, expert support, and 30-day peace of mind.",
   openGraph: {
-    title: "other — Your Next Device, Seamlessly Delivered.",
-    description: "Discover the latest smartphones, tablets, and accessories. We offer a curated selection with fast shipping and expert support.",
+    title: "other — Premium phones. Premium experience.",
+    description: "Curated flagship smartphones with transparent pricing, expert support, and 30-day peace of mind.",
     siteName: "other",
     type: "website",
   },
