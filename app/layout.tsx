@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Premium phones, zero compromise.",
-  description: "other is the modern destination for flagship smartphones, expert curation, and fast, reliable delivery. We stock the latest devices from Apple, Samsung, Google, and Sony with transparent pricing and hands-on support.",
+  title: "other — Your next device, perfectly matched.",
+  description: "Discover the latest smartphones and accessories with expert advice and seamless shopping. Find your ideal mobile experience today.",
   openGraph: {
-    title: "other — Premium phones, zero compromise.",
-    description: "other is the modern destination for flagship smartphones, expert curation, and fast, reliable delivery. We stock the latest devices from Apple, Samsung, Google, and Sony with transparent pricing and hands-on support.",
+    title: "other — Your next device, perfectly matched.",
+    description: "Discover the latest smartphones and accessories with expert advice and seamless shopping. Find your ideal mobile experience today.",
     siteName: "other",
     type: "website",
   },

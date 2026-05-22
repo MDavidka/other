@@ -1,91 +1,190 @@
-import { type Metadata } from "next"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { CardContent } from "@/components/ui/cardcontent"
-import { CardFooter } from "@/components/ui/cardfooter"
-import { Avatar } from "@/components/ui/avatar"
-import { AvatarFallback } from "@/components/ui/avatarfallback"
-import { CardHeader } from "@/components/ui/cardheader"
-import { CardTitle } from "@/components/ui/cardtitle"
-import { CardDescription } from "@/components/ui/carddescription"
 import { Badge } from "@/components/ui/badge"
-import { Accordion } from "@/components/ui/accordion"
-import { AccordionItem } from "@/components/ui/accordionitem"
-import { AccordionTrigger } from "@/components/ui/accordiontrigger"
-import { AccordionContent } from "@/components/ui/accordioncontent"
+import { type Metadata } from "next"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
 export const metadata: Metadata = {
-  title: "other — Premium Flagship Phones & Fast Delivery",
-  description: "Discover curated flagship smartphones from Apple, Samsung, Google, and Sony. Transparent pricing, expert support, and 2-day shipping.",
+  title: "Phone Emporium | Discover Latest Smartphones & Accessories",
+  description: "Explore the newest smartphones, smartwatches, and accessories. Find expert advice, competitive prices, and seamless shopping for your ideal mobile experience.",
 }
 
 export default function HomePage() {
   return (
     <>
-<section className="relative px-4 py-24 sm:py-32 lg:py-40 overflow-hidden">
-  <div className="absolute inset-0 bg-grid opacity-30" />
-  <div className="relative mx-auto max-w-4xl flex flex-col items-center text-center gap-8">
-    <div className="max-w-3xl"><p className="text-muted-foreground max-w-2xl">Shop the latest iPhone, Galaxy, Pixel, and Xperia models with transparent pricing and expert guidance.</p></div>
-    <div className="flex flex-wrap gap-4"><Button variant="outline" size="lg" asChild><a href="/compare">Compare models</a></Button></div>
-  </div>
-</section>
+<section className="relative w-full ">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2 lg:px-8">
+        <div className="space-y-6">
+          <Badge variant="secondary" className="rounded-full">Unleash Your Potential</Badge>
+          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Discover Mobile Innovation, Tailored for You</h1>
+          <p className="max-w-xl text-pretty text-lg text-muted-foreground">Browse our curated collection of cutting-edge smartphones and essential accessories. Upgrade your digital life with confidence and expert support.</p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <Button asChild size="lg"><Link href="/shop">Shop All Phones</Link></Button>
+        <Button asChild size="lg" variant="outline"><Link href="/shopcompare">Compare Models</Link></Button>
+      </div>
+          
+        </div>
+        <div className="relative aspect-square w-full overflow-hidden rounded-3xl border bg-gradient-to-br from-accent/40 via-primary/10 to-background p-6">
+          <div className="flex h-full flex-col justify-end gap-2 rounded-2xl bg-background/40 p-6 backdrop-blur">
+            <span className="text-sm font-medium uppercase tracking-wider text-primary">Featured</span>
+            <p className="text-2xl font-semibold tracking-tight">Best seller</p>
+            <p className="text-sm text-muted-foreground">Customer favorite this season.</p>
+            <p className="mt-2 text-3xl font-semibold"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <p className="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">Leading Brands, Uncompromised Quality</p>
+        <div className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Apple</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Samsung</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Google</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">OnePlus</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Xiaomi</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Motorola</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Nokia</div>
+        </div>
+      </div>
+    </section>
 
 <section className="px-4 py-16 sm:py-20 lg:py-28 ">
   <div className="mx-auto max-w-7xl">
-    <div className="max-w-3xl"></div>
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Curated Selection</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Featured Devices &amp; Essential Gear</h2>
+    <p className="text-muted-foreground max-w-2xl">Explore our top-selling smartphones and must-have accessories, hand-picked for performance, style, and value.</p></div>
 
-    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8">
-      <div key={i} className="text-center">
-        <div className="text-3xl sm:text-4xl font-bold tracking-tight">42,800+</div>
-        <div className="text-sm text-muted-foreground mt-1">Phones shipped last month</div>
-      </div>
-      <div key={i} className="text-center">
-        <div className="text-3xl sm:text-4xl font-bold tracking-tight">4.98</div>
-        <div className="text-sm text-muted-foreground mt-1">Average customer rating</div>
-      </div>
-      <div key={i} className="text-center">
-        <div className="text-3xl sm:text-4xl font-bold tracking-tight">2days</div>
-        <div className="text-sm text-muted-foreground mt-1">Day delivery guarantee</div>
-      </div>
+    <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/iphone-15-pro-max.webp" alt="iPhone 15 Pro Max" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">iPhone 15 Pro Max</h3>
+          <p className="text-sm text-muted-foreground mt-1">$1199</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/galaxy-s24-ultra.webp" alt="Samsung Galaxy S24 Ultra" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">Samsung Galaxy S24 Ultra</h3>
+          <p className="text-sm text-muted-foreground mt-1">$1299</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/pixel-8-pro.webp" alt="Google Pixel 8 Pro" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">Google Pixel 8 Pro</h3>
+          <p className="text-sm text-muted-foreground mt-1">$999</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/airpods-pro.webp" alt="AirPods Pro (2nd Gen)" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">AirPods Pro (2nd Gen)</h3>
+          <p className="text-sm text-muted-foreground mt-1">$249</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/galaxy-watch-6.webp" alt="Samsung Galaxy Watch 6 Classic" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">Samsung Galaxy Watch 6 Classic</h3>
+          <p className="text-sm text-muted-foreground mt-1">$399</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/anker-powercore.webp" alt="Anker PowerCore 20000" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">Anker PowerCore 20000</h3>
+          <p className="text-sm text-muted-foreground mt-1">$59</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
     </div>
   </div>
 </section>
 
 <section className="px-4 py-16 sm:py-20 lg:py-28 ">
   <div className="mx-auto max-w-7xl">
-    <div className="max-w-3xl"><p className="text-muted-foreground max-w-2xl">Every device is inspected, photographed, and backed by our 30-day return promise.</p></div>
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Commitment</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Why Choose Phone Emporium for Your Next Upgrade?</h2>
+    <p className="text-muted-foreground max-w-2xl">Experience unparalleled service, expert guidance, and a seamless shopping journey for all your mobile needs.</p></div>
 
     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       <Card key={i} className="group hover:shadow-lg transition-shadow">
         <CardContent className="p-6 lg:p-8">
+          <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><span className="text-lg">Users</span></div>
           
-          
-          <h3 className="text-lg font-semibold mb-2">Verified battery health</h3>
-          <p className="text-sm text-muted-foreground">Every phone ships with 85%+ battery capacity and full diagnostic report.</p>
+          <h3 className="text-lg font-semibold mb-2">Expert Guidance, Every Step</h3>
+          <p className="text-sm text-muted-foreground">Our knowledgeable team provides personalized recommendations to match you with the perfect device, saving you hours of research.</p>
         </CardContent>
       </Card>
       <Card key={i} className="group hover:shadow-lg transition-shadow">
         <CardContent className="p-6 lg:p-8">
+          <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><span className="text-lg">ShieldCheck</span></div>
           
-          
-          <h3 className="text-lg font-semibold mb-2">Price-match guarantee</h3>
-          <p className="text-sm text-muted-foreground">Find a lower price within 7 days and we refund the difference plus 10%.</p>
+          <h3 className="text-lg font-semibold mb-2">Secure Shopping &amp; Data Privacy</h3>
+          <p className="text-sm text-muted-foreground">Shop with complete peace of mind. Our platform uses advanced encryption to protect your personal and payment information.</p>
         </CardContent>
       </Card>
       <Card key={i} className="group hover:shadow-lg transition-shadow">
         <CardContent className="p-6 lg:p-8">
+          <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><span className="text-lg">Truck</span></div>
           
-          
-          <h3 className="text-lg font-semibold mb-2">Same-day expert support</h3>
-          <p className="text-sm text-muted-foreground">Real humans answer within 4 minutes. No chatbots, no scripted replies.</p>
+          <h3 className="text-lg font-semibold mb-2">Fast, Reliable Shipping</h3>
+          <p className="text-sm text-muted-foreground">Get your new device quickly and safely with our expedited shipping options. Most orders arrive within 2-3 business days.</p>
         </CardContent>
       </Card>
       <Card key={i} className="group hover:shadow-lg transition-shadow">
         <CardContent className="p-6 lg:p-8">
+          <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><span className="text-lg">Tag</span></div>
           
+          <h3 className="text-lg font-semibold mb-2">Competitive Pricing &amp; Deals</h3>
+          <p className="text-sm text-muted-foreground">Access the best prices on the latest models, alongside exclusive bundles and seasonal promotions to maximize your savings.</p>
+        </CardContent>
+      </Card>
+      <Card key={i} className="group hover:shadow-lg transition-shadow">
+        <CardContent className="p-6 lg:p-8">
+          <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"><span className="text-lg">RefreshCcw</span></div>
           
-          <h3 className="text-lg font-semibold mb-2">Unlocked &amp; carrier-ready</h3>
-          <p className="text-sm text-muted-foreground">All devices work on every major US carrier with free SIM kit included.</p>
+          <h3 className="text-lg font-semibold mb-2">Hassle-Free Returns &amp; Warranty</h3>
+          <p className="text-sm text-muted-foreground">Enjoy a 30-day satisfaction guarantee and full manufacturer's warranty on all devices, ensuring your investment is protected.</p>
         </CardContent>
       </Card>
     </div>
@@ -94,133 +193,39 @@ export default function HomePage() {
 
 <section className="px-4 py-16 sm:py-20 lg:py-28 ">
   <div className="mx-auto max-w-7xl">
-    <div className="max-w-3xl"></div>
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Customer Success</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Hear From Our Delighted Mobile Users</h2>
+    <p className="text-muted-foreground max-w-2xl">Real stories from customers who found their perfect device and exceptional service at Phone Emporium.</p></div>
 
-    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      <Card key={i} className="group hover:shadow-lg transition-shadow">
-        <CardContent className="p-6">
-          <p className="text-sm leading-relaxed"></p>
-        </CardContent>
-        <CardFooter className="px-6 pb-6 pt-0 flex items-center gap-3">
-          <Avatar><AvatarFallback>U</AvatarFallback></Avatar>
-          <div>
-            <div className="text-sm font-medium"></div>
-            
+    <div className="mt-12 grid lg:grid-cols-3 gap-6">
+      <Card className="lg:col-span-2">
+        <CardContent className="p-8 lg:p-10">
+          <p className="text-lg sm:text-xl leading-relaxed"></p>
+          <div className="flex items-center gap-3 mt-6">
+            <Avatar className="h-12 w-12"><AvatarFallback>U</AvatarFallback></Avatar>
+            <div>
+              <div className="font-semibold"></div>
+              
+            </div>
           </div>
-        </CardFooter>
-      </Card>
-      <Card key={i} className="group hover:shadow-lg transition-shadow">
-        <CardContent className="p-6">
-          <p className="text-sm leading-relaxed"></p>
         </CardContent>
-        <CardFooter className="px-6 pb-6 pt-0 flex items-center gap-3">
-          <Avatar><AvatarFallback>U</AvatarFallback></Avatar>
-          <div>
-            <div className="text-sm font-medium"></div>
-            
-          </div>
-        </CardFooter>
       </Card>
-      <Card key={i} className="group hover:shadow-lg transition-shadow">
-        <CardContent className="p-6">
-          <p className="text-sm leading-relaxed"></p>
-        </CardContent>
-        <CardFooter className="px-6 pb-6 pt-0 flex items-center gap-3">
-          <Avatar><AvatarFallback>U</AvatarFallback></Avatar>
-          <div>
-            <div className="text-sm font-medium"></div>
-            
-          </div>
-        </CardFooter>
-      </Card>
+      <div className="flex flex-col gap-6"><Card key={i}><CardContent className="p-6"><p className="text-sm leading-relaxed"></p><div className="flex items-center gap-2 mt-4"><Avatar className="h-8 w-8"><AvatarFallback>U</AvatarFallback></Avatar><div className="text-sm font-medium"></div></div></CardContent></Card>
+      <Card key={i}><CardContent className="p-6"><p className="text-sm leading-relaxed"></p><div className="flex items-center gap-2 mt-4"><Avatar className="h-8 w-8"><AvatarFallback>U</AvatarFallback></Avatar><div className="text-sm font-medium"></div></div></CardContent></Card></div>
     </div>
   </div>
 </section>
 
-<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+<section className="px-4 py-16 sm:py-20 lg:py-28 bg-primary/5">
   <div className="mx-auto max-w-7xl">
-    <div className="max-w-3xl"><p className="text-muted-foreground max-w-2xl">Flexible financing and protection options that grow with your device.</p></div>
-
-    <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
-      <Card key={i} className={''}>
-        
-        <CardHeader className="text-center">
-          <CardTitle>Pay in full</CardTitle>
-          <CardDescription></CardDescription>
-          <div className="mt-4">
-            <span className="text-4xl font-bold">0</span>
-            
-          </div>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-3"></ul>
-        </CardContent>
-        <CardFooter className="flex-col">
-          <Button className="w-full" variant={"outline"} asChild>
-            <a href="#">Get started</a>
-          </Button>
-        </CardFooter>
-      </Card>
-      <Card key={i} className="relative border-primary shadow-lg scale-[1.02]">
-        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2">Popular</Badge>
-        <CardHeader className="text-center">
-          <CardTitle>Finance 0% APR</CardTitle>
-          <CardDescription></CardDescription>
-          <div className="mt-4">
-            <span className="text-4xl font-bold">24</span>
-            
-          </div>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-3"></ul>
-        </CardContent>
-        <CardFooter className="flex-col">
-          <Button className="w-full" variant={"default"} asChild>
-            <a href="#">Get started</a>
-          </Button>
-        </CardFooter>
-      </Card>
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="max-w-2xl">
+        <Badge variant="outline" className="mb-3">Ready for an Upgrade?</Badge>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Find Your Perfect Mobile Companion Today</h2>
+        <p className="text-muted-foreground mt-2">Explore our full range of smartphones and accessories. Your next digital adventure begins here.</p>
+      </div>
+      <div className="flex flex-wrap gap-4"><Button size="lg" asChild><a href="/shop">Start Shopping Now</a></Button></div>
     </div>
-  </div>
-</section>
-
-<section className="px-4 py-16 sm:py-20 lg:py-28 ">
-  <div className="mx-auto max-w-7xl">
-    <div className="max-w-3xl"></div>
-
-    <div className="mt-12 max-w-3xl mx-auto">
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-0">
-          <AccordionTrigger>Do phones come with a warranty?</AccordionTrigger>
-          <AccordionContent>All devices include a 12-month limited warranty plus 30-day return window. Extended coverage available at checkout.</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Can I trade in my current phone?</AccordionTrigger>
-          <AccordionContent>Yes. Get an instant quote online and receive credit within 48 hours after we inspect the device.</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Which carriers work with these phones?</AccordionTrigger>
-          <AccordionContent>Every phone is carrier-unlocked and compatible with AT&amp;T, Verizon, T-Mobile, and US Cellular.</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>How fast is delivery really?</AccordionTrigger>
-          <AccordionContent>Orders placed before 2pm ship same day. 95% of customers receive devices within 48 hours.</AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
-  </div>
-</section>
-
-<section className="px-4 py-16 sm:py-20 lg:py-28 ">
-  <div className="mx-auto max-w-7xl">
-    <Card className="bg-primary/5 border-primary/20 max-w-4xl mx-auto">
-      <CardContent className="p-8 sm:p-12 lg:p-16 flex flex-col items-center text-center gap-6">
-        
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight"></h2>
-        <p className="text-lg text-muted-foreground max-w-xl">Browse our full catalog or speak with a specialist about the right device for you.</p>
-        <div className="flex flex-wrap gap-4"><Button variant="outline" size="lg" asChild><a href="/support">Talk to sales</a></Button></div>
-      </CardContent>
-    </Card>
   </div>
 </section>
     </>
