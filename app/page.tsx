@@ -1,147 +1,103 @@
 import Link from "next/link"
-import { Quote, Sparkles } from "lucide-react"
+import { Leaf, Package, Quote, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Cockie Clicker: Bake, Upgrade, Conquer the Cookieverse!",
-  description: "Dive into the most addictive cookie clicker game! Tap to bake, unlock powerful upgrades, and build your cookie empire. Play Cockie Clicker now!",
+  title: "other | Curated Essentials for a Modern Lifestyle",
+  description: "Discover a thoughtfully selected range of high-quality products designed to enhance your daily life. Shop with confidence and elevate your everyday.",
 }
 
 export default function HomePage() {
   return (
     <>
 <section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
-        <div className="relative overflow-hidden rounded-[2rem] border bg-gradient-to-br from-primary/15 via-accent/10 to-background p-8 sm:p-14">
-          <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-primary/20 blur-3xl" aria-hidden="true" />
-          <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-accent/30 blur-3xl" aria-hidden="true" />
-          <div className="relative max-w-2xl space-y-5">
-            
-            <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Ship something people remember.</h1>
-            
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button asChild size="lg"><Link href="#">Get started</Link></Button>
-        
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2 lg:px-8">
+        <div className="space-y-6">
+          <Badge variant="secondary" className="rounded-full">Elevate Your Everyday</Badge>
+          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Discover Thoughtfully Curated Collections</h1>
+          <p className="max-w-xl text-pretty text-lg text-muted-foreground">Explore our handpicked selection of premium goods, designed to bring joy and functionality to your home and personal style.</p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <Button asChild size="lg"><Link href="/shop">Shop New Arrivals</Link></Button>
+        <Button asChild size="lg" variant="outline"><Link href="/shop">Explore Categories</Link></Button>
       </div>
+          
+        </div>
+        <div className="relative aspect-square w-full overflow-hidden rounded-3xl border bg-gradient-to-br from-accent/40 via-primary/10 to-background p-6">
+          <div className="flex h-full flex-col justify-end gap-2 rounded-2xl bg-background/40 p-6 backdrop-blur">
+            <span className="text-sm font-medium uppercase tracking-wider text-primary">Featured</span>
+            <p className="text-2xl font-semibold tracking-tight">Best seller</p>
+            <p className="text-sm text-muted-foreground">Customer favorite this season.</p>
+            <p className="mt-2 text-3xl font-semibold"></p>
           </div>
         </div>
       </div>
     </section>
 
 <section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-        
-        <dl className="mt-10 grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-border">
-          <div className="px-2 text-center sm:px-6">
-            <dd className="text-4xl font-semibold tracking-tight sm:text-5xl">1.2B+</dd>
-            <dt className="mt-2 text-sm text-muted-foreground">Total Cookies Baked</dt>
-          </div>
-          <div className="px-2 text-center sm:px-6">
-            <dd className="text-4xl font-semibold tracking-tight sm:text-5xl">12,400</dd>
-            <dt className="mt-2 text-sm text-muted-foreground">Active Bakers</dt>
-          </div>
-          <div className="px-2 text-center sm:px-6">
-            <dd className="text-4xl font-semibold tracking-tight sm:text-5xl">250+</dd>
-            <dt className="mt-2 text-sm text-muted-foreground">Unique Upgrades</dt>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Built for teams who care about the details</h2>
-          
-        </div>
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
-          <Card className="lg:col-span-2 relative overflow-hidden border-border/60">
-            <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Tap to Bake</CardTitle>
-              <CardDescription className="text-base">Start your journey by simply tapping the giant cookie. Every tap counts!</CardDescription>
-            </CardHeader>
-            
-          </Card>
-          <Card className="lg:col-span-1 relative overflow-hidden border-border/60">
-            <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Unlock Upgrades</CardTitle>
-              <CardDescription className="text-base">Invest your hard-earned cookies into powerful upgrades and auto-bakers.</CardDescription>
-            </CardHeader>
-            
-          </Card>
-          <Card className="lg:col-span-1 relative overflow-hidden border-border/60">
-            <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Expand Your Empire</CardTitle>
-              <CardDescription className="text-base">Discover new buildings, technologies, and secret recipes to boost production.</CardDescription>
-            </CardHeader>
-            
-          </Card>
-          <Card className="lg:col-span-2 relative overflow-hidden border-border/60">
-            <CardHeader>
-              <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Sparkles className="h-5 w-5" /></div>
-              <CardTitle className="text-xl">Compete Globally</CardTitle>
-              <CardDescription className="text-base">Climb the leaderboard and prove you're the ultimate cookie mogul.</CardDescription>
-            </CardHeader>
-            
-          </Card>
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <p className="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">Featured in Leading Lifestyle Publications</p>
+        <div className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Vogue</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Architectural Digest</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">GQ</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Elle Decor</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Monocle</div>
         </div>
       </div>
     </section>
 
 <section className="relative w-full ">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Loved by people who care about quality</h2>
-          
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Shop Our Most Loved Products</h2>
+            <p className="mt-2 max-w-xl text-pretty text-muted-foreground">Explore popular items that customers adore for their exceptional quality, timeless design, and everyday utility.</p>
+          </div>
+          <Button asChild variant="ghost" className="hidden sm:inline-flex"><Link href="/shop">View All Products</Link></Button>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Card className="border-border/60">
-            <CardContent className="p-6">
-              <Quote className="h-6 w-6 text-primary/40" />
-              <p className="mt-4 text-pretty text-base leading-relaxed">"I started playing Cockie Clicker last week and now I can't stop. My productivity at work has plummeted, but my cookie count is soaring!"</p>
-              <div className="mt-6 flex items-center gap-3">
-                <Avatar className="h-9 w-9"><AvatarFallback>CM</AvatarFallback></Avatar>
-                <div>
-                  <p className="text-sm font-semibold">CookieMonster92</p>
-                  <p className="text-xs text-muted-foreground">Addicted Gamer</p>
-                </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <Card className="overflow-hidden">
+            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
+            <CardContent className="space-y-2 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-medium">Ceramic Artisan Mug</p>
+                <p className="font-semibold">$28.00</p>
               </div>
+              <p className="text-sm text-muted-foreground">Hand-thrown stoneware for your morning ritual.</p>
             </CardContent>
           </Card>
-          <Card className="border-border/60">
-            <CardContent className="p-6">
-              <Quote className="h-6 w-6 text-primary/40" />
-              <p className="mt-4 text-pretty text-base leading-relaxed">"The upgrades are so satisfying, and the progression feels just right. Best idle game I've played in years!"</p>
-              <div className="mt-6 flex items-center gap-3">
-                <Avatar className="h-9 w-9"><AvatarFallback>SS</AvatarFallback></Avatar>
-                <div>
-                  <p className="text-sm font-semibold">SweetToothSam</p>
-                  <p className="text-xs text-muted-foreground">Casual Player</p>
-                </div>
+          <Card className="overflow-hidden">
+            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
+            <CardContent className="space-y-2 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-medium">Linen Blend Apron</p>
+                <p className="font-semibold">$45.00</p>
               </div>
+              <p className="text-sm text-muted-foreground">Stylish and durable for the modern kitchen.</p>
             </CardContent>
           </Card>
-          <Card className="border-border/60">
-            <CardContent className="p-6">
-              <Quote className="h-6 w-6 text-primary/40" />
-              <p className="mt-4 text-pretty text-base leading-relaxed">"My kids love it, I love it. It's become a family competition to see who can bake the most. Highly recommend!"</p>
-              <div className="mt-6 flex items-center gap-3">
-                <Avatar className="h-9 w-9"><AvatarFallback>MB</AvatarFallback></Avatar>
-                <div>
-                  <p className="text-sm font-semibold">MommyBakes</p>
-                  <p className="text-xs text-muted-foreground">Parent &amp; Player</p>
-                </div>
+          <Card className="overflow-hidden">
+            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
+            <CardContent className="space-y-2 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-medium">Minimalist Leather Wallet</p>
+                <p className="font-semibold">$65.00</p>
               </div>
+              <p className="text-sm text-muted-foreground">Slim profile, premium full-grain leather.</p>
+            </CardContent>
+          </Card>
+          <Card className="overflow-hidden">
+            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
+            <CardContent className="space-y-2 p-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-medium">Soy Wax Candle - Forest</p>
+                <p className="font-semibold">$32.00</p>
+              </div>
+              <p className="text-sm text-muted-foreground">Earthy notes of pine and cedarwood.</p>
             </CardContent>
           </Card>
         </div>
@@ -149,39 +105,68 @@ export default function HomePage() {
     </section>
 
 <section className="relative w-full ">
-      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="text-center space-y-4">
-          
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Frequently asked</h2>
-          
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center space-y-4">
+          <Badge variant="secondary" className="rounded-full">Why Choose Us?</Badge>
+          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Experience the Difference in Every Detail</h2>
+          <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">We are dedicated to providing an unparalleled shopping journey, from product selection to post-purchase support.</p>
         </div>
-        <Accordion type="single" collapsible className="mt-12 w-full">
-          <AccordionItem value="item-0">
-            <AccordionTrigger className="text-left text-base">Is Cockie Clicker free to play?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">Yes! Cockie Clicker is completely free to play. You can enjoy the full game experience without spending a dime. Optional in-game purchases are available for those who wish to accelerate their progress, but they are never required.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-left text-base">How do I save my game progress?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">To save your progress, simply create a free account. Your game will automatically sync to our servers, allowing you to pick up where you left off on any device.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger className="text-left text-base">Can I play on multiple devices?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">Absolutely! Once you've created an account, your game progress is saved to the cloud, letting you seamlessly switch between your desktop, tablet, or mobile device.</AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger className="text-left text-base">What are 'upgrades' and 'buildings'?</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">Upgrades enhance your cookie production rate or click power. Buildings (like 'Cookie Farms' or 'Grandma's Kitchen') are automated producers that bake cookies for you even when you're not clicking. They are key to idle progression!</AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        <div className="mt-16 space-y-16 sm:space-y-24">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className=" space-y-4">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Package className="h-5 w-5" /></div>
+              <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Curated Quality Selection</h3>
+              <p className="text-pretty text-muted-foreground">Every product is meticulously handpicked for its superior craftsmanship, durability, and aesthetic appeal, ensuring lasting satisfaction.</p>
+              
+            </div>
+            <div className=" aspect-[4/3] rounded-2xl border bg-gradient-to-br from-accent/30 via-primary/10 to-background" aria-hidden="true"></div>
+          </div>
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className="lg:order-2 space-y-4">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Leaf className="h-5 w-5" /></div>
+              <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Sustainable &amp; Ethical Sourcing</h3>
+              <p className="text-pretty text-muted-foreground">We partner with artisans and brands committed to responsible production, fair labor practices, and environmental stewardship.</p>
+              
+            </div>
+            <div className="lg:order-1 aspect-[4/3] rounded-2xl border bg-gradient-to-br from-accent/30 via-primary/10 to-background" aria-hidden="true"></div>
+          </div>
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div className=" space-y-4">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><ShoppingCart className="h-5 w-5" /></div>
+              <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Seamless Shopping Experience</h3>
+              <p className="text-pretty text-muted-foreground">Enjoy effortless browsing, secure checkout, and reliable delivery, making your journey from discovery to doorstep a delight.</p>
+              
+            </div>
+            <div className=" aspect-[4/3] rounded-2xl border bg-gradient-to-br from-accent/30 via-primary/10 to-background" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section className="relative w-full ">
+      <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <p className="mx-auto max-w-3xl text-center text-sm font-semibold uppercase tracking-wider text-primary">Hear From Our Customers</p>
+        <h2 className="mx-auto max-w-3xl text-balance text-center text-3xl font-semibold tracking-tight sm:text-4xl">Real Stories, Exceptional Experiences</h2>
+        <figure className="mt-12 rounded-3xl border bg-card p-8 sm:p-12">
+          <Quote className="h-10 w-10 text-primary/40" />
+          <blockquote className="mt-6 text-pretty text-2xl font-medium leading-relaxed sm:text-3xl">"I'm absolutely thrilled with my new ceramic mugs. The quality is outstanding, and they arrived beautifully packaged in just three days! It's clear 'other' cares about every detail."</blockquote>
+          <figcaption className="mt-8 flex items-center gap-4">
+            <Avatar><AvatarFallback>SL</AvatarFallback></Avatar>
+            <div>
+              <p className="font-semibold">Sarah L.</p>
+              <p className="text-sm text-muted-foreground">Home Decor Enthusiast</p>
+            </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
 <section className="relative w-full ">
       <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 md:py-24 lg:px-8">
-        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Ready when you are</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">Start now and feel the difference within minutes.</p>
+        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Find Your Next Favorite Item Today</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">Browse our expansive catalog and bring home pieces that resonate with your personal style and values.</p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="lg"><Link href="#">Get started</Link></Button>
+          <Button asChild size="lg"><Link href="/shop">Start Shopping Now</Link></Button>
           
         </div>
       </div>

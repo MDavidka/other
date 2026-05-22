@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Click Your Way to a Cookie Empire!",
-  description: "An incredibly addictive incremental idle game where you bake an endless supply of cookies by clicking, upgrading your production, and competing with friends.",
+  title: "other — Curated Essentials for a Modern Lifestyle",
+  description: "Discover a thoughtfully selected range of high-quality products designed to enhance your daily life. Shop with confidence and elevate your everyday.",
   openGraph: {
-    title: "other — Click Your Way to a Cookie Empire!",
-    description: "An incredibly addictive incremental idle game where you bake an endless supply of cookies by clicking, upgrading your production, and competing with friends.",
+    title: "other — Curated Essentials for a Modern Lifestyle",
+    description: "Discover a thoughtfully selected range of high-quality products designed to enhance your daily life. Shop with confidence and elevate your everyday.",
     siteName: "other",
     type: "website",
   },
