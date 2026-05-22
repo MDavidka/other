@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Discover Tomorrow's Phones, Today.",
-  description: "NextGen Mobile offers the latest smartphones and accessories with unparalleled service. Find your perfect device, explore exclusive deals, and upgrade your tech experience effortlessly.",
+  title: "other — Premium phones, zero compromise.",
+  description: "other is the modern destination for flagship smartphones, expert curation, and fast, reliable delivery. We stock the latest devices from Apple, Samsung, Google, and Sony with transparent pricing and hands-on support.",
   openGraph: {
-    title: "other — Discover Tomorrow's Phones, Today.",
-    description: "NextGen Mobile offers the latest smartphones and accessories with unparalleled service. Find your perfect device, explore exclusive deals, and upgrade your tech experience effortlessly.",
+    title: "other — Premium phones, zero compromise.",
+    description: "other is the modern destination for flagship smartphones, expert curation, and fast, reliable delivery. We stock the latest devices from Apple, Samsung, Google, and Sony with transparent pricing and hands-on support.",
     siteName: "other",
     type: "website",
   },
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="scroll-smooth">
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <SiteHeader />
-        <main className="flex-1">children</main>
+        <main className="flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>
