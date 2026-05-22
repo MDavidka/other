@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 
 export const siteConfig = {
   "name": "other",
-  "tagline": "Premium phones. Premium experience.",
-  "description": "Curated flagship smartphones with transparent pricing, expert support, and 30-day peace of mind.",
-  "audience": "Tech enthusiasts and professionals seeking the latest flagship devices without the retail markup.",
+  "tagline": "Discover Tomorrow's Phones, Today.",
+  "description": "NextGen Mobile offers the latest smartphones and accessories with unparalleled service. Find your perfect device, explore exclusive deals, and upgrade your tech experience effortlessly.",
+  "audience": "Tech enthusiasts, everyday users seeking reliable upgrades, and individuals looking for competitive prices on new mobile devices.",
   "category": null,
   "logoUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTU5IiB6b29tQW5kUGFuPSJtYWduaWZ5IiB2aWV3Qm94PSIwIDAgNDE5LjI1IDI5Ny43NDk5OTEiIGhlaWdodD0iMzk3IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiB2ZXJzaW9uPSIxLjAiPjxkZWZzPjxmaWx0ZXIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBpZD0iZjJlMDUxYTI0MiI+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAxIDAiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiIvPjwvZmlsdGVyPjxjbGlwUGF0aCBpZD0iYWNhYjYxNDY3ZiI+PHBhdGggZD0iTSA0NiAwLjE0MDYyNSBMIDM3MiAwLjE0MDYyNSBMIDM3MiAyOTcuMzU5Mzc1IEwgNDYgMjk3LjM1OTM3NSBaIE0gNDYgMC4xNDA2MjUgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iMWEwYjVhNDMxOCI+PHBhdGggZD0iTSAwLjk1NzAzMSAwLjE0MDYyNSBMIDMyNS4zMzU5MzggMC4xNDA2MjUgTCAzMjUuMzM1OTM4IDI5Ny4zNTkzNzUgTCAwLjk1NzAzMSAyOTcuMzU5Mzc1IFogTSAwLjk1NzAzMSAwLjE0MDYyNSAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PG1hc2sgaWQ9IjUyMmU4MGQ1ZTEiPjxnIGZpbHRlcj0idXJsKCNmMmUwNTFhMjQyKSI+PHJlY3QgeD0iLTEzOC4yMzUiIHdpZHRoPSI2MDMuNzIiIGZpbGw9IiMwMDAwMDAiIHk9Ii02NS41MDQ5OTgiIGhlaWdodD0iNDI4Ljc1OTk4NyIgZmlsbC1vcGFjaXR5PSIwLjY0Ii8+PC9nPjwvbWFzaz48Y2xpcFBhdGggaWQ9IjA3NjNlZGZkOTIiPjxwYXRoIGQ9Ik0gOTkgOTEgTCAyMjcgOTEgTCAyMjcgMjE4IEwgOTkgMjE4IFogTSA5OSA5MSAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSI2ZDQxODZhM2EyIj48cGF0aCBkPSJNIDg3LjE2Nzk2OSAxNTEuNTcwMzEyIEwgMTY2LjMyMDMxMiA3OC40ODQzNzUgTCAyMzkuNDA2MjUgMTU3LjYzNjcxOSBMIDE2MC4yNTM5MDYgMjMwLjcyMjY1NiBaIE0gODcuMTY3OTY5IDE1MS41NzAzMTIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iNzk4OWE0MmJkNCI+PHBhdGggZD0iTSA4Ny4xNjc5NjkgMTUxLjU3NDIxOSBMIDE2Ny42Nzk2ODggNzcuMjMwNDY5IEwgMjQyLjAxOTUzMSAxNTcuNzQyMTg4IEwgMTYxLjUwNzgxMiAyMzIuMDgyMDMxIFogTSA4Ny4xNjc5NjkgMTUxLjU3NDIxOSAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJlZDBhM2NhYTA0Ij48cGF0aCBkPSJNIDEwOS43MDMxMjUgMTMwLjc2MTcxOSBMIDE0My44MjgxMjUgOTkuMjUzOTA2IEMgMTQ5LjgwNDY4OCA5My43MzQzNzUgMTU3LjczMDQ2OSA5MC44MTY0MDYgMTY1Ljg1OTM3NSA5MS4xNDA2MjUgQyAxNzMuOTg0Mzc1IDkxLjQ2NDg0NCAxODEuNjUyMzQ0IDk1LjAwMzkwNiAxODcuMTcxODc1IDEwMC45ODA0NjkgTCAyMTguNTE5NTMxIDEzNC45Mjk2ODggQyAyMjQuMDM5MDYyIDE0MC45MTAxNTYgMjI2Ljk1NzAzMSAxNDguODMyMDMxIDIyNi42MzY3MTkgMTU2Ljk2MDkzOCBDIDIyNi4zMTI1IDE2NS4wODk4NDQgMjIyLjc2OTUzMSAxNzIuNzU3ODEyIDIxNi43OTI5NjkgMTc4LjI3NzM0NCBMIDE4Mi42NzE4NzUgMjA5Ljc4NTE1NiBDIDE3Ni42OTUzMTIgMjE1LjMwNDY4OCAxNjguNzY5NTMxIDIxOC4yMjI2NTYgMTYwLjY0MDYyNSAyMTcuODk4NDM4IEMgMTUyLjUxMTcxOSAyMTcuNTc0MjE5IDE0NC44NDM3NSAyMTQuMDM1MTU2IDEzOS4zMjQyMTkgMjA4LjA1ODU5NCBMIDEwNy45NzY1NjIgMTc0LjEwOTM3NSBDIDEwMi40NTcwMzEgMTY4LjEzMjgxMiA5OS41MzkwNjIgMTYwLjIwNzAzMSA5OS44NjMyODEgMTUyLjA3ODEyNSBDIDEwMC4xODc1IDE0My45NDkyMTkgMTAzLjcyNjU2MiAxMzYuMjgxMjUgMTA5LjcwMzEyNSAxMzAuNzYxNzE5IFogTSAxMDkuNzAzMTI1IDEzMC43NjE3MTkgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iOGQ4NDViZWY4ZSI+PHJlY3QgeD0iMCIgd2lkdGg9IjMyNiIgeT0iMCIgaGVpZ2h0PSIyOTgiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iZGViOWRhOTRjMiI+PHBhdGggZD0iTSAxMjYuMjY5NTMxIDExOC44NzEwOTQgTCAxOTcuNTY2NDA2IDExOC44NzEwOTQgTCAxOTcuNTY2NDA2IDE5MC4xNjc5NjkgTCAxMjYuMjY5NTMxIDE5MC4xNjc5NjkgWiBNIDEyNi4yNjk1MzEgMTE4Ljg3MTA5NCAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSIzY2UyMWMyZGZjIj48cGF0aCBkPSJNIDE2MS45MTc5NjkgMTE4Ljg3MTA5NCBMIDE3My4yNjE3MTkgMTQzLjE3NTc4MSBMIDE5Ny41NjY0MDYgMTU0LjUxOTUzMSBMIDE3My4yNjE3MTkgMTY1Ljg2MzI4MSBMIDE2MS45MTc5NjkgMTkwLjE2Nzk2OSBMIDE1MC41NzQyMTkgMTY1Ljg2MzI4MSBMIDEyNi4yNjk1MzEgMTU0LjUxOTUzMSBMIDE1MC41NzQyMTkgMTQzLjE3NTc4MSBaIE0gMTYxLjkxNzk2OSAxMTguODcxMDk0ICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjNiOTBhMTZhYzYiPjxwYXRoIGQ9Ik0gMC4yNjk1MzEgMC44NzEwOTQgTCA3MS41NjY0MDYgMC44NzEwOTQgTCA3MS41NjY0MDYgNzIuMTY3OTY5IEwgMC4yNjk1MzEgNzIuMTY3OTY5IFogTSAwLjI2OTUzMSAwLjg3MTA5NCAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSIxMjQ0ODFkODI1Ij48cGF0aCBkPSJNIDM1LjkxNzk2OSAwLjg3MTA5NCBMIDQ3LjI2MTcxOSAyNS4xNzU3ODEgTCA3MS41NjY0MDYgMzYuNTE5NTMxIEwgNDcuMjYxNzE5IDQ3Ljg2MzI4MSBMIDM1LjkxNzk2OSA3Mi4xNjc5NjkgTCAyNC41NzQyMTkgNDcuODYzMjgxIEwgMC4yNjk1MzEgMzYuNTE5NTMxIEwgMjQuNTc0MjE5IDI1LjE3NTc4MSBaIE0gMzUuOTE3OTY5IDAuODcxMDk0ICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9ImJmZWMwY2EzMmEiPjxyZWN0IHg9IjAiIHdpZHRoPSI3MiIgeT0iMCIgaGVpZ2h0PSI3MyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJhOTA4ZWJiYTQzIj48cmVjdCB4PSIwIiB3aWR0aD0iMzI2IiB5PSIwIiBoZWlnaHQ9IjI5OCIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNhY2FiNjE0NjdmKSI+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMSwgMCwgMCwgMSwgNDYsIDAuMDAwMDAwMDAwMDAwMDA2NzcyKSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2E5MDhlYmJhNDMpIj48ZyBjbGlwLXBhdGg9InVybCgjMWEwYjVhNDMxOCkiPjxnIG1hc2s9InVybCgjNTIyZTgwZDVlMSkiPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDAuMDAwMDAwMDAwMDAwMDA3MTA1LCAwLjAwMDAwMDAwMDAwMDAwNjc3MikiPjxnIGNsaXAtcGF0aD0idXJsKCM4ZDg0NWJlZjhlKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzA3NjNlZGZkOTIpIj48ZyBjbGlwLXBhdGg9InVybCgjNmQ0MTg2YTNhMikiPjxnIGNsaXAtcGF0aD0idXJsKCM3OTg5YTQyYmQ0KSI+PGcgY2xpcC1wYXRoPSJ1cmwoI2VkMGEzY2FhMDQpIj48cGF0aCBzdHJva2UtbGluZWNhcD0iYnV0dCIgdHJhbnNmb3JtPSJtYXRyaXgoMC41NDk2NzQsIC0wLjUwNzU1MywgMC41MDc1NTMsIDAuNTQ5Njc0LCA4Ny4xNjczNjEsIDE1MS41NzIzNTcpIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBkPSJNIDQxLjAwMDAyMiAtMC4wMDE3MDAyNSBMIDEwMy4wODAyNjMgMC4wMDA1MzU5NjQgQyAxMTMuOTU0MDQ0IC0wLjAwMDM4NDQwMyAxMjQuMzgyOTg5IDQuMzIwODY4IDEzMi4wNzE1NTQgMTIuMDEwMTE4IEMgMTM5Ljc1NjI4NCAxOS42OTU4MjUgMTQ0LjA3NzE1OCAzMC4xMjQwODMgMTQ0LjA3ODA3OSA0MC45OTc4NjQgTCAxNDQuMDc3OTU5IDEwMi43NjAyNjggQyAxNDQuMDc1MzM3IDExMy42Mzc4ODUgMTM5Ljc1NzYyNyAxMjQuMDYyOTkzIDEzMi4wNzIyMTMgMTMxLjc1NTEwMSBDIDEyNC4zODI5NjQgMTM5LjQ0MzY2NiAxMTMuOTUwODcgMTQzLjc2MDk5OSAxMDMuMDc3MDg5IDE0My43NjE5MTkgTCA0MS4wMDA2ODMgMTQzLjc2MzIyNSBDIDMwLjEyNjkwMiAxNDMuNzY0MTQ1IDE5LjY5Nzk1OCAxMzkuNDQyODkzIDEyLjAwOTM5MiAxMzEuNzUzNjQzIEMgNC4zMjA4MjcgMTI0LjA2NDM5NCAtMC4wMDAwNDc3MDE3IDExMy42MzYxMzYgLTAuMDAwOTY4MDY4IDEwMi43NjIzNTUgTCAtMC4wMDA4NDgzODggNDAuOTk5OTUxIEMgLTAuMDAxNzY4NzUgMzAuMTI2MTcgNC4zMTk0ODQgMTkuNjk3MjI2IDEyLjAwODczMyAxMi4wMDg2NiBDIDE5LjY5Nzk4MyA0LjMyMDA5NSAzMC4xMjYyNDEgLTAuMDAwNzc5ODgzIDQxLjAwMDAyMiAtMC4wMDE3MDAyNSBaIE0gNDEuMDAwMDIyIC0wLjAwMTcwMDI1ICIgc3Ryb2tlPSIjNmE2YTZhIiBzdHJva2Utd2lkdGg9IjQwIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjQiLz48L2c+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCNkZWI5ZGE5NGMyKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzNjZTIxYzJkZmMpIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCAxMjYsIDExOCkiPjxnIGNsaXAtcGF0aD0idXJsKCNiZmVjMGNhMzJhKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzNiOTBhMTZhYzYpIj48ZyBjbGlwLXBhdGg9InVybCgjMTI0NDgxZDgyNSkiPjxwYXRoIGZpbGw9IiM2YTZhNmEiIGQ9Ik0gMC4yNjk1MzEgMC44NzEwOTQgTCA3MS41NjY0MDYgMC44NzEwOTQgTCA3MS41NjY0MDYgNzIuMTY3OTY5IEwgMC4yNjk1MzEgNzIuMTY3OTY5IFogTSAwLjI2OTUzMSAwLjg3MTA5NCAiIGZpbGwtb3BhY2l0eT0iMSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PC9zdmc+",
   "logoInitials": "O",
@@ -18,40 +18,47 @@ export const siteConfig = {
       "href": "/shop"
     },
     {
-      "label": "Support",
-      "href": "/support"
+      "label": "Deals",
+      "href": "/deals"
     },
     {
-      "label": "Account",
-      "href": "/account"
+      "label": "About Us",
+      "href": "/about"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
     }
   ],
   "primaryCta": {
-    "label": "Browse phones",
+    "label": "Shop Latest Phones",
     "href": "/shop"
   },
   "secondaryCta": {
-    "label": "Learn more",
-    "href": "#how"
+    "label": "Explore Our Deals",
+    "href": "/deals"
   },
   "footerCta": {
-    "label": "Start shopping",
-    "href": "/shop"
+    "label": "Get Exclusive Offers",
+    "href": "/newsletter"
   },
   "socialLinks": [
     {
-      "label": "Instagram",
-      "href": "https://instagram.com/other"
+      "label": "Twitter",
+      "href": "https://twitter.com/nextgenmobile"
     },
     {
-      "label": "Twitter",
-      "href": "https://twitter.com/other"
+      "label": "Instagram",
+      "href": "https://instagram.com/nextgenmobile"
+    },
+    {
+      "label": "Facebook",
+      "href": "https://facebook.com/nextgenmobile"
     }
   ],
   "contact": {
-    "email": "support@other.store",
-    "phone": "+1 (415) 555-0192",
-    "address": "88 Battery Street, San Francisco, CA 94111"
+    "email": "support@nextgenmobile.com",
+    "phone": "+1 (800) 555-0199"
   },
   "themePreset": "ecommerce",
   "integrations": [
@@ -59,7 +66,7 @@ export const siteConfig = {
       "kind": "database",
       "name": "Turso",
       "provider": "turso",
-      "reason": "Store product catalog, orders, and user accounts persistently.",
+      "reason": "Store product catalog, customer orders, user accounts, and inventory data for the e-commerce platform.",
       "envVars": [
         "TURSO_DATABASE_URL",
         "TURSO_AUTH_TOKEN"

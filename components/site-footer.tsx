@@ -1,4 +1,7 @@
 import Image from "next/image"
+import { Button } from "@/components/ui/Button"
+import Link from "next/link"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site-config"
@@ -24,16 +27,14 @@ export function SiteFooter() {
                   className="h-7 w-7 rounded-md object-cover"
                 />
               ) : (
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary text-[11px] font-semibold text-primary-foreground">
-                  {siteConfig.logoInitials}
-                </span>
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary text-[11px] font-semibold text-primary-foreground">siteConfig.logoInitials</span>
               )}
-              <p className="text-lg font-semibold tracking-tight">{siteConfig.name}</p>
+              <p className="text-lg font-semibold tracking-tight">siteConfig.name</p>
             </div>
-            <p className="max-w-md text-sm text-muted-foreground">{siteConfig.description}</p>
+            <p className="max-w-md text-sm text-muted-foreground">siteConfig.description</p>
             {footerCta ? (
               <Button asChild size="sm" variant="outline" className="mt-2">
-                <Link href={footerCta.href}>{footerCta.label}</Link>
+                <Link href={footerCta.href}>footerCta.label</Link>
               </Button>
             ) : null}
           </div>
@@ -42,9 +43,7 @@ export function SiteFooter() {
             <ul className="space-y-2 text-sm">
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-muted-foreground transition hover:text-foreground">
-                    {item.label}
-                  </Link>
+                  <Link href={item.href} className="text-muted-foreground transition hover:text-foreground">item.label</Link>
                 </li>
               ))}
             </ul>
@@ -52,15 +51,15 @@ export function SiteFooter() {
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Contact</p>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              {footerInfo.email ? <li><a href={`mailto:${footerInfo.email}`} className="transition hover:text-foreground">{footerInfo.email}</a></li> : null}
-              {footerInfo.phone ? <li><a href={`tel:${footerInfo.phone.replace(/\s/g, "")}`} className="transition hover:text-foreground">{footerInfo.phone}</a></li> : null}
-              {footerInfo.address ? <li>{footerInfo.address}</li> : null}
+              {footerInfo.email ? <li><a href={`mailto:${footerInfo.email}`} className="transition hover:text-foreground">footerInfo.email</a></li> : null}
+              {footerInfo.phone ? <li><a href={`tel:${footerInfo.phone.replace(/\s/g, "")}`} className="transition hover:text-foreground">footerInfo.phone</a></li> : null}
+              {footerInfo.address ? <li>footerInfo.address</li> : null}
             </ul>
             {socialLinks.length > 0 ? (
               <ul className="flex flex-wrap gap-x-4 gap-y-2 pt-2 text-sm">
                 {socialLinks.map((s) => (
                   <li key={s.href}>
-                    <a href={s.href} className="text-muted-foreground transition hover:text-foreground">{s.label}</a>
+                    <a href={s.href} className="text-muted-foreground transition hover:text-foreground">s.label</a>
                   </li>
                 ))}
               </ul>

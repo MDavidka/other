@@ -1,4 +1,9 @@
 "use client"
+import { Button } from "@/components/ui/Button"
+import Link from "next/link"
+import Image from "next/image"
+import { X } from "lucide-react"
+
 
 import * as React from "react"
 import Image from "next/image"
@@ -38,11 +43,9 @@ export function SiteHeader() {
               priority
             />
           ) : (
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-xs font-semibold text-primary-foreground">
-              {siteConfig.logoInitials}
-            </span>
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-xs font-semibold text-primary-foreground">siteConfig.logoInitials</span>
           )}
-          <span>{siteConfig.name}</span>
+          <span>siteConfig.name</span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
@@ -50,13 +53,11 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition hover:bg-accent hover:text-accent-foreground"
-            >
-              {item.label}
-            </Link>
+            >item.label</Link>
           ))}
         </nav>
         <div className="hidden md:block">
-          <Button asChild size="sm"><Link href={primaryCta.href}>{primaryCta.label}</Link></Button>
+          <Button asChild size="sm"><Link href={primaryCta.href}>primaryCta.label</Link></Button>
         </div>
         <button
           type="button"
@@ -81,12 +82,10 @@ export function SiteHeader() {
               href={item.href}
               onClick={() => setOpen(false)}
               className="rounded-md px-3 py-2 text-base font-medium text-muted-foreground transition hover:bg-accent hover:text-accent-foreground"
-            >
-              {item.label}
-            </Link>
+            >item.label</Link>
           ))}
           <Button asChild className="mt-2 w-full" onClick={() => setOpen(false)}>
-            <Link href={primaryCta.href}>{primaryCta.label}</Link>
+            <Link href={primaryCta.href}>primaryCta.label</Link>
           </Button>
         </div>
       </div>
