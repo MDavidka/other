@@ -4,11 +4,11 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "other — Curated Essentials for a Modern Lifestyle",
-  description: "Discover a thoughtfully selected range of high-quality products designed to enhance your daily life. Shop with confidence and elevate your everyday.",
+  title: "other — Your Next Device, Seamlessly Delivered.",
+  description: "Discover the latest smartphones, tablets, and accessories. We offer a curated selection with fast shipping and expert support.",
   openGraph: {
-    title: "other — Curated Essentials for a Modern Lifestyle",
-    description: "Discover a thoughtfully selected range of high-quality products designed to enhance your daily life. Shop with confidence and elevate your everyday.",
+    title: "other — Your Next Device, Seamlessly Delivered.",
+    description: "Discover the latest smartphones, tablets, and accessories. We offer a curated selection with fast shipping and expert support.",
     siteName: "other",
     type: "website",
   },

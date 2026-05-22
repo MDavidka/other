@@ -1,149 +1,122 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Our Story | other - Crafting a Better Everyday",
-  description: "Learn about 'other's' mission to provide high-quality, ethically sourced products that enhance modern living. Discover our values and commitment to thoughtful curation.",
+  title: "Our Story & Mission | Connect Devices",
+  description: "Learn about Connect Devices' mission to provide the best mobile technology, exceptional service, and a seamless shopping experience.",
 }
 
 export default function AboutPage() {
   return (
     <>
-<section className="relative w-full overflow-hidden">
-      <div className="absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-primary/10 to-transparent" aria-hidden="true" />
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-2 lg:px-8">
-        <div className="space-y-6">
-          <Badge variant="secondary" className="rounded-full">Our Journey</Badge>
-          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Crafting a Better Everyday Experience</h1>
-          <p className="max-w-xl text-pretty text-lg text-muted-foreground">We believe in the power of well-designed objects to elevate daily routines. Our story began with a passion for quality and purpose.</p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button asChild size="lg"><Link href="#values">Our Values</Link></Button>
+<section className="relative w-full ">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7 space-y-5">
+            <Badge variant="secondary" className="rounded-full">Our Journey</Badge>
+            <h1 className="text-balance text-5xl font-semibold tracking-tight sm:text-6xl">Connecting You to Tomorrow's Technology</h1>
+          </div>
+          <div className="lg:col-span-5 space-y-5">
+            
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <Button asChild size="lg"><Link href="#team">Meet Our Team</Link></Button>
         
       </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Impact</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Numbers That Speak Our Dedication</h2>
+    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Proudly serving a growing community of tech enthusiasts and everyday users.</p></div>
+
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <Card key={i}>
+        <CardContent className="p-6 text-center">
+          <div className="text-4xl font-bold tracking-tight text-primary">42,800+</div>
+          <div className="text-sm text-muted-foreground mt-2">Happy Customers</div>
           
+        </CardContent>
+      </Card>
+      <Card key={i}>
+        <CardContent className="p-6 text-center">
+          <div className="text-4xl font-bold tracking-tight text-primary">99.97%</div>
+          <div className="text-sm text-muted-foreground mt-2">Satisfaction Rate</div>
           
-        </div>
-        <div className="relative rounded-3xl border bg-card p-6 shadow-2xl shadow-primary/10">
-            <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-primary/30 via-accent/30 to-transparent blur-2xl" aria-hidden="true" />
-            <div className="aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-primary/15 via-accent/10 to-card flex items-end p-6">
-              <div className="space-y-2">
-                <span className="inline-flex items-center rounded-full bg-background/80 backdrop-blur px-3 py-1 text-xs font-medium text-foreground border">Our Journey</span>
-                <p className="text-sm text-muted-foreground">We believe in the power of well-designed objects to elevate daily routines. Our story began with a passion for quality and purpose.</p>
-              </div>
-            </div>
-            <div className="mt-6 grid grid-cols-3 gap-3 text-sm">
-              <div className="rounded-xl border bg-background/60 p-3">
-                <p className="text-xl font-semibold tracking-tight">10x</p>
-                <p className="text-xs text-muted-foreground">Faster</p>
-              </div>
-              <div className="rounded-xl border bg-background/60 p-3">
-                <p className="text-xl font-semibold tracking-tight">99.9%</p>
-                <p className="text-xs text-muted-foreground">Uptime</p>
-              </div>
-              <div className="rounded-xl border bg-background/60 p-3">
-                <p className="text-xl font-semibold tracking-tight">4.9/5</p>
-                <p className="text-xs text-muted-foreground">Rating</p>
-              </div>
-            </div>
-          </div>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl space-y-4 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Our Commitment</p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">How We Bring You Exceptional Products</h2>
-          <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">From meticulous sourcing to careful delivery, every step is designed to ensure quality, sustainability, and your satisfaction.</p>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">01</p>
-            <h3 className="mt-4 text-lg font-semibold">Thoughtful Curation</h3>
-            <p className="mt-2 text-sm text-muted-foreground">We rigorously research and select products based on design, material quality, and environmental impact.</p>
-          </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">02</p>
-            <h3 className="mt-4 text-lg font-semibold">Ethical Partnerships</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Collaborating directly with artisans and responsible manufacturers ensures fair practices and exceptional craftsmanship.</p>
-          </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">03</p>
-            <h3 className="mt-4 text-lg font-semibold">Quality Assurance</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Every item undergoes thorough inspection to meet our high standards before it ever reaches your hands.</p>
-          </div>
-          <div className="rounded-2xl border bg-card p-6">
-            <p className="text-5xl font-semibold tracking-tight text-primary/60">04</p>
-            <h3 className="mt-4 text-lg font-semibold">Sustainable Packaging</h3>
-            <p className="mt-2 text-sm text-muted-foreground">We prioritize eco-friendly materials and minimal waste in our packaging to reduce our ecological footprint.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl space-y-4 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Meet the Minds</p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">The Dedicated Team Behind 'other'</h2>
-          <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">We are a small, passionate group united by a shared vision: to offer products that inspire and endure.</p>
-        </div>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="text-center">
-            <Avatar className="mx-auto h-20 w-20"><AvatarFallback className="text-base">ER</AvatarFallback></Avatar>
-            <p className="mt-4 font-semibold">Elena Rodriguez</p>
-            <p className="text-sm text-primary"></p>
-            <p className="mt-1 text-sm text-muted-foreground">Founder &amp; Head Curator</p>
-          </div>
-          <div className="text-center">
-            <Avatar className="mx-auto h-20 w-20"><AvatarFallback className="text-base">MC</AvatarFallback></Avatar>
-            <p className="mt-4 font-semibold">Marcus Chen</p>
-            <p className="text-sm text-primary"></p>
-            <p className="mt-1 text-sm text-muted-foreground">Operations &amp; Logistics</p>
-          </div>
-          <div className="text-center">
-            <Avatar className="mx-auto h-20 w-20"><AvatarFallback className="text-base">SP</AvatarFallback></Avatar>
-            <p className="mt-4 font-semibold">Sophia Patel</p>
-            <p className="text-sm text-primary"></p>
-            <p className="mt-1 text-sm text-muted-foreground">Customer Experience Lead</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-        <h2 className="mx-auto max-w-3xl text-balance text-center text-3xl font-semibold tracking-tight sm:text-4xl">Meaningful Milestones We've Achieved</h2>
-        <dl className="mt-10 grid gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-border">
-          <div className="px-2 text-center sm:px-6">
-            <dd className="text-4xl font-semibold tracking-tight sm:text-5xl">12,500+</dd>
-            <dt className="mt-2 text-sm text-muted-foreground">Happy Customers</dt>
-          </div>
-          <div className="px-2 text-center sm:px-6">
-            <dd className="text-4xl font-semibold tracking-tight sm:text-5xl">99.8%</dd>
-            <dt className="mt-2 text-sm text-muted-foreground">Satisfaction Rate</dt>
-          </div>
-          <div className="px-2 text-center sm:px-6">
-            <dd className="text-4xl font-semibold tracking-tight sm:text-5xl">350+</dd>
-            <dt className="mt-2 text-sm text-muted-foreground">Unique Products</dt>
-          </div>
-        </dl>
-      </div>
-    </section>
-
-<section className="relative w-full ">
-      <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 md:py-24 lg:px-8">
-        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Connect With Our Growing Community</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">Follow us on social media, sign up for our newsletter, and be part of our journey to a more thoughtful lifestyle.</p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="lg"><Link href="https://instagram.com/other">Follow Us</Link></Button>
+        </CardContent>
+      </Card>
+      <Card key={i}>
+        <CardContent className="p-6 text-center">
+          <div className="text-4xl font-bold tracking-tight text-primary">18+</div>
+          <div className="text-sm text-muted-foreground mt-2">Top Brands Carried</div>
           
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Our Commitment</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">How We Ensure Your Best Experience</h2>
+    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">From product selection to after-sales support, every step is designed with you in mind.</p></div>
+
+    <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div key={i} className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">1</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 01</Badge>
+          <h3 className="font-semibold text-lg">Curated Product Sourcing</h3>
+          <p className="text-sm text-muted-foreground mt-1">We meticulously select devices from authorized distributors, guaranteeing authenticity and quality.</p>
         </div>
       </div>
-    </section>
+      <div key={i} className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">2</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 02</Badge>
+          <h3 className="font-semibold text-lg">Rigorous Quality Checks</h3>
+          <p className="text-sm text-muted-foreground mt-1">Every item undergoes thorough inspection before shipping to ensure it meets our high standards.</p>
+        </div>
+      </div>
+      <div key={i} className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">3</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 03</Badge>
+          <h3 className="font-semibold text-lg">Seamless Order Fulfillment</h3>
+          <p className="text-sm text-muted-foreground mt-1">Advanced logistics ensure your device is packed securely and shipped quickly to your doorstep.</p>
+        </div>
+      </div>
+      <div key={i} className="flex items-start gap-4">
+        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 font-bold text-sm text-primary">4</div>
+        <div>
+          <Badge variant="secondary" className="mb-2">Step 04</Badge>
+          <h3 className="font-semibold text-lg">Ongoing Customer Care</h3>
+          <p className="text-sm text-muted-foreground mt-1">Our support team is always ready to assist, from setup questions to warranty claims.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 bg-primary/5">
+  <div className="mx-auto max-w-7xl">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="max-w-2xl">
+        <Badge variant="outline" className="mb-3">Join Our Community</Badge>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Experience the Connect Devices Difference</h2>
+        
+      </div>
+      <div className="flex flex-wrap gap-4"><Button size="lg" asChild><a href="/shop">Start Shopping Today</a></Button>
+    <Button variant="outline" size="lg" asChild><a href="/contact">Contact Our Team</a></Button></div>
+    </div>
+  </div>
+</section>
     </>
   )
 }

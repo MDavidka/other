@@ -1,14 +1,11 @@
 import Link from "next/link"
-import { Leaf, Package, Quote, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "other | Curated Essentials for a Modern Lifestyle",
-  description: "Discover a thoughtfully selected range of high-quality products designed to enhance your daily life. Shop with confidence and elevate your everyday.",
+  title: "Connect Devices: Your Premier Online Phone Store | Latest Smartphones & Accessories",
+  description: "Explore the newest smartphones, tablets, and mobile accessories. Connect Devices offers fast shipping, expert support, and a seamless shopping experience.",
 }
 
 export default function HomePage() {
@@ -17,12 +14,12 @@ export default function HomePage() {
 <section className="relative w-full ">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2 lg:px-8">
         <div className="space-y-6">
-          <Badge variant="secondary" className="rounded-full">Elevate Your Everyday</Badge>
-          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Discover Thoughtfully Curated Collections</h1>
-          <p className="max-w-xl text-pretty text-lg text-muted-foreground">Explore our handpicked selection of premium goods, designed to bring joy and functionality to your home and personal style.</p>
+          <Badge variant="secondary" className="rounded-full">Unleash Innovation</Badge>
+          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Discover Your Next Favorite Device</h1>
+          
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button asChild size="lg"><Link href="/shop">Shop New Arrivals</Link></Button>
-        <Button asChild size="lg" variant="outline"><Link href="/shop">Explore Categories</Link></Button>
+        <Button asChild size="lg"><Link href="/shop">Shop All Devices</Link></Button>
+        <Button asChild size="lg" variant="outline"><Link href="/shopcompare">Compare Models</Link></Button>
       </div>
           
         </div>
@@ -39,138 +36,170 @@ export default function HomePage() {
 
 <section className="relative w-full ">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">Featured in Leading Lifestyle Publications</p>
+        <p className="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground">Leading Brands You Know and Love</p>
         <div className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Vogue</div>
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Architectural Digest</div>
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">GQ</div>
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Elle Decor</div>
-          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Monocle</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Apple</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Samsung</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Google</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">OnePlus</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Xiaomi</div>
+          <div className="text-base font-semibold tracking-tight text-muted-foreground/70 transition hover:text-foreground">Motorola</div>
         </div>
       </div>
     </section>
 
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Shop Our Most Loved Products</h2>
-            <p className="mt-2 max-w-xl text-pretty text-muted-foreground">Explore popular items that customers adore for their exceptional quality, timeless design, and everyday utility.</p>
-          </div>
-          <Button asChild variant="ghost" className="hidden sm:inline-flex"><Link href="/shop">View All Products</Link></Button>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <Card className="overflow-hidden">
-            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
-            <CardContent className="space-y-2 p-4">
-              <div className="flex items-center justify-between gap-3">
-                <p className="font-medium">Ceramic Artisan Mug</p>
-                <p className="font-semibold">$28.00</p>
-              </div>
-              <p className="text-sm text-muted-foreground">Hand-thrown stoneware for your morning ritual.</p>
-            </CardContent>
-          </Card>
-          <Card className="overflow-hidden">
-            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
-            <CardContent className="space-y-2 p-4">
-              <div className="flex items-center justify-between gap-3">
-                <p className="font-medium">Linen Blend Apron</p>
-                <p className="font-semibold">$45.00</p>
-              </div>
-              <p className="text-sm text-muted-foreground">Stylish and durable for the modern kitchen.</p>
-            </CardContent>
-          </Card>
-          <Card className="overflow-hidden">
-            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
-            <CardContent className="space-y-2 p-4">
-              <div className="flex items-center justify-between gap-3">
-                <p className="font-medium">Minimalist Leather Wallet</p>
-                <p className="font-semibold">$65.00</p>
-              </div>
-              <p className="text-sm text-muted-foreground">Slim profile, premium full-grain leather.</p>
-            </CardContent>
-          </Card>
-          <Card className="overflow-hidden">
-            <div className="aspect-square w-full bg-gradient-to-br from-accent/30 via-primary/10 to-background"></div>
-            <CardContent className="space-y-2 p-4">
-              <div className="flex items-center justify-between gap-3">
-                <p className="font-medium">Soy Wax Candle - Forest</p>
-                <p className="font-semibold">$32.00</p>
-              </div>
-              <p className="text-sm text-muted-foreground">Earthy notes of pine and cedarwood.</p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Why Choose Us?</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Experience Unmatched Service and Selection</h2>
+    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Connect Devices offers more than just products; we deliver a superior shopping journey from start to finish.</p></div>
 
-<section className="relative w-full ">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center space-y-4">
-          <Badge variant="secondary" className="rounded-full">Why Choose Us?</Badge>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Experience the Difference in Every Detail</h2>
-          <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">We are dedicated to providing an unparalleled shopping journey, from product selection to post-purchase support.</p>
-        </div>
-        <div className="mt-16 space-y-16 sm:space-y-24">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div className=" space-y-4">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Package className="h-5 w-5" /></div>
-              <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Curated Quality Selection</h3>
-              <p className="text-pretty text-muted-foreground">Every product is meticulously handpicked for its superior craftsmanship, durability, and aesthetic appeal, ensuring lasting satisfaction.</p>
-              
-            </div>
-            <div className=" aspect-[4/3] rounded-2xl border bg-gradient-to-br from-accent/30 via-primary/10 to-background" aria-hidden="true"></div>
-          </div>
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div className="lg:order-2 space-y-4">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><Leaf className="h-5 w-5" /></div>
-              <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Sustainable &amp; Ethical Sourcing</h3>
-              <p className="text-pretty text-muted-foreground">We partner with artisans and brands committed to responsible production, fair labor practices, and environmental stewardship.</p>
-              
-            </div>
-            <div className="lg:order-1 aspect-[4/3] rounded-2xl border bg-gradient-to-br from-accent/30 via-primary/10 to-background" aria-hidden="true"></div>
-          </div>
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div className=" space-y-4">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><ShoppingCart className="h-5 w-5" /></div>
-              <h3 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">Seamless Shopping Experience</h3>
-              <p className="text-pretty text-muted-foreground">Enjoy effortless browsing, secure checkout, and reliable delivery, making your journey from discovery to doorstep a delight.</p>
-              
-            </div>
-            <div className=" aspect-[4/3] rounded-2xl border bg-gradient-to-br from-accent/30 via-primary/10 to-background" aria-hidden="true"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <Card key={i} className="group hover:shadow-lg transition-shadow">
+        <CardHeader><div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4"><span className="text-lg">Package</span></div><CardTitle>Fast, Reliable Shipping</CardTitle><CardDescription>Receive your new device within 2-3 business days, fully insured and tracked every step.</CardDescription></CardHeader>
+      </Card>
+      <Card key={i} className="group hover:shadow-lg transition-shadow">
+        <CardHeader><div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4"><span className="text-lg">ShieldCheck</span></div><CardTitle>Authentic Products Guaranteed</CardTitle><CardDescription>Every item is 100% genuine, new, and comes with a full manufacturer's warranty.</CardDescription></CardHeader>
+      </Card>
+      <Card key={i} className="group hover:shadow-lg transition-shadow">
+        <CardHeader><div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4"><span className="text-lg">Headset</span></div><CardTitle>Dedicated Customer Support</CardTitle><CardDescription>Our expert team is available 24/7 to assist with any questions or concerns.</CardDescription></CardHeader>
+      </Card>
+      <Card key={i} className="group hover:shadow-lg transition-shadow">
+        <CardHeader><div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4"><span className="text-lg">RefreshCcw</span></div><CardTitle>Hassle-Free Returns</CardTitle><CardDescription>Not satisfied? Enjoy a 30-day easy return policy on all eligible purchases.</CardDescription></CardHeader>
+      </Card>
+    </div>
+  </div>
+</section>
 
-<section className="relative w-full ">
-      <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-        <p className="mx-auto max-w-3xl text-center text-sm font-semibold uppercase tracking-wider text-primary">Hear From Our Customers</p>
-        <h2 className="mx-auto max-w-3xl text-balance text-center text-3xl font-semibold tracking-tight sm:text-4xl">Real Stories, Exceptional Experiences</h2>
-        <figure className="mt-12 rounded-3xl border bg-card p-8 sm:p-12">
-          <Quote className="h-10 w-10 text-primary/40" />
-          <blockquote className="mt-6 text-pretty text-2xl font-medium leading-relaxed sm:text-3xl">"I'm absolutely thrilled with my new ceramic mugs. The quality is outstanding, and they arrived beautifully packaged in just three days! It's clear 'other' cares about every detail."</blockquote>
-          <figcaption className="mt-8 flex items-center gap-4">
-            <Avatar><AvatarFallback>SL</AvatarFallback></Avatar>
-            <div>
-              <p className="font-semibold">Sarah L.</p>
-              <p className="text-sm text-muted-foreground">Home Decor Enthusiast</p>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Featured Selection</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Top Picks: Devices You'll Love</h2>
+    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Handpicked for performance, innovation, and value. Find your next upgrade here.</p></div>
 
-<section className="relative w-full ">
-      <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 md:py-24 lg:px-8">
-        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Find Your Next Favorite Item Today</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">Browse our expansive catalog and bring home pieces that resonate with your personal style and values.</p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="lg"><Link href="/shop">Start Shopping Now</Link></Button>
+    <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/s24-ultra.webp" alt="Galaxy S24 Ultra" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
           
+          <h3 className="font-medium truncate">Galaxy S24 Ultra</h3>
+          <p className="text-sm text-muted-foreground mt-1">$1299</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/iphone-15-pro-max.webp" alt="iPhone 15 Pro Max" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
         </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">iPhone 15 Pro Max</h3>
+          <p className="text-sm text-muted-foreground mt-1">$1199</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/pixel-8-pro.webp" alt="Google Pixel 8 Pro" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">Google Pixel 8 Pro</h3>
+          <p className="text-sm text-muted-foreground mt-1">$999</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+      <Card key={i} className="group overflow-hidden">
+        <div className="aspect-square bg-muted overflow-hidden">
+          <img src="/images/apple-watch-ultra-2.webp" alt="Apple Watch Ultra 2" className="object-cover w-full h-full group-hover:scale-105 transition-transform" loading="lazy" />
+        </div>
+        <CardContent className="p-4">
+          
+          <h3 className="font-medium truncate">Apple Watch Ultra 2</h3>
+          <p className="text-sm text-muted-foreground mt-1">$799</p>
+        </CardContent>
+        <CardFooter className="px-4 pb-4 pt-0">
+          <Button variant="outline" size="sm" className="w-full">View</Button>
+        </CardFooter>
+      </Card>
+    </div>
+  </div>
+</section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Happy Customers</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">What Our Valued Shoppers Say</h2>
+    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Real experiences from people who found their perfect device with Connect Devices.</p></div>
+
+    <div className="mt-12 grid lg:grid-cols-3 gap-6">
+      <Card className="lg:col-span-2">
+        <CardContent className="p-8 lg:p-10">
+          <p className="text-lg sm:text-xl leading-relaxed"></p>
+          <div className="flex items-center gap-3 mt-6">
+            <Avatar className="h-12 w-12"><AvatarFallback>U</AvatarFallback></Avatar>
+            <div>
+              <div className="font-semibold"></div>
+              
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+      <div className="flex flex-col gap-6"><Card key={i}><CardContent className="p-6"><p className="text-sm leading-relaxed"></p><div className="flex items-center gap-2 mt-4"><Avatar className="h-8 w-8"><AvatarFallback>U</AvatarFallback></Avatar><div className="text-sm font-medium"></div></div></CardContent></Card>
+      <Card key={i}><CardContent className="p-6"><p className="text-sm leading-relaxed"></p><div className="flex items-center gap-2 mt-4"><Avatar className="h-8 w-8"><AvatarFallback>U</AvatarFallback></Avatar><div className="text-sm font-medium"></div></div></CardContent></Card></div>
+    </div>
+  </div>
+</section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 ">
+  <div className="mx-auto max-w-7xl">
+    <div className="max-w-3xl"><Badge variant="secondary" className="mb-4">Got Questions?</Badge>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Common Inquiries Answered</h2>
+    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl">Find quick answers to the most frequently asked questions about shopping with us.</p></div>
+
+    <div className="mt-12 max-w-3xl mx-auto">
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-0">
+          <AccordionTrigger>What is your return policy for devices?</AccordionTrigger>
+          <AccordionContent>We offer a 30-day hassle-free return policy on most devices, provided they are in original condition with all accessories. Some exclusions apply; please see our full policy.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>How long does shipping usually take?</AccordionTrigger>
+          <AccordionContent>Standard shipping typically takes 2-3 business days within the continental US. Expedited options are available at checkout for faster delivery.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Are your products new and authentic?</AccordionTrigger>
+          <AccordionContent>Yes, all products sold on Connect Devices are brand new, factory sealed, and 100% authentic, sourced directly from authorized distributors.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Do you offer financing options for purchases?</AccordionTrigger>
+          <AccordionContent>We partner with leading financial services to offer flexible payment plans. Look for financing options during the checkout process.</AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  </div>
+</section>
+
+<section className="px-4 py-16 sm:py-20 lg:py-28 bg-primary/5">
+  <div className="mx-auto max-w-7xl">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="max-w-2xl">
+        <Badge variant="outline" className="mb-3">Ready for an Upgrade?</Badge>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Your Next Great Device Awaits</h2>
+        
       </div>
-    </section>
+      <div className="flex flex-wrap gap-4"><Button size="lg" asChild><a href="/shop">Start Shopping Now</a></Button></div>
+    </div>
+  </div>
+</section>
     </>
   )
 }
