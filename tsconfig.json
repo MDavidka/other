@@ -9,15 +9,20 @@
     "esModuleInterop": true,
     "useDefineForClassFields": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
       "@/*": ["./*"]
-    },
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true
+    }
   },
-  "include": ["."],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
+tsconfig.json[usedfor]TypeScript configuration: TypeScript compiler options and path aliases for the phone store project[/usedfor]
