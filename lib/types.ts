@@ -1,59 +1,41 @@
-import type { ReactNode } from 'react'
-
-/** Site configuration used for metadata and navigation */
 export interface SiteConfig {
-  title: string
-  description: string
-  url: string
-  locale?: string
+  title: string;
+  description: string;
+  url: string;
+  author: string;
+  keywords?: string[];
 }
 
-/** Navigation link item */
 export interface NavItem {
-  href: string
-  label: string
-  icon?: ReactNode
+  title: string;
+  href: string;
+  external?: boolean;
 }
 
-/** Phone product */
-export interface Phone {
-  id: string
-  name: string
-  price: number
-  image: string
-  category: Category
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatarUrl?: string;
 }
 
-/** Category type – limited to known values */
-export type Category = 'All' | 'Smartphone' | 'Feature Phone' | 'Tablet' | 'Accessory'
-
-/** Cart item extends Phone with quantity */
-export interface CartItem extends Phone {
-  quantity: number
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  inStock: boolean;
 }
 
-/** Utility type for mapping string keys to any value */
-export type StringMap<T = any> = Record<string, T>
-
-/** Generic API response wrapper */
-export interface ApiResponse<T> {
-  success: boolean
-  data: T
-  error?: string
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  publishedAt: string;
+  authorId: string;
 }
 
-/** Pagination parameters */
-export interface PaginationParams {
-  page: number
-  perPage: number
-}
-
-/** Pagination result */
-export interface PaginatedResult<T> {
-  items: T[]
-  total: number
-  page: number
-  perPage: number
-}
-
-lib/types.ts[usedfor]Global type definitions for the phone store application[/usedfor]
+lib/types.ts[usedfor]shared types[/usedfor]

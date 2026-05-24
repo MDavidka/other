@@ -1,76 +1,70 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import { Toaster } from '@/components/ui/sonner'
-import { ThemeProvider } from '@/components/theme-provider'
+import type { Metadata } from 'next';
+import { SiteConfig } from '@/lib/types';
+import '@/app/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Phone Store',
-  description: 'Browse and purchase the latest phones with ease.'
-}
+  title: 'Next.js Shadcn App',
+  description: 'A production-ready Next.js app using shadcn/ui and Tailwind CSS.',
+  openGraph: {
+    title: 'Next.js Shadcn App',
+    description: 'A production-ready Next.js app using shadcn/ui and Tailwind CSS.',
+    url: 'https://example.com',
+    siteName: 'Next.js Shadcn App',
+    images: [
+      {
+        url: 'https://placehold.co/1200x630.png',
+        width: 1200,
+        height: 630,
+        alt: 'Open Graph Image',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Next.js Shadcn App',
+    description: 'A production-ready Next.js app using shadcn/ui and Tailwind CSS.',
+    image: 'https://placehold.co/1200x630.png',
+  },
+};
 
 export default function RootLayout({
-  children
+  children,
 }: {
-  children: React.ReactNode
-}) {
+  children: React.ReactNode;
+}): JSX.Element {
   return (
-    <html lang="en">
-      <body className="bg-background text-foreground min-h-screen flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <NavBar />
-          <main className="flex-1 container mx-auto px-4 py-6">{children}</main>
-          <Footer />
-          <Toaster />
-        </ThemeProvider>
+    <html lang="en" className="dark">
+      <body className="min-h-screen flex flex-col bg-gray-50 dark:bg-slate-900">
+        <header className="bg-white dark:bg-slate-800 shadow-sm">
+          <nav className="container flex items-center justify-between h-16">
+            <a href="/" className="text-xl font-semibold text-blue-600 dark:text-blue-400">
+              Shadcn App
+            </a>
+            <ul className="flex space-x-4">
+              <li>
+                <a href="/about" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main className="flex-1 container py-8">{children}</main>
+        <footer className="bg-white dark:bg-slate-800 shadow-inner">
+          <div className="container py-4 text-center text-gray-500 dark:text-gray-400">
+            © {new Date().getFullYear()} Shadcn App. All rights reserved.
+          </div>
+        </footer>
       </body>
     </html>
-  )
+  );
 }
 
-function NavBar() {
-  const pathname = usePathname()
-  const links = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' }
-
-  return (
-    <nav className="bg-muted border-b border-border">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="text-lg font-semibold">
-          Phone Store
-        </Link>
-        <div className="flex gap-2">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <Button
-                variant={pathname === link.href ? 'default' : 'ghost'}
-                size="sm"
-                className={cn(
-                  pathname === link.href && 'bg-primary text-primary-foreground'
-                )}
-              >
-                {link.label}
-              </Button>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </nav>
-  )
-}
-
-function Footer() {
-  return (
-    <footer className="bg-muted border-t border-border py-4">
-      <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Phone Store. All rights reserved.
-      </div>
-    </footer>
-  )
-}
-
-app/layout.tsx[usedfor]Root layout wrapping the application with theme, toast, navigation, and footer[/usedfor]
+app/layout.tsx[usedfor]root layout[/usedfor]
