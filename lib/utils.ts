@@ -1,179 +1,97 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-import type { CartItem, Phone } from "./types";
+import { CartItem, Phone } from '@/lib/types'
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+/**
+ * Formats a number as a currency string using the user's locale.
+ * @param amount - The numeric amount to format.
+ * @returns A string formatted as currency (e.g., "$699").
+ */
+export function formatPrice(amount: number): string {
+  return new Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(amount)
 }
 
-export function formatPrice(price: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(price);
+/**
+ * Calculates the total price for an array of cart items.
+ * @param items - Array of CartItem objects.
+ * @returns The total price as a number.
+ */
+export function calculateTotal(items: CartItem[]): number {
+  return items.reduce((sum, item) => sum + item.price * item.quantity, 0)
 }
 
-export function calculateCartTotal(items: CartItem[]): number {
-  return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-}
-
-export function calculateCartItemCount(items: CartItem[]): number {
-  return items.reduce((sum, item) => sum + item.quantity, 0);
-}
-
-export function calculateShipping(subtotal: number): number {
-  return subtotal > 0 ? 9.99 : 0;
-}
-
-export function calculateTax(subtotal: number, taxRate: number = 0.08): number {
-  return subtotal * taxRate;
-}
-
-export function generateSlug(text: string): string {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-export function generateOrderNumber(): string {
-  return `ORD-${Date.now().toString().slice(-8)}`;
-}
-
-export function getCartFromStorage(): CartItem[] {
-  if (typeof window === "undefined") return [];
-  
+/**
+ * Persists the cart to localStorage.
+ * @param cart - Array of CartItem objects to persist.
+ */
+export function persistCart(cart: CartItem[]): void {
   try {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      return JSON.parse(savedCart);
-    }
-  } catch (error) {
-    console.error("Failed to parse cart from localStorage:", error);
+    const data = JSON.stringify(cart)
+    localStorage.setItem('cart', data)
+  } catch {
+    // ignore persistence errors
   }
-  return [];
 }
 
-export function saveCartToStorage(items: CartItem[]): void {
-  if (typeof window === "undefined") return;
-  
+/**
+ * Retrieves the cart from localStorage.
+ * @returns An array of CartItem objects or an empty array if none exist.
+ */
+export function loadCart(): CartItem[] {
   try {
-    localStorage.setItem("cart", JSON.stringify(items));
-  } catch (error) {
-    console.error("Failed to save cart to localStorage:", error);
+    const data = localStorage.getItem('cart')
+    if (!data) return []
+    return JSON.parse(data) as CartItem[]
+  } catch {
+    return []
   }
 }
 
-export function addToCart(items: CartItem[], phone: Phone): CartItem[] {
-  const existingItemIndex = items.findIndex(
-    (item) => item.id === phone.id
-  );
-
-  if (existingItemIndex !== -1) {
-    const updatedItems = [...items];
-    updatedItems[existingItemIndex] = {
-      ...updatedItems[existingItemIndex],
-      quantity: updatedItems[existingItemIndex].quantity + 1,
-    };
-    return updatedItems;
+/**
+ * Adds a phone to the cart, incrementing quantity if it already exists.
+ * @param cart - Current cart items.
+ * @param phone - Phone to add.
+ * @returns Updated cart array.
+ */
+export function addToCart(cart: CartItem[], phone: Phone): CartItem[] {
+  const existing = cart.find((item) => item.id === phone.id)
+  if (existing) {
+    return cart.map((item) =>
+      item.id === phone.id ? { ...item, quantity: item.quantity + 1 } : item
+    )
   }
-
-  const newItem: CartItem = {
-    id: phone.id,
-    name: phone.name,
-    price: phone.price,
-    image: phone.image,
-    brand: phone.brand,
-    storage: phone.storage,
-    color: phone.color,
-    quantity: 1,
-  };
-
-  return [...items, newItem];
+  return [...cart, { ...phone, quantity: 1 }]
 }
 
-export function updateCartItemQuantity(
-  items: CartItem[],
-  id: string,
+/**
+ * Removes a phone from the cart.
+ * @param cart - Current cart items.
+ * @param phoneId - ID of the phone to remove.
+ * @returns Updated cart array.
+ */
+export function removeFromCart(cart: CartItem[], phoneId: string): CartItem[] {
+  return cart.filter((item) => item.id !== phoneId)
+}
+
+/**
+ * Updates the quantity of a cart item.
+ * @param cart - Current cart items.
+ * @param phoneId - ID of the phone to update.
+ * @param quantity - New quantity (must be >= 1).
+ * @returns Updated cart array.
+ */
+export function updateQuantity(
+  cart: CartItem[],
+  phoneId: string,
   quantity: number
 ): CartItem[] {
-  if (quantity < 1) return items;
-
-  return items.map((item) =>
-    item.id === id ? { ...item, quantity } : item
-  );
+  if (quantity < 1) return cart
+  return cart.map((item) =>
+    item.id === phoneId ? { ...item, quantity } : item
+  )
 }
 
-export function removeFromCart(items: CartItem[], id: string): CartItem[] {
-  return items.filter((item) => item.id !== id);
-}
-
-export function clearCart(): void {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem("cart");
-}
-
-export function filterPhones(
-  phones: Phone[],
-  selectedBrands: string[],
-  priceRange: [number, number],
-  selectedStorage: number[]
-): Phone[] {
-  return phones.filter((phone) => {
-    const matchesBrand =
-      selectedBrands.length === 0 || selectedBrands.includes(phone.brand);
-
-    const matchesPrice =
-      phone.price >= priceRange[0] && phone.price <= priceRange[1];
-
-    const matchesStorage =
-      selectedStorage.length === 0 || selectedStorage.includes(phone.storage);
-
-    return matchesBrand && matchesPrice && matchesStorage;
-  });
-}
-
-export function sortPhones(
-  phones: Phone[],
-  sortBy: "price-low" | "price-high" | "rating" | "newest"
-): Phone[] {
-  const sorted = [...phones];
-
-  switch (sortBy) {
-    case "price-low":
-      return sorted.sort((a, b) => a.price - b.price);
-    case "price-high":
-      return sorted.sort((a, b) => b.price - a.price);
-    case "rating":
-      return sorted.sort((a, b) => b.rating - a.rating);
-    case "newest":
-      return sorted.sort((a, b) => {
-        if (a.isNew && !b.isNew) return -1;
-        if (!a.isNew && b.isNew) return 1;
-        return b.rating - a.rating;
-      });
-    default:
-      return sorted;
-  }
-}
-
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout | null = null;
-
-  return (...args: Parameters<T>) => {
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-}
-
-export function truncateText(text: string, maxLength: number): string {
-  if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength) + "...";
-}
-
-lib/utils.ts[usedfor]Utility functions: Price formatting, cart calculations, slug generation and common helpers[/usedfor]
+lib/utils.ts[usedfor]Utility functions for price formatting, cart persistence, and cart manipulation[/usedfor]
