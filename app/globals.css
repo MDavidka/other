@@ -3,12 +3,97 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Dark text */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222.2 84% 4.9%; /* Dark text */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 222.2 84% 4.9%; /* Dark text */
+
+    --primary: 221.2 83.2% 53.3%; /* Blue */
+    --primary-foreground: 210 20% 98%; /* Light text on primary */
+
+    --secondary: 210 40% 96.1%; /* Light gray */
+    --secondary-foreground: 222.2 47.4% 11.2%; /* Dark text on secondary */
+
+    --muted: 210 40% 96.1%; /* Light gray */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Gray text */
+
+    --accent: 210 40% 96.1%; /* Light gray */
+    --accent-foreground: 222.2 47.4% 11.2%; /* Dark text on accent */
+
+    --destructive: 0 84.2% 60.2%; /* Red */
+    --destructive-foreground: 210 20% 98%; /* Light text on destructive */
+
+    --border: 214.3 31.8% 91.4%; /* Light border */
+    --input: 214.3 31.8% 91.4%; /* Light input border */
+    --ring: 221.2 83.2% 53.3%; /* Blue ring */
+
+    --radius: 0.5rem;
+
+    /* Custom Design System Variables */
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-accent: 142.1 76.2% 36.3%; /* Green for accent */
+    --color-bg: var(--background);
+    --color-text: var(--foreground);
+
+    --font-heading: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-body: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+
+  .dark {
+    --background: 222.2 47.4% 11.2%; /* Dark background */
+    --foreground: 210 20% 98%; /* Light text */
+
+    --card: 222.2 47.4% 11.2%; /* Dark background */
+    --card-foreground: 210 20% 98%; /* Light text */
+
+    --popover: 222.2 47.4% 11.2%; /* Dark background */
+    --popover-foreground: 210 20% 98%; /* Light text */
+
+    --primary: 217.2 91.2% 59.8%; /* Lighter blue for dark mode primary */
+    --primary-foreground: 222.2 47.4% 11.2%; /* Dark text on primary */
+
+    --secondary: 217.2 32.4% 14.8%; /* Darker gray */
+    --secondary-foreground: 210 20% 98%; /* Light text on secondary */
+
+    --muted: 217.2 32.4% 14.8%; /* Darker gray */
+    --muted-foreground: 215 20.2% 65.1%; /* Lighter gray text */
+
+    --accent: 217.2 32.4% 14.8%; /* Darker gray */
+    --accent-foreground: 210 20% 98%; /* Light text on accent */
+
+    --destructive: 0 62.8% 30.6%; /* Darker red */
+    --destructive-foreground: 210 20% 98%; /* Light text on destructive */
+
+    --border: 217.2 32.4% 14.8%; /* Dark border */
+    --input: 217.2 32.4% 14.8%; /* Dark input border */
+    --ring: 217.2 91.2% 59.8%; /* Lighter blue ring */
+
+    /* Custom Design System Variables for Dark Mode */
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-accent: 142.1 70.6% 45.3%; /* Slightly brighter green for dark accent */
+    --color-bg: var(--background);
+    --color-text: var(--foreground);
+  }
+}
+
+@layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 }
-app/globals.css[usedfor]Global styles.[usedfor]
+
+app/globals.css[usedfor]Global styles[usedfor]

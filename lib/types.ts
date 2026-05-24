@@ -1,39 +1,33 @@
-export interface PhoneProduct {
-  id: string;
+type SiteConfig = {
   name: string;
   description: string;
-  price: number;
-  imageUrl: string;
-  // Add more product-specific fields as needed
-  storageOptions?: string[];
-  colorOptions?: string[];
-}
+  url: string;
+  ogImage: string;
+  links: {
+    twitter: string;
+    github: string;
+  };
+};
 
-export interface NavigationLink {
+type NavItem = {
   title: string;
   href: string;
   disabled?: boolean;
-}
+};
 
-export interface SiteConfig {
-  name: string;
-  description: string;
-  mainNav: NavigationLink[];
-  // Add other site-wide configuration properties
-}
+type MainNavItem = NavItem;
 
-// Example type for a form submission
-export interface ContactFormInputs {
-  name: string;
-  email: string;
-  message: string;
-}
-
-// Example type for a user profile
-export interface UserProfile {
-  id: string;
-  name: string;
-  email: string;
-  avatarUrl?: string;
-}
-lib/types.ts[usedfor]Centralized type definitions.[usedfor]
+type SidebarNavItem = {
+  title: string;
+  disabled?: boolean;
+  external?: boolean;
+  icon?: React.ComponentType<{ className?: string }>;
+} & (
+  | {
+      href: string;
+      items?: never;
+    }
+  | {
+      href?: string;
+      items: NavItem[];
+    }

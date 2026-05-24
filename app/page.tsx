@@ -1,137 +1,151 @@
-import Image from "next/image";
-import { cn, formatCurrency } from "@/lib/utils";
-import { PhoneProduct } from "@/lib/types";
-
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, CardAction } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
-const featuredProducts: PhoneProduct[] = [
-  {
-    id: "1",
-    name: "Quantum X Pro",
-    description: "The ultimate smartphone experience with a stunning display and powerful processor.",
-    price: 1299.99,
-    imageUrl: "https://placehold.co/800x600.png",
-    storageOptions: ["128GB", "256GB", "512GB"],
-    colorOptions: ["Black", "Silver", "Midnight Blue"],
-  },
-  {
-    id: "2",
-    name: "Aura 5G",
-    description: "Blazing-fast 5G connectivity and an all-day battery life. Stay connected, always.",
-    price: 999.99,
-    imageUrl: "https://placehold.co/800x600.png",
-    storageOptions: ["64GB", "128GB", "256GB"],
-    colorOptions: ["White", "Graphite", "Rose Gold"],
-  },
-  {
-    id: "3",
-    name: "Spectra Mini",
-    description: "Compact design with flagship features. Perfect for one-handed use.",
-    price: 799.99,
-    imageUrl: "https://placehold.co/800x600.png",
-    storageOptions: ["64GB", "128GB"],
-    colorOptions: ["Coral", "Mint Green", "Sky Blue"],
-  },
-  {
-    id: "4",
-    name: "Zenith Fold",
-    description: "Experience the future with our revolutionary foldable display technology.",
-    price: 1899.99,
-    imageUrl: "https://placehold.co/800x600.png",
-    storageOptions: ["256GB", "512GB"],
-    colorOptions: ["Cosmic Black", "Stardust Silver"],
-  },
-];
-
-export default async function Home() {
+export default async function HomePage() {
   return (
-    <main className={cn("flex min-h-screen flex-col items-center justify-between p-4 md:p-8 lg:p-16")}>
-      {/* Hero Section with Carousel */}
-      <section className={cn("w-full max-w-6xl mb-16")}>
-        <Carousel className={cn("w-full")}>
-          <CarouselContent>
-            {featuredProducts.map((product, index) => (
-              <CarouselItem key={product.id}>
-                <div className={cn("p-1")}>
-                  <Card className={cn("overflow-hidden")}>
-                    <CardContent className={cn("flex flex-col md:flex-row items-center justify-center p-6 md:p-0")}>
-                      <div className={cn("w-full md:w-1/2 h-64 md:h-96 relative")}>
-                        <Image
-                          src={product.imageUrl}
-                          alt={product.name}
-                          fill
-                          style={{ objectFit: "cover" }}
-                          className={cn("rounded-t-lg md:rounded-l-lg md:rounded-t-none")}
-                          priority={index === 0}
-                        />
-                      </div>
-                      <div className={cn("w-full md:w-1/2 p-6 md:p-8 text-center md:text-left")}>
-                        <CardTitle className={cn("text-3xl md:text-4xl font-bold mb-2")}>{product.name}</CardTitle>
-                        <CardDescription className={cn("text-lg text-muted-foreground mb-4")}>
-                          {product.description}
-                        </CardDescription>
-                        <p className={cn("text-2xl font-semibold mb-6")}>{formatCurrency(product.price)}</p>
-                        <Button size="lg" className={cn("w-full md:w-auto")}>Shop Now</Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className={cn("hidden md:flex")} />
-          <CarouselNext className={cn("hidden md:flex")} />
-        </Carousel>
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center text-center bg-gradient-to-r from-primary to-blue-600 overflow-hidden">
+        <img
+          src="https://placehold.co/1920x1080.png"
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        />
+        <div className="relative z-10 p-4 md:p-8 max-w-3xl mx-auto text-white">
+          <h1 className={cn("text-4xl md:text-6xl font-bold mb-4 leading-tight")}>
+            Experience the Future in Your Hand
+          </h1>
+          <p className={cn("text-lg md:text-xl mb-8")}>
+            Discover our innovative smartphones designed for unparalleled performance and stunning aesthetics.
+          </p>
+          <Button size="lg" className={cn("bg-white text-primary hover:bg-gray-100")}>
+            Explore Devices
+          </Button>
+        </div>
       </section>
 
       {/* Featured Products Section */}
-      <section className={cn("w-full max-w-6xl")}>
-        <h2 className={cn("text-4xl font-bold text-center mb-10")}>Featured Products</h2>
-        <div className={cn("grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6")}>
-          {featuredProducts.map((product) => (
-            <Card key={product.id} className={cn("flex flex-col")}>
-              <CardHeader className={cn("p-0")}>
-                <div className={cn("relative w-full h-48")}>
-                  <Image
-                    src={product.imageUrl}
-                    alt={product.name}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    className={cn("rounded-t-lg")}
-                  />
-                </div>
-              </CardHeader>
-              <CardContent className={cn("flex-grow p-4")}>
-                <CardTitle className={cn("text-xl font-semibold mb-2")}>{product.name}</CardTitle>
-                <CardDescription className={cn("text-sm text-muted-foreground line-clamp-3")}>
-                  {product.description}
-                </CardDescription>
-              </CardContent>
-              <CardFooter className={cn("flex justify-between items-center p-4 pt-0")}>
-                <span className={cn("text-lg font-bold")}>{formatCurrency(product.price)}</span>
-                <Button variant="default" size="sm">View Details</Button>
-              </CardFooter>
-            </Card>
-          ))}
+      <section className="container py-16">
+        <h2 className={cn("text-3xl md:text-4xl font-bold text-center mb-12")}>Our Latest Innovations</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Card className={cn("flex flex-col")}>
+            <CardHeader>
+              <img src="https://placehold.co/600x400.png" alt="Product 1" className={cn("rounded-md mb-4")} />
+              <CardTitle>The Apex Pro</CardTitle>
+              <CardDescription>Unleash ultimate power and creativity.</CardDescription>
+            </CardHeader>
+            <CardContent className={cn("flex-grow")}>
+              <p className={cn("text-muted-foreground")}>
+                Featuring a revolutionary camera system and a blazing-fast processor.
+              </p>
+            </CardContent>
+            <CardFooter>
+              <CardAction>
+                <Button variant="default">Learn More</Button>
+              </CardAction>
+            </CardFooter>
+          </Card>
+
+          <Card className={cn("flex flex-col")}>
+            <CardHeader>
+              <img src="https://placehold.co/600x400.png" alt="Product 2" className={cn("rounded-md mb-4")} />
+              <CardTitle>The Nova Lite</CardTitle>
+              <CardDescription>Sleek design, essential features.</CardDescription>
+            </CardHeader>
+            <CardContent className={cn("flex-grow")}>
+              <p className={cn("text-muted-foreground")}>
+                Lightweight and powerful, perfect for everyday use.
+              </p>
+            </CardContent>
+            <CardFooter>
+              <CardAction>
+                <Button variant="default">Learn More</Button>
+              </CardAction>
+            </CardFooter>
+          </Card>
+
+          <Card className={cn("flex flex-col")}>
+            <CardHeader>
+              <img src="https://placehold.co/600x400.png" alt="Product 3" className={cn("rounded-md mb-4")} />
+              <CardTitle>The Quantum X</CardTitle>
+              <CardDescription>Redefining mobile gaming.</CardDescription>
+            </CardHeader>
+            <CardContent className={cn("flex-grow")}>
+              <p className={cn("text-muted-foreground")}>
+                Immersive display and advanced cooling for peak gaming performance.
+              </p>
+            </CardContent>
+            <CardFooter>
+              <CardAction>
+                <Button variant="default">Learn More</Button>
+              </CardAction>
+            </CardFooter>
+          </Card>
         </div>
       </section>
-    </main>
+
+      {/* Testimonials Carousel Section */}
+      <section className="bg-muted py-16">
+        <div className="container">
+          <h2 className={cn("text-3xl md:text-4xl font-bold text-center mb-12")}>What Our Customers Say</h2>
+          <Carousel className={cn("w-full max-w-3xl mx-auto")}>
+            <CarouselContent>
+              <CarouselItem>
+                <Card className={cn("p-6 text-center")}>
+                  <CardContent>
+                    <p className={cn("text-lg italic mb-4")}>
+                      &quot;Absolutely love my new Phone Brand device! The camera is incredible and the battery life is outstanding.&quot;
+                    </p>
+                    <p className={cn("font-semibold")}>— Jane Doe</p>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+              <CarouselItem>
+                <Card className={cn("p-6 text-center")}>
+                  <CardContent>
+                    <p className={cn("text-lg italic mb-4")}>
+                      &quot;The performance is unmatched. Switching from my old phone was the best decision I made.&quot;
+                    </p>
+                    <p className={cn("font-semibold")}>— John Smith</p>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+              <CarouselItem>
+                <Card className={cn("p-6 text-center")}>
+                  <CardContent>
+                    <p className={cn("text-lg italic mb-4")}>
+                      &quot;Sleek design and intuitive software. Phone Brand truly delivers a premium experience.&quot;
+                    </p>
+                    <p className={cn("font-semibold")}>— Emily White</p>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="container py-16 text-center">
+        <Card className={cn("p-8 md:p-12 bg-primary text-primary-foreground")}>
+          <CardHeader>
+            <CardTitle className={cn("text-3xl md:text-4xl font-bold mb-4")}>Join the Future of Mobile</CardTitle>
+            <CardDescription className={cn("text-lg text-primary-foreground/90")}>
+              Sign up for our newsletter to get the latest updates, exclusive offers, and more.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter className={cn("justify-center pt-6")}>
+            <Button size="lg" variant="secondary" className={cn("hover:bg-secondary/80")}>
+              Sign Up Now
+            </Button>
+          </CardFooter>
+        </Card>
+      </section>
+    </div>
   );
 }
-
-app/page.tsx[usedfor]Home page.[usedfor]
+app/page.tsx[usedfor]Home page[usedfor]
