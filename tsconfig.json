@@ -8,9 +8,11 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "useDefineForClassFields": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }
-
-tsconfig.json[usedfor]TypeScript config[/usedfor]

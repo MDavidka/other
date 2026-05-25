@@ -3,65 +3,65 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: 59 130 246; /* blue-500 */
-  --color-secondary: 107 114 128; /* gray-500 */
-  --color-accent: 255 99 71; /* tomato */
-  --color-bg: 255 255 255; /* white */
-  --color-bg-dark: 15 23 42; /* slate-900 */
-  --color-text: 31 41 55; /* gray-800 */
-  --color-text-light: 255 255 255; /* white */
+  --color-primary: 255 255 255;
+  --color-secondary: 0 0 0;
+  --color-accent: 255 255 255;
+  --color-bg: 255 255 255;
+  --color-text: 0 0 0;
   --font-heading: "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
 }
 
-@layer base {
-  html {
-    font-family: var(--font-body);
-    color: rgb(var(--color-text));
-    background-color: rgb(var(--color-bg));
-    @apply antialiased;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    color: rgb(var(--color-text));
-  }
-  a {
-    color: rgb(var(--color-primary));
-    text-decoration: underline;
-    @apply transition-colors duration-200;
-  }
-  a:hover {
-    color: rgb(var(--color-accent));
-  }
+.dark {
+  --color-primary: 0 0 0;
+  --color-secondary: 255 255 255;
+  --color-accent: 0 0 0;
+  --color-bg: 0 0 0;
+  --color-text: 255 255 255;
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-md px-4 py-2;
-  }
-  .btn-secondary {
-    @apply bg-gray-500 text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-md px-4 py-2;
-  }
-  .card {
-    @apply bg-white dark:bg-slate-800 rounded-lg shadow-md p-6;
-  }
-  .card-dark {
-    @apply bg-slate-800 text-white;
-  }
-  .container {
-    @apply mx-auto px-4 sm:px-6 lg:px-8;
-  }
+body {
+  font-family: var(--font-body);
+  color: rgb(var(--color-text));
+  background-color: rgb(var(--color-bg));
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
 }
 
-@layer utilities {
-  .dark {
-    --color-bg: var(--color-bg-dark);
-    --color-text: var(--color-text-light);
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: rgb(var(--color-text));
+  margin: 0;
 }
 
-app/globals.css[usedfor]global styles[/usedfor]
+a {
+  color: rgb(var(--color-primary));
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgb(var(--color-secondary));
+  padding: 0.5rem 0.75rem;
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid rgb(var(--color-primary));
+  outline-offset: 2px;
+}
