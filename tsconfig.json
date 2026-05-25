@@ -15,9 +15,7 @@
       "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
+    "isolatedModules": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
