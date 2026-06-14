@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 import { useDiscord } from '../lib/discord-store';
 import { Plus, Compass, MessageSquare, Sun, Moon } from 'lucide-react';
 
