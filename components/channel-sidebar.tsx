@@ -84,11 +84,13 @@ export const ChannelSidebar: React.FC = () => {
       ) : (
         <div className="h-12 border-b border-discord-dark-500 flex items-center px-4 justify-between font-bold text-white relative shadow-sm hover:bg-discord-dark-100/50 cursor-pointer transition-all">
           <span className="text-[15px] truncate max-w-[160px]">{activeServer?.name}</span>
-          <Plus 
+          <button 
             onClick={() => setShowCreateChannel(true)}
-            className="w-4 h-4 text-discord-light-300 hover:text-white transition-all"
+            className="text-discord-light-300 hover:text-white transition-all"
             title="Create Channel"
-          />
+          >
+            <Plus className="w-4 h-4" />
+          </button>
         </div>
       )}
 
