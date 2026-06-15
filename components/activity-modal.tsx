@@ -2,44 +2,187 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useDiscord } from '../lib/discord-store';
-import { X, Gamepad2, Play, RefreshCw, Volume2, Award, Sparkles } from 'lucide-react';
+import { X, Gamepad2, RefreshCw, Volume2, Award, Sparkles, ShoppingBag, BarChart3, Flame } from 'lucide-react';
 import { toast } from 'sonner';
+
+interface UpgradeItem {
+  id: string;
+  name: string;
+  cost: number;
+  baseCost: number;
+  cps: number;
+  count: number;
+  icon: string;
+  description: string;
+}
+
+interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  unlocked: boolean;
+  icon: string;
+}
+
+interface FloatingText {
+  id: number;
+  x: number;
+  y: number;
+  text: string;
+}
 
 export const ActivityModal: React.FC = () => {
   const {
     activeActivityId,
     activeVoiceChannelId,
     activeVoiceUsers,
-    launchActivity
+    launchActivity,
+    userProfile
   } = useDiscord();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
-  // Game state references
+  // =========================================================================
+  // COMMON VOICE LOBBY CHAT SYSTEM
+  // =========================================================================
+  const [comments, setComments] = useState<{ user: string; text: string; time: string }[]>([
+    { user: 'Wumpus', text: 'Woah, GuestCoder launched a new game! 🚀', time: '1m' },
+    { user: 'Nelly', text: 'Let\'s go! Show us some pro skills!', time: '30s' }
+  ]);
+
+  // =========================================================================
+  // RETRO SPACE SHOOTER STATE
+  // =========================================================================
   const [isPlaying, setIsPlaying] = useState(false);
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [level, setLevel] = useState(1);
   const [highScore, setHighScore] = useState(0);
   const [showGameOver, setShowGameOver] = useState(false);
-
-  // Keyboard keys active
   const keysPressed = useRef<Record<string, boolean>>({});
 
-  // Mock comments from other voice call participants
-  const [comments, setComments] = useState<{ user: string; text: string; time: string }[]>([
-    { user: 'Wumpus', text: 'Woah, Clyde launched Space Invaders! 🚀', time: '1m' },
-    { user: 'Nelly', text: 'Let\'s go! Show us some pro skills Clyde!', time: '30s' }
+  // =========================================================================
+  // COOKIE CLICKER STATE
+  // =========================================================================
+  const [cookies, setCookies] = useState(0);
+  const [totalCookiesBaked, setTotalCookiesBaked] = useState(0);
+  const [totalClicks, setTotalClicks] = useState(0);
+  const [cookieTab, setCookieTab] = useState<'bakery' | 'stats'>('bakery');
+  const [cookieScale, setCookieScale] = useState(1);
+  const [floatingTexts, setFloatingTexts] = useState<FloatingText[]>([]);
+  const [frenzyActive, setFrenzyActive] = useState(false);
+  const [frenzyTimeLeft, setFrenzyTimeLeft] = useState(0);
+  
+  // Golden Cookie State
+  const [goldenCookie, setGoldenCookie] = useState<{ x: number; y: number; active: boolean; type: 'bonus' | 'frenzy' } | null>(null);
+  const [goldenCookiesClicked, setGoldenCookiesClicked] = useState(0);
+
+  // Sound Synth Helper
+  const playSynthSound = (type: 'click' | 'buy' | 'golden' | 'achievement' | 'laser' | 'explosion') => {
+    try {
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtx) return;
+      const audioCtx = new AudioCtx();
+      
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      if (type === 'click') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } else if (type === 'buy') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(450, audioCtx.currentTime + 0.08);
+        osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.16);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.3);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      } else if (type === 'golden') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+        osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+        osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+        osc.frequency.setValueAtTime(1046.50, audioCtx.currentTime + 0.3); // C6
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+      } else if (type === 'achievement') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(554, audioCtx.currentTime + 0.1);
+        osc.frequency.setValueAtTime(659, audioCtx.currentTime + 0.2);
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.6);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.6);
+      } else if (type === 'laser') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.1);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.1);
+      } else if (type === 'explosion') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+        osc.frequency.linearRampToValueAtTime(40, audioCtx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.15);
+      }
+    } catch (e) {}
+  };
+
+  // Upgrades Shop State
+  const [upgrades, setUpgrades] = useState<UpgradeItem[]>([
+    { id: 'cursor', name: 'Auto-Clicker', cost: 15, baseCost: 15, cps: 0.1, count: 0, icon: '🖱️', description: 'Clicks the cookie automatically once every 10 seconds.' },
+    { id: 'grandma', name: 'Grandma', cost: 100, baseCost: 100, cps: 1, count: 0, icon: '👵', description: 'A nice grandma to bake more cookies.' },
+    { id: 'baker', name: 'Auto-Baker', cost: 1100, baseCost: 1100, cps: 8, count: 0, icon: '🥣', description: 'An automated industrial mixing & baking oven.' },
+    { id: 'factory', name: 'Cookie Factory', cost: 12000, baseCost: 12000, cps: 47, count: 0, icon: '🏭', description: 'A massive factory complex to mass-produce cookies.' },
+    { id: 'lab', name: 'Alchemy Lab', cost: 130000, baseCost: 130000, cps: 260, count: 0, icon: '🧪', description: 'Transmutes gold and elements directly into delicious cookies.' },
+    { id: 'timemachine', name: 'Time Machine', cost: 1400000, baseCost: 1400000, cps: 1400, count: 0, icon: '⏳', description: 'Brings cookies from the past before they were even eaten.' },
+    { id: 'portal', name: 'Quantum Portal', cost: 20000000, baseCost: 20000000, cps: 7800, count: 0, icon: '🌀', description: 'Opens a rift to the alternate Cookie Dimension.' },
+    { id: 'click_power', name: 'Click Multiplier', cost: 50, baseCost: 50, cps: 0, count: 0, icon: '⚡', description: 'Increases cookies earned per manual click by +1.' }
   ]);
 
-  // Handle Game Input listeners
+  // Achievements State
+  const [achievements, setAchievements] = useState<Achievement[]>([
+    { id: 'first_bake', name: 'First Batch', description: 'Bake your first cookie.', unlocked: false, icon: '🍪' },
+    { id: 'grandma_friend', name: 'Grandma\'s Helper', description: 'Hire your first Grandma.', unlocked: false, icon: '👵' },
+    { id: 'factory_owner', name: 'Industrialist', description: 'Acquire a Cookie Factory.', unlocked: false, icon: '🏭' },
+    { id: 'golden_touch', name: 'Golden Touch', description: 'Click a sparkling Golden Cookie.', unlocked: false, icon: '✨' },
+    { id: 'speed_baker', name: 'Speed Baker', description: 'Reach 100 Cookies Per Second (CPS).', unlocked: false, icon: '🔥' },
+    { id: 'cookie_millionaire', name: 'Cookie Tycoon', description: 'Bake 1,000,000 cookies in total.', unlocked: false, icon: '👑' }
+  ]);
+
+  // Calculate stats
+  const cookiesPerSecond = upgrades.reduce((sum, up) => sum + (up.cps * up.count), 0);
+  const clickPowerMultiplier = upgrades.find(u => u.id === 'click_power')?.count || 0;
+  const cookiesPerClick = 1 + clickPowerMultiplier;
+
+  // =========================================================================
+  // KEYBOARD LISTENERS FOR SPACE SHOOTER
+  // =========================================================================
   useEffect(() => {
     if (activeActivityId !== 'retro-arcade') return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       keysPressed.current[e.code] = true;
-      if (e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'ArrowLeft' || e.code === 'ArrowRight') {
-        e.preventDefault(); // Prevent page scrolling while playing
+      if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) {
+        e.preventDefault();
       }
     };
 
@@ -56,7 +199,9 @@ export const ActivityModal: React.FC = () => {
     };
   }, [activeActivityId]);
 
-  // Main Game Loop Engine (Space Invaders)
+  // =========================================================================
+  // SPACE SHOOTER GAME ENGINE LOOP
+  // =========================================================================
   useEffect(() => {
     if (activeActivityId !== 'retro-arcade' || !isPlaying) return;
     const canvas = canvasRef.current;
@@ -66,7 +211,6 @@ export const ActivityModal: React.FC = () => {
 
     let animId: number;
 
-    // Game Entities
     const player = {
       x: canvas.width / 2 - 15,
       y: canvas.height - 40,
@@ -80,7 +224,6 @@ export const ActivityModal: React.FC = () => {
     let enemies: { x: number; y: number; width: number; height: number; color: string; alive: boolean; vx: number }[] = [];
     let particles: { x: number; y: number; vx: number; vy: number; color: string; alpha: number; life: number; maxLife: number }[] = [];
 
-    // Spawn enemies
     const spawnEnemies = () => {
       enemies = [];
       const cols = 6;
@@ -89,7 +232,7 @@ export const ActivityModal: React.FC = () => {
       const startX = 30;
       const startY = 50;
 
-      for (let r = 0; rowCountCheck(r, rows); r++) {
+      for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           enemies.push({
             x: startX + c * spacing,
@@ -104,18 +247,14 @@ export const ActivityModal: React.FC = () => {
       }
     };
 
-    const rowCountCheck = (r: number, rows: number) => r < rows;
-
     spawnEnemies();
-
     let lastShotTime = 0;
 
     const gameTick = () => {
-      // Clear canvas
       ctx.fillStyle = '#0b0f19';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Stars background
+      // Stars
       ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
       for (let i = 0; i < 20; i++) {
         const starX = (Math.sin(i * 999) + 1) * canvas.width / 2;
@@ -123,7 +262,7 @@ export const ActivityModal: React.FC = () => {
         ctx.fillRect(starX, starY, 1.5, 1.5);
       }
 
-      // 1. Move Player
+      // Move Player
       if (keysPressed.current['ArrowLeft'] || keysPressed.current['KeyA']) {
         player.x = Math.max(10, player.x - player.speed);
       }
@@ -131,7 +270,7 @@ export const ActivityModal: React.FC = () => {
         player.x = Math.min(canvas.width - player.width - 10, player.x + player.speed);
       }
 
-      // 2. Shoot lasers
+      // Shoot
       if (keysPressed.current['Space'] || keysPressed.current['KeyW']) {
         const now = Date.now();
         if (now - lastShotTime > 350) {
@@ -144,41 +283,22 @@ export const ActivityModal: React.FC = () => {
             color: '#38bdf8'
           });
           lastShotTime = now;
-
-          // Sound click/beep
-          try {
-            const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-            if (AudioCtx) {
-              const audioCtx = new AudioCtx();
-              const osc = audioCtx.createOscillator();
-              const gain = audioCtx.createGain();
-              osc.connect(gain);
-              gain.connect(audioCtx.destination);
-              osc.type = 'triangle';
-              osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-              osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
-              gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
-              gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.1);
-              osc.start();
-              osc.stop(audioCtx.currentTime + 0.1);
-            }
-          } catch (e) {}
+          playSynthSound('laser');
         }
       }
 
-      // 3. Move Lasers
+      // Lasers
       lasers.forEach((laser, idx) => {
         laser.y += laser.vy;
         ctx.fillStyle = laser.color;
         ctx.fillRect(laser.x, laser.y, laser.width, laser.height);
 
-        // Remove offscreen
-        if (laser.y < 0 || laser.y > canvas.height) {
+        if (laser.y < 0) {
           lasers.splice(idx, 1);
         }
       });
 
-      // 4. Move and Draw Enemies
+      // Enemies
       let changeDir = false;
       enemies.forEach((enemy) => {
         if (!enemy.alive) return;
@@ -187,11 +307,8 @@ export const ActivityModal: React.FC = () => {
           changeDir = true;
         }
 
-        // Draw alien ship
         ctx.fillStyle = enemy.color;
         ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
-        
-        // Alien antenna
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(enemy.x + enemy.width / 2 - 2, enemy.y - 4, 4, 4);
       });
@@ -200,15 +317,13 @@ export const ActivityModal: React.FC = () => {
         enemies.forEach((enemy) => {
           enemy.vx = -enemy.vx;
           enemy.y += 10;
-
-          // Check landing game over
           if (enemy.alive && enemy.y >= player.y - 10) {
             handleGameOver();
           }
         });
       }
 
-      // 5. Collision checks
+      // Collisions
       lasers.forEach((laser, lIdx) => {
         enemies.forEach((enemy) => {
           if (!enemy.alive) return;
@@ -218,7 +333,6 @@ export const ActivityModal: React.FC = () => {
             laser.y < enemy.y + enemy.height &&
             laser.y + laser.height > enemy.y
           ) {
-            // Hit!
             enemy.alive = false;
             lasers.splice(lIdx, 1);
             setScore(prev => {
@@ -227,7 +341,7 @@ export const ActivityModal: React.FC = () => {
               return next;
             });
 
-            // Spawn explosion particles
+            // Particles
             for (let i = 0; i < 8; i++) {
               particles.push({
                 x: enemy.x + enemy.width / 2,
@@ -240,30 +354,12 @@ export const ActivityModal: React.FC = () => {
                 maxLife: 20 + Math.random() * 10
               });
             }
-
-            // Synth explosion beep sound
-            try {
-              const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-              if (AudioCtx) {
-                const audioCtx = new AudioCtx();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-                osc.frequency.linearRampToValueAtTime(40, audioCtx.currentTime + 0.15);
-                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.15);
-              }
-            } catch (e) {}
+            playSynthSound('explosion');
           }
         });
       });
 
-      // 6. Draw Particles
+      // Particles
       particles.forEach((p, idx) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -281,17 +377,16 @@ export const ActivityModal: React.FC = () => {
         }
       });
 
-      // 7. Check wave cleared
-      if (enemies.filter(e => enemyAliveCheck(e)).length === 0) {
+      // Wave cleared
+      if (enemies.filter(e => e.alive).length === 0) {
         setLevel(prev => prev + 1);
         spawnEnemies();
         lasers = [];
         toast.success(`Wave ${level} Cleared! Spawning Wave ${level + 1}! 🚀`);
       }
 
-      // Draw Player Ship
+      // Player Ship
       ctx.fillStyle = player.color;
-      // Drawing basic spaceship shape
       ctx.beginPath();
       ctx.moveTo(player.x + player.width / 2, player.y);
       ctx.lineTo(player.x + player.width, player.y + player.height);
@@ -299,14 +394,12 @@ export const ActivityModal: React.FC = () => {
       ctx.closePath();
       ctx.fill();
 
-      // Glowing thruster flame
+      // Thruster flame
       ctx.fillStyle = Math.floor(Date.now() / 100) % 2 === 0 ? '#EF4444' : '#FBBF24';
       ctx.fillRect(player.x + player.width / 2 - 4, player.y + player.height, 8, 6);
 
       animId = requestAnimationFrame(gameTick);
     };
-
-    const enemyAliveCheck = (e: any) => e.alive;
 
     const handleGameOver = () => {
       cancelAnimationFrame(animId);
@@ -319,59 +412,284 @@ export const ActivityModal: React.FC = () => {
     return () => cancelAnimationFrame(animId);
   }, [activeActivityId, isPlaying, level]);
 
-  // Simulated live comments while playing
+  // =========================================================================
+  // COOKIE CLICKER AUTO-BAKING CLOCK (CPS)
+  // =========================================================================
   useEffect(() => {
-    if (!isPlaying) return;
+    if (activeActivityId !== 'cookie-clicker') return;
+
+    const interval = setInterval(() => {
+      const multiplier = frenzyActive ? 7 : 1;
+      const amountToAdd = (cookiesPerSecond / 10) * multiplier; // Run 10 times a second for smoothness
+      
+      setCookies(prev => {
+        const next = prev + amountToAdd;
+        setTotalCookiesBaked(t => {
+          const total = t + amountToAdd;
+          // Check achievements
+          checkCookieAchievements(total, cookiesPerSecond);
+          return total;
+        });
+        return next;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [activeActivityId, cookiesPerSecond, frenzyActive]);
+
+  // Frenzy timer tick
+  useEffect(() => {
+    if (!frenzyActive) return;
+    const interval = setInterval(() => {
+      setFrenzyTimeLeft(prev => {
+        if (prev <= 1) {
+          setFrenzyActive(false);
+          toast.info('The Cookie Frenzy has ended.');
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [frenzyActive]);
+
+  // =========================================================================
+  // GOLDEN COOKIE SPAWNER ENGINE
+  // =========================================================================
+  useEffect(() => {
+    if (activeActivityId !== 'cookie-clicker') return;
+
+    // Spawn a golden cookie every 35 to 60 seconds
+    const spawnTimer = setInterval(() => {
+      if (goldenCookie && goldenCookie.active) return; // already active
+
+      const randomX = Math.floor(Math.random() * 260) + 40; // fit in clicker box
+      const randomY = Math.floor(Math.random() * 200) + 100;
+      const type = Math.random() > 0.5 ? 'bonus' : 'frenzy';
+
+      setGoldenCookie({
+        x: randomX,
+        y: randomY,
+        active: true,
+        type
+      });
+
+      playSynthSound('golden');
+      toast('✨ A Golden Cookie has spawned!', {
+        description: 'Find and click it quickly for a massive boost!',
+        duration: 5000
+      });
+
+      // Auto-despawn after 12 seconds
+      setTimeout(() => {
+        setGoldenCookie(prev => {
+          if (prev && prev.active) {
+            return { ...prev, active: false };
+          }
+          return prev;
+        });
+      }, 12000);
+
+    }, 45000);
+
+    return () => clearInterval(spawnTimer);
+  }, [activeActivityId, goldenCookie]);
+
+  // =========================================================================
+  // ACHIEVEMENT CHECKS
+  // =========================================================================
+  const checkCookieAchievements = (totalBaked: number, currentCps: number) => {
+    setAchievements(prev => {
+      let changed = false;
+      const next = prev.map(ach => {
+        if (ach.unlocked) return ach;
+
+        let shouldUnlock = false;
+        if (ach.id === 'first_bake' && totalBaked >= 1) shouldUnlock = true;
+        if (ach.id === 'grandma_friend' && upgrades.find(u => u.id === 'grandma')!.count >= 1) shouldUnlock = true;
+        if (ach.id === 'factory_owner' && upgrades.find(u => u.id === 'factory')!.count >= 1) shouldUnlock = true;
+        if (ach.id === 'speed_baker' && currentCps >= 100) shouldUnlock = true;
+        if (ach.id === 'cookie_millionaire' && totalBaked >= 1000000) shouldUnlock = true;
+
+        if (shouldUnlock) {
+          changed = true;
+          playSynthSound('achievement');
+          toast.success(`🏆 Achievement Unlocked: ${ach.name}!`, {
+            description: ach.description,
+            duration: 4000
+          });
+          return { ...ach, unlocked: true };
+        }
+        return ach;
+      });
+
+      return changed ? next : prev;
+    });
+  };
+
+  // Click Golden Cookie
+  const handleGoldenCookieClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!goldenCookie || !goldenCookie.active) return;
+
+    setGoldenCookie(null);
+    setGoldenCookiesClicked(prev => prev + 1);
+    playSynthSound('golden');
+
+    // Unlock achievement
+    setAchievements(prev => {
+      return prev.map(ach => {
+        if (ach.id === 'golden_touch' && !ach.unlocked) {
+          toast.success(`🏆 Achievement Unlocked: ${ach.name}!`, {
+            description: ach.description
+          });
+          return { ...ach, unlocked: true };
+        }
+        return ach;
+      });
+    });
+
+    if (goldenCookie.type === 'bonus') {
+      const bonus = Math.max(77, Math.floor(cookies * 0.2) + 150);
+      setCookies(prev => prev + bonus);
+      setTotalCookiesBaked(prev => prev + bonus);
+      toast.success(`✨ Golden Cookie Clicked! Earned +${Math.floor(bonus)} Cookies! 🍪`);
+    } else {
+      setFrenzyActive(true);
+      setFrenzyTimeLeft(15);
+      toast.success(`🔥 COOKIE FRENZY TRIGGERED! 7x CPS and Clicks for 15 seconds! 🔥`);
+    }
+  };
+
+  // =========================================================================
+  // SIMULATED LOBBY CHAT BASED ON COOKIE GAME STATE
+  // =========================================================================
+  useEffect(() => {
+    if (activeActivityId !== 'cookie-clicker') return;
+
     const interval = setInterval(() => {
       const users = activeVoiceUsers.length > 0 ? activeVoiceUsers.map(u => u.username) : ['Wumpus', 'Nelly', 'Clyde'];
       const user = users[Math.floor(Math.random() * users.length)];
 
-      const phrases = [
-        'Woah! Incredible shot! 🎯',
-        'Watch out for the yellow ones!',
-        'Leveling up! Clyde is on fire! 🔥',
-        'Can you beat Wumpus\'s high score of 450?',
-        'Red invaders are so fast!',
-        'Nooo, don\'t crash! 😱',
-        'Redstone gaming squad is watching you!',
-        'This is honestly better than Netflix haha'
+      let phrases = [
+        'Baking cookies is so therapeutic ☕',
+        'Who is clicking that fast? Wumpus is impressed!',
+        'How many cookies do we need to buy a Quantum Portal?',
+        'Don\'t let the grandmas take over!',
+        'My keyboard spacebar is getting a workout today 😂'
       ];
+
+      if (cookiesPerSecond > 1000) {
+        phrases = [
+          `Oh my gosh, GuestCoder is generating ${Math.floor(cookiesPerSecond)} CPS! Absolute madness! 🤯`,
+          'Are we building a cookie empire or what?',
+          'The grandmas have started chanting in binary... 👵',
+          'We have officially reached interstellar cookie production!'
+        ];
+      } else if (upgrades.find(u => u.id === 'grandma')!.count > 5) {
+        phrases = [
+          'Wow, that is a lot of grandmas in the voice lobby!',
+          'Grandma is cooking up some secret recipes today 👵🍪',
+          'Grandma\'s cookies taste better when Clyde is sharing screens!'
+        ];
+      }
 
       const phrase = phrases[Math.floor(Math.random() * phrases.length)];
       setComments(prev => [
         { user, text: phrase, time: 'Just now' },
         ...prev.slice(0, 10)
       ]);
-    }, 8000);
+    }, 12000);
 
     return () => clearInterval(interval);
-  }, [isPlaying, activeVoiceUsers]);
+  }, [activeActivityId, cookiesPerSecond, upgrades, activeVoiceUsers]);
 
-  if (activeActivityId !== 'retro-arcade' && activeActivityId !== 'whiteboard') return null;
+  // =========================================================================
+  // COOKIE BAKE CLICK TRIGGER
+  // =========================================================================
+  const handleCookieClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const multiplier = frenzyActive ? 7 : 1;
+    const earned = cookiesPerClick * multiplier;
 
-  const handleStartGame = () => {
-    setIsPlaying(true);
-    setScore(0);
-    setLives(3);
-    setLevel(1);
-    setShowGameOver(false);
+    setCookies(prev => prev + earned);
+    setTotalCookiesBaked(prev => prev + earned);
+    setTotalClicks(prev => prev + 1);
+
+    // Bounce cookie animation
+    setCookieScale(0.92);
+    setTimeout(() => setCookieScale(1.06), 70);
+    setTimeout(() => setCookieScale(1), 140);
+
+    // Audio Click
+    playSynthSound('click');
+
+    // Create floating text
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    const newFloat: FloatingText = {
+      id: Date.now() + Math.random(),
+      x: clickX,
+      y: clickY,
+      text: `+${earned}`
+    };
+
+    setFloatingTexts(prev => [...prev, newFloat]);
+
+    // Clear float after 1 second
+    setTimeout(() => {
+      setFloatingTexts(prev => prev.filter(f => f.id !== newFloat.id));
+    }, 1000);
+
+    // Check first click achievement
+    checkCookieAchievements(totalCookiesBaked + earned, cookiesPerSecond);
   };
+
+  // Buy Upgrade
+  const buyUpgrade = (upId: string) => {
+    const upgrade = upgrades.find(u => u.id === upId);
+    if (!upgrade || cookies < upgrade.cost) return;
+
+    setCookies(prev => prev - upgrade.cost);
+    setUpgrades(prev => {
+      return prev.map(u => {
+        if (u.id === upId) {
+          const nextCount = u.count + 1;
+          const nextCost = Math.floor(u.baseCost * Math.pow(1.15, nextCount));
+          return {
+            ...u,
+            count: nextCount,
+            cost: nextCost
+          };
+        }
+        return u;
+      });
+    });
+
+    playSynthSound('buy');
+    toast.success(`Hired/Purchased: ${upgrade.name}! ${upgrade.icon}`);
+  };
+
+  if (activeActivityId !== 'retro-arcade' && activeActivityId !== 'whiteboard' && activeActivityId !== 'cookie-clicker') return null;
 
   return (
     <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 select-none">
-      <div className="bg-discord-dark-200 rounded-lg w-full max-w-[900px] h-[550px] overflow-hidden shadow-2xl flex border border-discord-dark-100/10 text-white animate-scaleIn">
+      <div className="bg-discord-dark-200 rounded-lg w-full max-w-[950px] h-[580px] overflow-hidden shadow-2xl flex border border-discord-dark-100/10 text-white animate-scaleIn">
         
-        {/* Left Game Frame Screen */}
-        <div className="flex-1 bg-discord-dark-600 flex flex-col items-center justify-center relative p-6 border-r border-discord-dark-500">
+        {/* Left Game Screen Frame */}
+        <div className="flex-1 bg-discord-dark-600 flex flex-col relative border-r border-discord-dark-500">
           
           {/* Header */}
-          <div className="absolute top-4 left-6 right-6 flex justify-between items-center z-20">
+          <div className="p-4 flex justify-between items-center bg-discord-dark-700 border-b border-discord-dark-500 z-20">
             <div className="flex items-center gap-2">
               <Gamepad2 className="w-5 h-5 text-indigo-400 animate-pulse" />
               <span className="font-extrabold text-sm uppercase tracking-wider">
-                {activeActivityId === 'retro-arcade' ? 'Retro Space Shooter 🚀' : 'Co-Watch Whiteboard 🎨'}
+                {activeActivityId === 'retro-arcade' ? 'Retro Space Shooter 🚀' : activeActivityId === 'cookie-clicker' ? 'Cookie Clicker 🍪' : 'Co-Watch Whiteboard 🎨'}
               </span>
             </div>
+            
+            {/* Close Button */}
             <button
               onClick={() => {
                 setIsPlaying(false);
@@ -384,7 +702,286 @@ export const ActivityModal: React.FC = () => {
             </button>
           </div>
 
-          {/* RENDER RETRO SPACE SHOOTER */}
+          {/* =========================================================================
+              RENDER COOKIE CLICKER GAME
+              ========================================================================= */}
+          {activeActivityId === 'cookie-clicker' && (
+            <div className="flex-1 flex overflow-hidden">
+              
+              {/* Left Cookie Clicker Panel */}
+              <div className="w-[300px] border-r border-discord-dark-500 flex flex-col items-center justify-center p-4 relative bg-[#0d111d] overflow-hidden">
+                
+                {/* Space Stars Background */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                  <div className="absolute top-10 left-10 w-1 h-1 bg-white rounded-full animate-ping" />
+                  <div className="absolute top-40 left-48 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse" />
+                  <div className="absolute top-80 left-12 w-1 h-1 bg-white rounded-full" />
+                  <div className="absolute top-20 right-16 w-1 h-1 bg-indigo-300 rounded-full animate-pulse" />
+                </div>
+
+                {/* Frenzy Alert Indicator */}
+                {frenzyActive && (
+                  <div className="absolute top-4 bg-gradient-to-r from-amber-500 to-red-500 text-white font-extrabold text-[11px] px-3 py-1 rounded-full flex items-center gap-1.5 animate-bounce shadow-lg z-10">
+                    <Flame className="w-3.5 h-3.5 text-yellow-200 animate-pulse" />
+                    <span>FRENZY ACTIVE (7X)! {frenzyTimeLeft}s</span>
+                  </div>
+                )}
+
+                {/* Cookie Display HUD */}
+                <div className="text-center mb-6 z-10">
+                  <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500 tracking-tight drop-shadow-md">
+                    {Math.floor(cookies).toLocaleString()}
+                  </h3>
+                  <p className="text-[11px] font-bold text-discord-light-300 uppercase tracking-wider">
+                    cookies baked
+                  </p>
+                  <p className="text-xs font-semibold text-discord-green mt-1">
+                    {frenzyActive ? (
+                      <span className="text-amber-400 font-extrabold flex items-center justify-center gap-1">
+                        <Flame className="w-3 h-3" />
+                        CPS: {(cookiesPerSecond * 7).toFixed(1)}
+                      </span>
+                    ) : (
+                      `CPS: ${cookiesPerSecond.toFixed(1)}`
+                    )}
+                  </p>
+                </div>
+
+                {/* Giant Interactive Cookie Button */}
+                <div className="relative flex items-center justify-center w-52 h-52">
+                  
+                  {/* Outer glowing pulse ring */}
+                  <div className={`absolute inset-0 rounded-full bg-amber-500/10 blur-xl transition-all duration-300 ${
+                    frenzyActive ? 'scale-125 bg-red-500/20 animate-pulse' : 'scale-100'
+                  }`} />
+
+                  <button
+                    onClick={handleCookieClick}
+                    style={{ transform: `scale(${cookieScale})` }}
+                    className="w-40 h-40 rounded-full bg-amber-800 border-4 border-amber-900 shadow-2xl relative transition-all duration-75 active:scale-95 focus:outline-none flex items-center justify-center select-none overflow-hidden group hover:shadow-amber-500/10"
+                  >
+                    {/* Cookie Graphic SVG */}
+                    <svg viewBox="0 0 100 100" className="w-full h-full p-2 select-none pointer-events-none">
+                      {/* Cookie Base */}
+                      <circle cx="50" cy="50" r="45" fill="#d97706" />
+                      <circle cx="50" cy="50" r="43" fill="#f59e0b" className="opacity-90" />
+                      
+                      {/* Chocolate Chips */}
+                      <circle cx="28" cy="35" r="5" fill="#451a03" />
+                      <circle cx="45" cy="22" r="6" fill="#451a03" />
+                      <circle cx="68" cy="30" r="5" fill="#451a03" />
+                      <circle cx="32" cy="65" r="5.5" fill="#451a03" />
+                      <circle cx="52" cy="50" r="6.5" fill="#451a03" />
+                      <circle cx="70" cy="60" r="5" fill="#451a03" />
+                      <circle cx="50" cy="78" r="6" fill="#451a03" />
+                      <circle cx="22" cy="50" r="4" fill="#451a03" />
+                      
+                      {/* Texture detailing */}
+                      <path d="M 15,45 Q 25,35 30,50" stroke="#b45309" strokeWidth="2" fill="none" opacity="0.3" />
+                      <path d="M 60,20 Q 70,35 65,45" stroke="#b45309" strokeWidth="2" fill="none" opacity="0.3" />
+                      <path d="M 55,70 Q 75,75 70,80" stroke="#b45309" strokeWidth="2" fill="none" opacity="0.3" />
+                    </svg>
+
+                    {/* Inside cookie shiny highlight */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none rounded-full" />
+                  </button>
+
+                  {/* Floating click text indicators */}
+                  {floatingTexts.map((f) => (
+                    <span
+                      key={f.id}
+                      style={{ left: f.x, top: f.y }}
+                      className="absolute text-yellow-300 font-black text-lg select-none pointer-events-none animate-floatUp z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                    >
+                      {f.text}
+                    </span>
+                  ))}
+
+                  {/* Golden Cookie Spawn */}
+                  {goldenCookie && goldenCookie.active && (
+                    <button
+                      onClick={handleGoldenCookieClick}
+                      style={{ left: goldenCookie.x, top: goldenCookie.y }}
+                      className="absolute w-12 h-12 rounded-full bg-yellow-400 border-2 border-yellow-300 shadow-[0_0_15px_#fbbf24] flex items-center justify-center animate-bounce z-30 active:scale-90"
+                      title="Click the Golden Cookie!"
+                    >
+                      <svg viewBox="0 0 100 100" className="w-full h-full p-1 animate-spin duration-10000">
+                        <circle cx="50" cy="50" r="45" fill="#fbbf24" />
+                        <circle cx="50" cy="50" r="41" fill="#fef08a" />
+                        <circle cx="30" cy="35" r="4.5" fill="#ca8a04" />
+                        <circle cx="50" cy="22" r="5" fill="#ca8a04" />
+                        <circle cx="70" cy="35" r="4.5" fill="#ca8a04" />
+                        <circle cx="32" cy="65" r="5" fill="#ca8a04" />
+                        <circle cx="52" cy="52" r="6" fill="#ca8a04" />
+                        <circle cx="70" cy="65" r="4.5" fill="#ca8a04" />
+                      </svg>
+                      <span className="absolute inset-0 rounded-full border border-yellow-200 animate-ping" />
+                    </button>
+                  )}
+                </div>
+
+                {/* Bottom Clicker Stats */}
+                <div className="mt-6 flex flex-col gap-1 text-[10px] text-discord-light-300 text-center font-semibold">
+                  <div>Cookies/Click: <span className="text-white">{cookiesPerClick}</span></div>
+                  <div>Total Clicks: <span className="text-white">{totalClicks}</span></div>
+                </div>
+
+                {/* Tabs Selector */}
+                <div className="absolute bottom-2 left-2 right-2 grid grid-cols-2 gap-1 bg-discord-dark-700/80 p-1 rounded">
+                  <button
+                    onClick={() => setCookieTab('bakery')}
+                    className={`py-1 text-[10px] font-bold rounded transition-all ${
+                      cookieTab === 'bakery' ? 'bg-discord-brand text-white' : 'text-discord-light-300 hover:text-white'
+                    }`}
+                  >
+                    Bakery
+                  </button>
+                  <button
+                    onClick={() => setCookieTab('stats')}
+                    className={`py-1 text-[10px] font-bold rounded transition-all ${
+                      cookieTab === 'stats' ? 'bg-discord-brand text-white' : 'text-discord-light-300 hover:text-white'
+                    }`}
+                  >
+                    Trophies
+                  </button>
+                </div>
+
+              </div>
+
+              {/* Right Upgrade Shop / Stats Panel */}
+              <div className="flex-1 bg-discord-dark-700 flex flex-col overflow-hidden">
+                
+                {cookieTab === 'bakery' ? (
+                  // UPGRADE SHOP VIEW
+                  <div className="flex-1 flex flex-col overflow-hidden">
+                    <div className="p-3 border-b border-discord-dark-500 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-discord-light-100">
+                      <ShoppingBag className="w-4 h-4 text-amber-500" />
+                      <span>Bakery Upgrades Shop</span>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto p-3 space-y-2 no-scrollbar">
+                      {upgrades.map((up) => {
+                        const canAfford = cookies >= up.cost;
+                        return (
+                          <button
+                            key={up.id}
+                            disabled={!canAfford}
+                            onClick={() => buyUpgrade(up.id)}
+                            className={`w-full flex items-center justify-between p-2.5 rounded border text-left transition-all ${
+                              canAfford
+                                ? 'bg-discord-dark-500/80 hover:bg-discord-dark-100 border-discord-dark-100/10 cursor-pointer'
+                                : 'bg-discord-dark-500/30 border-transparent opacity-50 cursor-not-allowed'
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="text-2xl shrink-0 select-none">{up.icon}</span>
+                              <div className="text-left">
+                                <div className="text-xs font-bold text-white flex items-center gap-1.5">
+                                  <span>{up.name}</span>
+                                  {up.count > 0 && (
+                                    <span className="bg-discord-brand text-[9px] px-1.5 py-0.5 rounded-full font-black text-white">
+                                      x{up.count}
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="text-[10px] text-discord-light-300 leading-tight max-w-[240px] mt-0.5 font-medium">
+                                  {up.description}
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="text-right shrink-0">
+                              <div className={`text-xs font-black ${canAfford ? 'text-yellow-400' : 'text-discord-light-300'}`}>
+                                🪙 {up.cost.toLocaleString()}
+                              </div>
+                              <div className="text-[9px] text-discord-green font-bold mt-0.5">
+                                {up.cps > 0 && `+${up.cps} CPS`}
+                                {up.id === 'click_power' && `+1 CPC`}
+                              </div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : (
+                  // STATS & ACHIEVEMENTS VIEW
+                  <div className="flex-1 flex flex-col overflow-hidden">
+                    <div className="p-3 border-b border-discord-dark-500 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-discord-light-100">
+                      <BarChart3 className="w-4 h-4 text-indigo-400" />
+                      <span>Bakery Stats & Trophies</span>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
+                      
+                      {/* Stats Grid */}
+                      <div className="grid grid-cols-2 gap-2 bg-discord-dark-500/50 p-3 rounded border border-discord-dark-100/5">
+                        <div className="text-left">
+                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Total Cookies Baked</span>
+                          <p className="text-sm font-black text-white mt-0.5">{Math.floor(totalCookiesBaked).toLocaleString()}</p>
+                        </div>
+                        <div className="text-left">
+                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Total Clicks</span>
+                          <p className="text-sm font-black text-white mt-0.5">{totalClicks}</p>
+                        </div>
+                        <div className="text-left">
+                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Golden Cookies Clicked</span>
+                          <p className="text-sm font-black text-white mt-0.5">{goldenCookiesClicked}</p>
+                        </div>
+                        <div className="text-left">
+                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Base Cookies/Sec (CPS)</span>
+                          <p className="text-sm font-black text-white mt-0.5">{cookiesPerSecond.toFixed(1)}</p>
+                        </div>
+                      </div>
+
+                      {/* Achievements Trophies */}
+                      <div className="space-y-2">
+                        <div className="text-[11px] uppercase font-bold text-discord-light-300 tracking-wider flex items-center gap-1">
+                          <Award className="w-4 h-4 text-yellow-500" />
+                          <span>Unlocked Trophies</span>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-2">
+                          {achievements.map((ach) => (
+                            <div
+                              key={ach.id}
+                              className={`flex items-center gap-3 p-2.5 rounded border transition-all ${
+                                ach.unlocked
+                                  ? 'bg-discord-dark-500/80 border-yellow-500/20'
+                                  : 'bg-discord-dark-500/20 border-transparent opacity-40'
+                              }`}
+                            >
+                              <span className="text-2xl select-none">{ach.unlocked ? ach.icon : '🔒'}</span>
+                              <div className="text-left">
+                                <h4 className={`text-xs font-bold ${ach.unlocked ? 'text-yellow-400' : 'text-discord-light-300'}`}>
+                                  {ach.name}
+                                </h4>
+                                <p className="text-[10px] text-discord-light-300 leading-tight">
+                                  {ach.description}
+                                </p>
+                              </div>
+                              {ach.unlocked && (
+                                <span className="ml-auto text-[10px] font-bold text-yellow-500 bg-yellow-500/10 px-2 py-0.5 rounded-full">
+                                  Earned
+                                </span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                )}
+
+              </div>
+
+            </div>
+          )}
+
+          {/* =========================================================================
+              RENDER RETRO SPACE SHOOTER
+              ========================================================================= */}
           {activeActivityId === 'retro-arcade' && (
             <div className="w-full h-full flex flex-col items-center justify-center pt-8">
               
@@ -399,7 +996,13 @@ export const ActivityModal: React.FC = () => {
                     Play a classic arcade space invaders wave battle. Use **Left/Right Arrow keys** to steer and **Spacebar** to shoot lasers!
                   </p>
                   <button
-                    onClick={handleStartGame}
+                    onClick={() => {
+                      setIsPlaying(true);
+                      setScore(0);
+                      setLives(3);
+                      setLevel(1);
+                      setShowGameOver(false);
+                    }}
                     className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-sm py-2.5 px-8 rounded-full shadow-lg transition-all"
                   >
                     Launch Game! 🎮
@@ -415,7 +1018,13 @@ export const ActivityModal: React.FC = () => {
                   </p>
                   <div className="flex gap-3 justify-center">
                     <button
-                      onClick={handleStartGame}
+                      onClick={() => {
+                        setIsPlaying(true);
+                        setScore(0);
+                        setLives(3);
+                        setLevel(1);
+                        setShowGameOver(false);
+                      }}
                       className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-sm py-2 px-5 rounded-full transition-all flex items-center gap-1.5"
                     >
                       <RefreshCw className="w-4 h-4" />
@@ -460,7 +1069,9 @@ export const ActivityModal: React.FC = () => {
             </div>
           )}
 
-          {/* RENDER WATCH PARTY WHITEBOARD */}
+          {/* =========================================================================
+              RENDER WATCH PARTY WHITEBOARD
+              ========================================================================= */}
           {activeActivityId === 'whiteboard' && (
             <div className="w-full h-full flex flex-col items-center justify-center pt-8 text-center space-y-4">
               <span className="text-6xl animate-bounce">🎨</span>
@@ -468,13 +1079,13 @@ export const ActivityModal: React.FC = () => {
                 Watch-Party Whiteboard
               </h3>
               <p className="text-xs text-discord-light-300 max-w-[380px] leading-relaxed">
-                A collaborative sandbox whiteboard and video sync player is currently in demonstration mode. Play Space Invaders 🚀 for actual game controls!
+                A collaborative sandbox whiteboard and video sync player is currently in demonstration mode. Play Space Invaders 🚀 or Cookie Clicker 🍪 for actual game controls!
               </p>
               <button
-                onClick={() => launchActivity('retro-arcade')}
+                onClick={() => launchActivity('cookie-clicker')}
                 className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-sm py-2 px-6 rounded transition-all"
               >
-                Switch to Space Shooter Game
+                Switch to Cookie Clicker Activity
               </button>
             </div>
           )}
@@ -490,7 +1101,7 @@ export const ActivityModal: React.FC = () => {
 
           <div className="flex-1 overflow-y-auto space-y-3 pr-1 no-scrollbar text-xs">
             {comments.map((comment, idx) => (
-              <div key={idx} className="bg-discord-dark-400/40 p-2.5 rounded border border-discord-dark-100/5">
+              <div key={idx} className="bg-discord-dark-400/40 p-2.5 rounded border border-discord-dark-100/5 animate-slideUp">
                 <div className="flex justify-between items-baseline mb-1">
                   <span className="font-bold text-indigo-400">{comment.user}</span>
                   <span className="text-[10px] text-discord-light-300">{comment.time}</span>

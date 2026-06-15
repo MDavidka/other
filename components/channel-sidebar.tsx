@@ -601,6 +601,25 @@ export const ChannelSidebar: React.FC = () => {
                   <div className="text-[10px] text-discord-light-300">Co-drawing board & video sync player</div>
                 </div>
               </button>
+
+              {/* Activity 3: Cookie Clicker */}
+              <button
+                onClick={() => {
+                  launchActivity('cookie-clicker');
+                  setShowActivitySelect(false);
+                }}
+                className={`w-full flex items-center gap-3 p-2 rounded text-left transition-all ${
+                  activeActivityId === 'cookie-clicker' 
+                    ? 'bg-discord-brand text-white' 
+                    : 'bg-discord-dark-500 hover:bg-discord-dark-100 text-discord-light-300 hover:text-white'
+                }`}
+              >
+                <span className="text-2xl select-none">🍪</span>
+                <div>
+                  <div className="text-xs font-bold">Cookie Clicker</div>
+                  <div className="text-[10px] text-discord-light-300">Bake cookies, hire grandmas, buy portals!</div>
+                </div>
+              </button>
             </div>
           </div>
         </div>

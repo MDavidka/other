@@ -351,7 +351,12 @@ export const DiscordProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const launchActivity = (activityId: string | null) => {
     setActiveActivityId(activityId);
     if (activityId) {
-      toast.success(`Launched Activity: ${activityId === 'retro-arcade' ? 'Retro Space Shooter 🚀' : 'Watch-Party Whiteboard 🎨'}`);
+      const name = activityId === 'retro-arcade' 
+        ? 'Retro Space Shooter 🚀' 
+        : activityId === 'cookie-clicker' 
+          ? 'Cookie Clicker 🍪' 
+          : 'Watch-Party Whiteboard 🎨';
+      toast.success(`Launched Activity: ${name}`);
     }
   };
 
