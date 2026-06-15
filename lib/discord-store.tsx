@@ -25,6 +25,7 @@ interface DiscordContextType {
   friendsTab: 'online' | 'all' | 'pending' | 'blocked' | 'add';
   isSettingsOpen: boolean;
   isMembersListOpen: boolean;
+  isMobileSidebarOpen: boolean; // Mobile layout state
   typingUsers: string[];
   
   // Actions
@@ -41,6 +42,7 @@ interface DiscordContextType {
   setFriendsTab: (tab: 'online' | 'all' | 'pending' | 'blocked' | 'add') => void;
   setSettingsOpen: (isOpen: boolean) => void;
   setMembersListOpen: (isOpen: boolean) => void;
+  setMobileSidebarOpen: (isOpen: boolean) => void; // Mobile action
   updateUserProfile: (profile: Partial<UserProfile>) => void;
   addServer: (name: string, icon: string, color: string) => void;
   addChannel: (serverId: string, name: string, type: 'text' | 'voice', description?: string) => void;
@@ -91,6 +93,7 @@ export const DiscordProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [friendsTab, setFriendsTab] = useState<'online' | 'all' | 'pending' | 'blocked' | 'add'>('online');
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const [isMembersListOpen, setMembersListOpen] = useState(true);
+  const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [typingUsers, setTypingUsers] = useState<string[]>([]);
 
   // Refs for background simulation and timers
@@ -128,6 +131,7 @@ export const DiscordProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   // Select Server
   const selectServer = (serverId: string) => {
+    setMobileSidebarOpen(false); // Auto-close sidebar on mobile
     setCurrentServerId(serverId);
     if (serverId === 'home') {
       setCurrentChannelId('friends');
@@ -146,6 +150,7 @@ export const DiscordProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   // Select Channel
   const selectChannel = (channelId: string) => {
+    setMobileSidebarOpen(false); // Auto-close sidebar on mobile
     setCurrentChannelId(channelId);
     if (currentServerId !== 'home') {
       clearUnread(currentServerId, channelId);
@@ -317,14 +322,6 @@ export const DiscordProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     setActiveVoiceUsers(joinedFriends);
-
-    // Simulate speaking circles periodically
-    const speakInterval = setInterval(() => {
-      if (!channelId) {
-        clearInterval(speakInterval);
-        return;
-      }
-    }, 3000);
   };
 
   // Leave Voice Channel
@@ -673,6 +670,7 @@ export const DiscordProvider: React.FC<{ children: React.ReactNode }> = ({ child
       friendsTab,
       isSettingsOpen,
       isMembersListOpen,
+      isMobileSidebarOpen,
       typingUsers,
       
       selectServer,
@@ -688,6 +686,7 @@ export const DiscordProvider: React.FC<{ children: React.ReactNode }> = ({ child
       setFriendsTab,
       setSettingsOpen,
       setMembersListOpen,
+      setMobileSidebarOpen,
       updateUserProfile,
       addServer,
       addChannel,
