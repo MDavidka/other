@@ -169,8 +169,8 @@ export const ActivityModal: React.FC = () => {
   ]);
 
   // Calculate stats
-  const cookiesPerSecond = upgrades.reduce((sum, up) => sum + (up.cps * up.count), 0);
-  const clickPowerMultiplier = upgrades.find(u => u.id === 'click_power')?.count || 0;
+  const cookiesPerSecond = upgrades.reduce((sum: number, up: UpgradeItem) => sum + (up.cps * up.count), 0);
+  const clickPowerMultiplier = upgrades.find((u: UpgradeItem) => u.id === 'click_power')?.count || 0;
   const cookiesPerClick = 1 + clickPowerMultiplier;
 
   // =========================================================================
@@ -181,7 +181,7 @@ export const ActivityModal: React.FC = () => {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       keysPressed.current[e.code] = true;
-      if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) {
+      if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(e.code) !== -1) {
         e.preventDefault();
       }
     };
@@ -335,7 +335,7 @@ export const ActivityModal: React.FC = () => {
           ) {
             enemy.alive = false;
             lasers.splice(lIdx, 1);
-            setScore(prev => {
+            setScore((prev: number) => {
               const next = prev + 10;
               if (next > highScore) setHighScore(next);
               return next;
@@ -379,7 +379,7 @@ export const ActivityModal: React.FC = () => {
 
       // Wave cleared
       if (enemies.filter(e => e.alive).length === 0) {
-        setLevel(prev => prev + 1);
+        setLevel((prev: number) => prev + 1);
         spawnEnemies();
         lasers = [];
         toast.success(`Wave ${level} Cleared! Spawning Wave ${level + 1}! 🚀`);
@@ -422,9 +422,9 @@ export const ActivityModal: React.FC = () => {
       const multiplier = frenzyActive ? 7 : 1;
       const amountToAdd = (cookiesPerSecond / 10) * multiplier; // Run 10 times a second for smoothness
       
-      setCookies(prev => {
+      setCookies((prev: number) => {
         const next = prev + amountToAdd;
-        setTotalCookiesBaked(t => {
+        setTotalCookiesBaked((t: number) => {
           const total = t + amountToAdd;
           // Check achievements
           checkCookieAchievements(total, cookiesPerSecond);
@@ -441,7 +441,7 @@ export const ActivityModal: React.FC = () => {
   useEffect(() => {
     if (!frenzyActive) return;
     const interval = setInterval(() => {
-      setFrenzyTimeLeft(prev => {
+      setFrenzyTimeLeft((prev: number) => {
         if (prev <= 1) {
           setFrenzyActive(false);
           toast.info('The Cookie Frenzy has ended.');
@@ -463,8 +463,8 @@ export const ActivityModal: React.FC = () => {
     const spawnTimer = setInterval(() => {
       if (goldenCookie && goldenCookie.active) return; // already active
 
-      const randomX = Math.floor(Math.random() * 260) + 40; // fit in clicker box
-      const randomY = Math.floor(Math.random() * 200) + 100;
+      const randomX = Math.floor(Math.random() * 200) + 30; // fit in clicker box
+      const randomY = Math.floor(Math.random() * 150) + 80;
       const type = Math.random() > 0.5 ? 'bonus' : 'frenzy';
 
       setGoldenCookie({
@@ -482,7 +482,7 @@ export const ActivityModal: React.FC = () => {
 
       // Auto-despawn after 12 seconds
       setTimeout(() => {
-        setGoldenCookie(prev => {
+        setGoldenCookie((prev) => {
           if (prev && prev.active) {
             return { ...prev, active: false };
           }
@@ -499,15 +499,15 @@ export const ActivityModal: React.FC = () => {
   // ACHIEVEMENT CHECKS
   // =========================================================================
   const checkCookieAchievements = (totalBaked: number, currentCps: number) => {
-    setAchievements(prev => {
+    setAchievements((prev) => {
       let changed = false;
-      const next = prev.map(ach => {
+      const next = prev.map((ach) => {
         if (ach.unlocked) return ach;
 
         let shouldUnlock = false;
         if (ach.id === 'first_bake' && totalBaked >= 1) shouldUnlock = true;
-        if (ach.id === 'grandma_friend' && upgrades.find(u => u.id === 'grandma')!.count >= 1) shouldUnlock = true;
-        if (ach.id === 'factory_owner' && upgrades.find(u => u.id === 'factory')!.count >= 1) shouldUnlock = true;
+        if (ach.id === 'grandma_friend' && upgrades.find((u: UpgradeItem) => u.id === 'grandma')!.count >= 1) shouldUnlock = true;
+        if (ach.id === 'factory_owner' && upgrades.find((u: UpgradeItem) => u.id === 'factory')!.count >= 1) shouldUnlock = true;
         if (ach.id === 'speed_baker' && currentCps >= 100) shouldUnlock = true;
         if (ach.id === 'cookie_millionaire' && totalBaked >= 1000000) shouldUnlock = true;
 
@@ -533,12 +533,12 @@ export const ActivityModal: React.FC = () => {
     if (!goldenCookie || !goldenCookie.active) return;
 
     setGoldenCookie(null);
-    setGoldenCookiesClicked(prev => prev + 1);
+    setGoldenCookiesClicked((prev: number) => prev + 1);
     playSynthSound('golden');
 
     // Unlock achievement
-    setAchievements(prev => {
-      return prev.map(ach => {
+    setAchievements((prev) => {
+      return prev.map((ach) => {
         if (ach.id === 'golden_touch' && !ach.unlocked) {
           toast.success(`🏆 Achievement Unlocked: ${ach.name}!`, {
             description: ach.description
@@ -551,8 +551,8 @@ export const ActivityModal: React.FC = () => {
 
     if (goldenCookie.type === 'bonus') {
       const bonus = Math.max(77, Math.floor(cookies * 0.2) + 150);
-      setCookies(prev => prev + bonus);
-      setTotalCookiesBaked(prev => prev + bonus);
+      setCookies((prev: number) => prev + bonus);
+      setTotalCookiesBaked((prev: number) => prev + bonus);
       toast.success(`✨ Golden Cookie Clicked! Earned +${Math.floor(bonus)} Cookies! 🍪`);
     } else {
       setFrenzyActive(true);
@@ -568,7 +568,7 @@ export const ActivityModal: React.FC = () => {
     if (activeActivityId !== 'cookie-clicker') return;
 
     const interval = setInterval(() => {
-      const users = activeVoiceUsers.length > 0 ? activeVoiceUsers.map(u => u.username) : ['Wumpus', 'Nelly', 'Clyde'];
+      const users = activeVoiceUsers.length > 0 ? activeVoiceUsers.map((u: any) => u.username) : ['Wumpus', 'Nelly', 'Clyde'];
       const user = users[Math.floor(Math.random() * users.length)];
 
       let phrases = [
@@ -586,7 +586,7 @@ export const ActivityModal: React.FC = () => {
           'The grandmas have started chanting in binary... 👵',
           'We have officially reached interstellar cookie production!'
         ];
-      } else if (upgrades.find(u => u.id === 'grandma')!.count > 5) {
+      } else if (upgrades.find((u: UpgradeItem) => u.id === 'grandma')!.count > 5) {
         phrases = [
           'Wow, that is a lot of grandmas in the voice lobby!',
           'Grandma is cooking up some secret recipes today 👵🍪',
@@ -595,7 +595,7 @@ export const ActivityModal: React.FC = () => {
       }
 
       const phrase = phrases[Math.floor(Math.random() * phrases.length)];
-      setComments(prev => [
+      setComments((prev) => [
         { user, text: phrase, time: 'Just now' },
         ...prev.slice(0, 10)
       ]);
@@ -611,9 +611,9 @@ export const ActivityModal: React.FC = () => {
     const multiplier = frenzyActive ? 7 : 1;
     const earned = cookiesPerClick * multiplier;
 
-    setCookies(prev => prev + earned);
-    setTotalCookiesBaked(prev => prev + earned);
-    setTotalClicks(prev => prev + 1);
+    setCookies((prev: number) => prev + earned);
+    setTotalCookiesBaked((prev: number) => prev + earned);
+    setTotalClicks((prev: number) => prev + 1);
 
     // Bounce cookie animation
     setCookieScale(0.92);
@@ -635,11 +635,11 @@ export const ActivityModal: React.FC = () => {
       text: `+${earned}`
     };
 
-    setFloatingTexts(prev => [...prev, newFloat]);
+    setFloatingTexts((prev) => [...prev, newFloat]);
 
     // Clear float after 1 second
     setTimeout(() => {
-      setFloatingTexts(prev => prev.filter(f => f.id !== newFloat.id));
+      setFloatingTexts((prev) => prev.filter((f) => f.id !== newFloat.id));
     }, 1000);
 
     // Check first click achievement
@@ -648,12 +648,12 @@ export const ActivityModal: React.FC = () => {
 
   // Buy Upgrade
   const buyUpgrade = (upId: string) => {
-    const upgrade = upgrades.find(u => u.id === upId);
+    const upgrade = upgrades.find((u: UpgradeItem) => u.id === upId);
     if (!upgrade || cookies < upgrade.cost) return;
 
-    setCookies(prev => prev - upgrade.cost);
-    setUpgrades(prev => {
-      return prev.map(u => {
+    setCookies((prev: number) => prev - upgrade.cost);
+    setUpgrades((prev) => {
+      return prev.map((u) => {
         if (u.id === upId) {
           const nextCount = u.count + 1;
           const nextCost = Math.floor(u.baseCost * Math.pow(1.15, nextCount));
@@ -674,11 +674,11 @@ export const ActivityModal: React.FC = () => {
   if (activeActivityId !== 'retro-arcade' && activeActivityId !== 'whiteboard' && activeActivityId !== 'cookie-clicker') return null;
 
   return (
-    <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 select-none">
-      <div className="bg-discord-dark-200 rounded-lg w-full max-w-[950px] h-[580px] overflow-hidden shadow-2xl flex border border-discord-dark-100/10 text-white animate-scaleIn">
+    <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-0 sm:p-4 select-none">
+      <div className="bg-discord-dark-200 w-full h-full sm:h-[580px] sm:max-w-[950px] sm:rounded-lg overflow-hidden shadow-2xl flex flex-col sm:flex-row border-0 sm:border border-discord-dark-100/10 text-white animate-scaleIn">
         
         {/* Left Game Screen Frame */}
-        <div className="flex-1 bg-discord-dark-600 flex flex-col relative border-r border-discord-dark-500">
+        <div className="flex-1 bg-discord-dark-600 flex flex-col relative border-b sm:border-b-0 sm:border-r border-discord-dark-500 overflow-hidden">
           
           {/* Header */}
           <div className="p-4 flex justify-between items-center bg-discord-dark-700 border-b border-discord-dark-500 z-20">
@@ -706,33 +706,32 @@ export const ActivityModal: React.FC = () => {
               RENDER COOKIE CLICKER GAME
               ========================================================================= */}
           {activeActivityId === 'cookie-clicker' && (
-            <div className="flex-1 flex overflow-hidden">
+            <div className="flex-1 flex flex-col sm:flex-row overflow-y-auto sm:overflow-hidden">
               
               {/* Left Cookie Clicker Panel */}
-              <div className="w-[300px] border-r border-discord-dark-500 flex flex-col items-center justify-center p-4 relative bg-[#0d111d] overflow-hidden">
+              <div className="w-full sm:w-[280px] md:w-[300px] border-b sm:border-b-0 sm:border-r border-discord-dark-500 flex flex-col items-center justify-center p-4 relative bg-[#0d111d] shrink-0 min-h-[340px] sm:min-h-0">
                 
                 {/* Space Stars Background */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none">
                   <div className="absolute top-10 left-10 w-1 h-1 bg-white rounded-full animate-ping" />
                   <div className="absolute top-40 left-48 w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse" />
-                  <div className="absolute top-80 left-12 w-1 h-1 bg-white rounded-full" />
                   <div className="absolute top-20 right-16 w-1 h-1 bg-indigo-300 rounded-full animate-pulse" />
                 </div>
 
                 {/* Frenzy Alert Indicator */}
                 {frenzyActive && (
-                  <div className="absolute top-4 bg-gradient-to-r from-amber-500 to-red-500 text-white font-extrabold text-[11px] px-3 py-1 rounded-full flex items-center gap-1.5 animate-bounce shadow-lg z-10">
+                  <div className="absolute top-4 bg-gradient-to-r from-amber-500 to-red-500 text-white font-extrabold text-[10px] sm:text-[11px] px-3 py-1 rounded-full flex items-center gap-1.5 animate-bounce shadow-lg z-10">
                     <Flame className="w-3.5 h-3.5 text-yellow-200 animate-pulse" />
                     <span>FRENZY ACTIVE (7X)! {frenzyTimeLeft}s</span>
                   </div>
                 )}
 
                 {/* Cookie Display HUD */}
-                <div className="text-center mb-6 z-10">
-                  <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500 tracking-tight drop-shadow-md">
+                <div className="text-center mb-4 sm:mb-6 z-10 mt-6 sm:mt-0">
+                  <h3 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500 tracking-tight drop-shadow-md">
                     {Math.floor(cookies).toLocaleString()}
                   </h3>
-                  <p className="text-[11px] font-bold text-discord-light-300 uppercase tracking-wider">
+                  <p className="text-[10px] sm:text-[11px] font-bold text-discord-light-300 uppercase tracking-wider">
                     cookies baked
                   </p>
                   <p className="text-xs font-semibold text-discord-green mt-1">
@@ -748,7 +747,7 @@ export const ActivityModal: React.FC = () => {
                 </div>
 
                 {/* Giant Interactive Cookie Button */}
-                <div className="relative flex items-center justify-center w-52 h-52">
+                <div className="relative flex items-center justify-center w-40 h-40 sm:w-48 sm:h-48 my-2">
                   
                   {/* Outer glowing pulse ring */}
                   <div className={`absolute inset-0 rounded-full bg-amber-500/10 blur-xl transition-all duration-300 ${
@@ -758,15 +757,12 @@ export const ActivityModal: React.FC = () => {
                   <button
                     onClick={handleCookieClick}
                     style={{ transform: `scale(${cookieScale})` }}
-                    className="w-40 h-40 rounded-full bg-amber-800 border-4 border-amber-900 shadow-2xl relative transition-all duration-75 active:scale-95 focus:outline-none flex items-center justify-center select-none overflow-hidden group hover:shadow-amber-500/10"
+                    className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-amber-800 border-4 border-amber-900 shadow-2xl relative transition-all duration-75 active:scale-95 focus:outline-none flex items-center justify-center select-none overflow-hidden group hover:shadow-amber-500/10"
                   >
                     {/* Cookie Graphic SVG */}
-                    <svg viewBox="0 0 100 100" className="w-full h-full p-2 select-none pointer-events-none">
-                      {/* Cookie Base */}
+                    <svg viewBox="0 0 100 100" className="w-full h-full p-1.5 select-none pointer-events-none">
                       <circle cx="50" cy="50" r="45" fill="#d97706" />
                       <circle cx="50" cy="50" r="43" fill="#f59e0b" className="opacity-90" />
-                      
-                      {/* Chocolate Chips */}
                       <circle cx="28" cy="35" r="5" fill="#451a03" />
                       <circle cx="45" cy="22" r="6" fill="#451a03" />
                       <circle cx="68" cy="30" r="5" fill="#451a03" />
@@ -775,14 +771,7 @@ export const ActivityModal: React.FC = () => {
                       <circle cx="70" cy="60" r="5" fill="#451a03" />
                       <circle cx="50" cy="78" r="6" fill="#451a03" />
                       <circle cx="22" cy="50" r="4" fill="#451a03" />
-                      
-                      {/* Texture detailing */}
-                      <path d="M 15,45 Q 25,35 30,50" stroke="#b45309" strokeWidth="2" fill="none" opacity="0.3" />
-                      <path d="M 60,20 Q 70,35 65,45" stroke="#b45309" strokeWidth="2" fill="none" opacity="0.3" />
-                      <path d="M 55,70 Q 75,75 70,80" stroke="#b45309" strokeWidth="2" fill="none" opacity="0.3" />
                     </svg>
-
-                    {/* Inside cookie shiny highlight */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none rounded-full" />
                   </button>
 
@@ -791,7 +780,7 @@ export const ActivityModal: React.FC = () => {
                     <span
                       key={f.id}
                       style={{ left: f.x, top: f.y }}
-                      className="absolute text-yellow-300 font-black text-lg select-none pointer-events-none animate-floatUp z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                      className="absolute text-yellow-300 font-black text-base sm:text-lg select-none pointer-events-none animate-floatUp z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                     >
                       {f.text}
                     </span>
@@ -802,7 +791,7 @@ export const ActivityModal: React.FC = () => {
                     <button
                       onClick={handleGoldenCookieClick}
                       style={{ left: goldenCookie.x, top: goldenCookie.y }}
-                      className="absolute w-12 h-12 rounded-full bg-yellow-400 border-2 border-yellow-300 shadow-[0_0_15px_#fbbf24] flex items-center justify-center animate-bounce z-30 active:scale-90"
+                      className="absolute w-10 h-10 sm:w-11 sm:h-10 rounded-full bg-yellow-400 border-2 border-yellow-300 shadow-[0_0_15px_#fbbf24] flex items-center justify-center animate-bounce z-30 active:scale-90"
                       title="Click the Golden Cookie!"
                     >
                       <svg viewBox="0 0 100 100" className="w-full h-full p-1 animate-spin duration-10000">
@@ -821,13 +810,13 @@ export const ActivityModal: React.FC = () => {
                 </div>
 
                 {/* Bottom Clicker Stats */}
-                <div className="mt-6 flex flex-col gap-1 text-[10px] text-discord-light-300 text-center font-semibold">
+                <div className="mt-4 flex flex-col gap-0.5 text-[10px] text-discord-light-300 text-center font-semibold mb-12 sm:mb-0">
                   <div>Cookies/Click: <span className="text-white">{cookiesPerClick}</span></div>
                   <div>Total Clicks: <span className="text-white">{totalClicks}</span></div>
                 </div>
 
                 {/* Tabs Selector */}
-                <div className="absolute bottom-2 left-2 right-2 grid grid-cols-2 gap-1 bg-discord-dark-700/80 p-1 rounded">
+                <div className="absolute bottom-2 left-2 right-2 grid grid-cols-2 gap-1 bg-discord-dark-700/80 p-1 rounded z-10">
                   <button
                     onClick={() => setCookieTab('bakery')}
                     className={`py-1 text-[10px] font-bold rounded transition-all ${
@@ -849,7 +838,7 @@ export const ActivityModal: React.FC = () => {
               </div>
 
               {/* Right Upgrade Shop / Stats Panel */}
-              <div className="flex-1 bg-discord-dark-700 flex flex-col overflow-hidden">
+              <div className="flex-1 bg-discord-dark-700 flex flex-col overflow-hidden min-h-[300px] sm:min-h-0">
                 
                 {cookieTab === 'bakery' ? (
                   // UPGRADE SHOP VIEW
@@ -859,7 +848,7 @@ export const ActivityModal: React.FC = () => {
                       <span>Bakery Upgrades Shop</span>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto p-3 space-y-2 no-scrollbar">
+                    <div className="flex-1 overflow-y-auto p-2 sm:p-3 space-y-2 no-scrollbar">
                       {upgrades.map((up) => {
                         const canAfford = cookies >= up.cost;
                         return (
@@ -867,34 +856,34 @@ export const ActivityModal: React.FC = () => {
                             key={up.id}
                             disabled={!canAfford}
                             onClick={() => buyUpgrade(up.id)}
-                            className={`w-full flex items-center justify-between p-2.5 rounded border text-left transition-all ${
+                            className={`w-full flex items-center justify-between p-2 rounded border text-left transition-all ${
                               canAfford
                                 ? 'bg-discord-dark-500/80 hover:bg-discord-dark-100 border-discord-dark-100/10 cursor-pointer'
                                 : 'bg-discord-dark-500/30 border-transparent opacity-50 cursor-not-allowed'
                             }`}
                           >
-                            <div className="flex items-center gap-3">
-                              <span className="text-2xl shrink-0 select-none">{up.icon}</span>
-                              <div className="text-left">
-                                <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                                  <span>{up.name}</span>
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <span className="text-xl sm:text-2xl shrink-0 select-none">{up.icon}</span>
+                              <div className="text-left min-w-0">
+                                <div className="text-[11px] sm:text-xs font-bold text-white flex items-center gap-1">
+                                  <span className="truncate">{up.name}</span>
                                   {up.count > 0 && (
-                                    <span className="bg-discord-brand text-[9px] px-1.5 py-0.5 rounded-full font-black text-white">
+                                    <span className="bg-discord-brand text-[8px] px-1 py-[1px] rounded-full font-black text-white shrink-0">
                                       x{up.count}
                                     </span>
                                   )}
                                 </div>
-                                <p className="text-[10px] text-discord-light-300 leading-tight max-w-[240px] mt-0.5 font-medium">
+                                <p className="text-[9px] sm:text-[10px] text-discord-light-300 leading-tight truncate max-w-[140px] xs:max-w-[200px] sm:max-w-[240px] mt-0.5 font-medium">
                                   {up.description}
                                 </p>
                               </div>
                             </div>
 
-                            <div className="text-right shrink-0">
-                              <div className={`text-xs font-black ${canAfford ? 'text-yellow-400' : 'text-discord-light-300'}`}>
+                            <div className="text-right shrink-0 ml-2">
+                              <div className={`text-[11px] sm:text-xs font-black ${canAfford ? 'text-yellow-400' : 'text-discord-light-300'}`}>
                                 🪙 {up.cost.toLocaleString()}
                               </div>
-                              <div className="text-[9px] text-discord-green font-bold mt-0.5">
+                              <div className="text-[8px] sm:text-[9px] text-discord-green font-bold mt-0.5">
                                 {up.cps > 0 && `+${up.cps} CPS`}
                                 {up.id === 'click_power' && `+1 CPC`}
                               </div>
@@ -912,31 +901,31 @@ export const ActivityModal: React.FC = () => {
                       <span>Bakery Stats & Trophies</span>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
+                    <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 no-scrollbar">
                       
                       {/* Stats Grid */}
-                      <div className="grid grid-cols-2 gap-2 bg-discord-dark-500/50 p-3 rounded border border-discord-dark-100/5">
+                      <div className="grid grid-cols-2 gap-2 bg-discord-dark-500/50 p-2.5 sm:p-3 rounded border border-discord-dark-100/5">
                         <div className="text-left">
-                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Total Cookies Baked</span>
-                          <p className="text-sm font-black text-white mt-0.5">{Math.floor(totalCookiesBaked).toLocaleString()}</p>
+                          <span className="text-[9px] sm:text-[10px] text-discord-light-300 uppercase font-bold">Total Cookies Baked</span>
+                          <p className="text-xs sm:text-sm font-black text-white mt-0.5">{Math.floor(totalCookiesBaked).toLocaleString()}</p>
                         </div>
                         <div className="text-left">
-                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Total Clicks</span>
-                          <p className="text-sm font-black text-white mt-0.5">{totalClicks}</p>
+                          <span className="text-[9px] sm:text-[10px] text-discord-light-300 uppercase font-bold">Total Clicks</span>
+                          <p className="text-xs sm:text-sm font-black text-white mt-0.5">{totalClicks}</p>
                         </div>
                         <div className="text-left">
-                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Golden Cookies Clicked</span>
-                          <p className="text-sm font-black text-white mt-0.5">{goldenCookiesClicked}</p>
+                          <span className="text-[9px] sm:text-[10px] text-discord-light-300 uppercase font-bold">Golden Cookies Clicked</span>
+                          <p className="text-xs sm:text-sm font-black text-white mt-0.5">{goldenCookiesClicked}</p>
                         </div>
                         <div className="text-left">
-                          <span className="text-[10px] text-discord-light-300 uppercase font-bold">Base Cookies/Sec (CPS)</span>
-                          <p className="text-sm font-black text-white mt-0.5">{cookiesPerSecond.toFixed(1)}</p>
+                          <span className="text-[9px] sm:text-[10px] text-discord-light-300 uppercase font-bold">Base Cookies/Sec (CPS)</span>
+                          <p className="text-xs sm:text-sm font-black text-white mt-0.5">{cookiesPerSecond.toFixed(1)}</p>
                         </div>
                       </div>
 
                       {/* Achievements Trophies */}
                       <div className="space-y-2">
-                        <div className="text-[11px] uppercase font-bold text-discord-light-300 tracking-wider flex items-center gap-1">
+                        <div className="text-[10px] sm:text-[11px] uppercase font-bold text-discord-light-300 tracking-wider flex items-center gap-1">
                           <Award className="w-4 h-4 text-yellow-500" />
                           <span>Unlocked Trophies</span>
                         </div>
@@ -945,23 +934,23 @@ export const ActivityModal: React.FC = () => {
                           {achievements.map((ach) => (
                             <div
                               key={ach.id}
-                              className={`flex items-center gap-3 p-2.5 rounded border transition-all ${
+                              className={`flex items-center gap-2.5 p-2 sm:p-2.5 rounded border transition-all ${
                                 ach.unlocked
                                   ? 'bg-discord-dark-500/80 border-yellow-500/20'
                                   : 'bg-discord-dark-500/20 border-transparent opacity-40'
                               }`}
                             >
-                              <span className="text-2xl select-none">{ach.unlocked ? ach.icon : '🔒'}</span>
-                              <div className="text-left">
-                                <h4 className={`text-xs font-bold ${ach.unlocked ? 'text-yellow-400' : 'text-discord-light-300'}`}>
+                              <span className="text-xl sm:text-2xl select-none">{ach.unlocked ? ach.icon : '🔒'}</span>
+                              <div className="text-left min-w-0">
+                                <h4 className={`text-[11px] sm:text-xs font-bold ${ach.unlocked ? 'text-yellow-400' : 'text-discord-light-300'} truncate`}>
                                   {ach.name}
                                 </h4>
-                                <p className="text-[10px] text-discord-light-300 leading-tight">
+                                <p className="text-[9px] sm:text-[10px] text-discord-light-300 leading-tight">
                                   {ach.description}
                                 </p>
                               </div>
                               {ach.unlocked && (
-                                <span className="ml-auto text-[10px] font-bold text-yellow-500 bg-yellow-500/10 px-2 py-0.5 rounded-full">
+                                <span className="ml-auto text-[8px] sm:text-[10px] font-bold text-yellow-500 bg-yellow-500/10 px-2 py-0.5 rounded-full shrink-0">
                                   Earned
                                 </span>
                               )}
@@ -983,16 +972,16 @@ export const ActivityModal: React.FC = () => {
               RENDER RETRO SPACE SHOOTER
               ========================================================================= */}
           {activeActivityId === 'retro-arcade' && (
-            <div className="w-full h-full flex flex-col items-center justify-center pt-8">
+            <div className="w-full h-full flex flex-col items-center justify-center p-4 overflow-y-auto">
               
               {!isPlaying && !showGameOver ? (
                 // Start Screen
-                <div className="text-center space-y-5 animate-scaleIn">
-                  <span className="text-6xl animate-bounce inline-block">🚀</span>
-                  <h3 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">
+                <div className="text-center space-y-4 animate-scaleIn">
+                  <span className="text-5xl sm:text-6xl animate-bounce inline-block">🚀</span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">
                     Space Invaders Activity
                   </h3>
-                  <p className="text-xs text-discord-light-300 max-w-[340px] mx-auto leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-discord-light-300 max-w-[320px] mx-auto leading-relaxed">
                     Play a classic arcade space invaders wave battle. Use **Left/Right Arrow keys** to steer and **Spacebar** to shoot lasers!
                   </p>
                   <button
@@ -1003,7 +992,7 @@ export const ActivityModal: React.FC = () => {
                       setLevel(1);
                       setShowGameOver(false);
                     }}
-                    className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-sm py-2.5 px-8 rounded-full shadow-lg transition-all"
+                    className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-xs sm:text-sm py-2 px-6 sm:py-2.5 sm:px-8 rounded-full shadow-lg transition-all"
                   >
                     Launch Game! 🎮
                   </button>
@@ -1011,12 +1000,12 @@ export const ActivityModal: React.FC = () => {
               ) : showGameOver ? (
                 // Game Over Screen
                 <div className="text-center space-y-4 animate-scaleIn">
-                  <span className="text-5xl">💥</span>
-                  <h3 className="text-2xl font-black text-discord-red">SHIP CRASHED</h3>
-                  <p className="text-xs text-discord-light-300">
+                  <span className="text-4xl sm:text-5xl">💥</span>
+                  <h3 className="text-xl sm:text-2xl font-black text-discord-red">SHIP CRASHED</h3>
+                  <p className="text-[11px] sm:text-xs text-discord-light-300">
                     You scored **{score}** points and reached Wave **{level}**!
                   </p>
-                  <div className="flex gap-3 justify-center">
+                  <div className="flex gap-2.5 justify-center">
                     <button
                       onClick={() => {
                         setIsPlaying(true);
@@ -1025,14 +1014,14 @@ export const ActivityModal: React.FC = () => {
                         setLevel(1);
                         setShowGameOver(false);
                       }}
-                      className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-sm py-2 px-5 rounded-full transition-all flex items-center gap-1.5"
+                      className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-xs sm:text-sm py-1.5 px-4 sm:py-2 sm:px-5 rounded-full transition-all flex items-center gap-1.5"
                     >
-                      <RefreshCw className="w-4 h-4" />
+                      <RefreshCw className="w-3.5 h-3.5" />
                       <span>Retry</span>
                     </button>
                     <button
                       onClick={() => setShowGameOver(false)}
-                      className="border border-discord-light-300 hover:bg-white/10 text-white font-bold text-sm py-2 px-5 rounded-full transition-all"
+                      className="border border-discord-light-300 hover:bg-white/10 text-white font-bold text-xs sm:text-sm py-1.5 px-4 sm:py-2 sm:px-5 rounded-full transition-all"
                     >
                       Menu
                     </button>
@@ -1040,11 +1029,11 @@ export const ActivityModal: React.FC = () => {
                 </div>
               ) : (
                 // Playable Canvas Layout
-                <div className="flex flex-col items-center gap-4 w-full h-full justify-center">
+                <div className="flex flex-col items-center gap-3 w-full max-w-full justify-center">
                   
                   {/* HUD Dashboard */}
-                  <div className="flex justify-between w-[400px] text-xs font-bold text-discord-light-300">
-                    <div className="flex gap-4">
+                  <div className="flex justify-between w-full max-w-[400px] text-[10px] sm:text-xs font-bold text-discord-light-300 px-1">
+                    <div className="flex gap-3">
                       <span>SCORE: <span className="text-white font-extrabold">{score}</span></span>
                       <span>WAVE: <span className="text-indigo-400 font-extrabold">{level}</span></span>
                     </div>
@@ -1055,12 +1044,47 @@ export const ActivityModal: React.FC = () => {
                     ref={canvasRef}
                     width={400}
                     height={320}
-                    className="border-2 border-discord-dark-500 rounded-lg shadow-2xl bg-[#0b0f19]"
+                    className="border-2 border-discord-dark-500 rounded-lg shadow-2xl bg-[#0b0f19] w-full max-w-[400px] aspect-[4/3]"
                   />
 
-                  {/* Mobile-friendly click overlays */}
-                  <div className="flex gap-2 text-xs">
-                    <div className="text-[11px] text-discord-light-300">
+                  {/* Mobile-friendly steering buttons */}
+                  <div className="flex flex-col items-center gap-2 w-full max-w-[400px]">
+                    <div className="flex justify-between w-full gap-4 px-1">
+                      {/* Left/Right Buttons for Mobile Touch steering */}
+                      <div className="flex gap-2">
+                        <button
+                          onTouchStart={() => { keysPressed.current['ArrowLeft'] = true; }}
+                          onTouchEnd={() => { keysPressed.current['ArrowLeft'] = false; }}
+                          onMouseDown={() => { keysPressed.current['ArrowLeft'] = true; }}
+                          onMouseUp={() => { keysPressed.current['ArrowLeft'] = false; }}
+                          className="w-12 h-10 bg-discord-dark-500 active:bg-discord-brand text-white font-bold rounded flex items-center justify-center text-lg select-none"
+                        >
+                          ◀
+                        </button>
+                        <button
+                          onTouchStart={() => { keysPressed.current['ArrowRight'] = true; }}
+                          onTouchEnd={() => { keysPressed.current['ArrowRight'] = false; }}
+                          onMouseDown={() => { keysPressed.current['ArrowRight'] = true; }}
+                          onMouseUp={() => { keysPressed.current['ArrowRight'] = false; }}
+                          className="w-12 h-10 bg-discord-dark-500 active:bg-discord-brand text-white font-bold rounded flex items-center justify-center text-lg select-none"
+                        >
+                          ▶
+                        </button>
+                      </div>
+
+                      {/* Shoot Button */}
+                      <button
+                        onTouchStart={() => { keysPressed.current['Space'] = true; }}
+                        onTouchEnd={() => { keysPressed.current['Space'] = false; }}
+                        onMouseDown={() => { keysPressed.current['Space'] = true; }}
+                        onMouseUp={() => { keysPressed.current['Space'] = false; }}
+                        className="w-20 h-10 bg-sky-500 active:bg-sky-600 text-white font-black rounded flex items-center justify-center text-xs uppercase select-none tracking-wider"
+                      >
+                        Fire ⚡
+                      </button>
+                    </div>
+
+                    <div className="text-[9px] text-discord-light-300 text-center mt-1 hidden sm:block">
                       Steer: **[A / D]** or **[← / →]** • Shoot: **[Spacebar]**
                     </div>
                   </div>
@@ -1073,17 +1097,17 @@ export const ActivityModal: React.FC = () => {
               RENDER WATCH PARTY WHITEBOARD
               ========================================================================= */}
           {activeActivityId === 'whiteboard' && (
-            <div className="w-full h-full flex flex-col items-center justify-center pt-8 text-center space-y-4">
-              <span className="text-6xl animate-bounce">🎨</span>
-              <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-discord-fuchsia to-purple-400">
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-4 overflow-y-auto">
+              <span className="text-5xl sm:text-6xl animate-bounce">🎨</span>
+              <h3 className="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-discord-fuchsia to-purple-400">
                 Watch-Party Whiteboard
               </h3>
-              <p className="text-xs text-discord-light-300 max-w-[380px] leading-relaxed">
+              <p className="text-xs text-discord-light-300 max-w-[340px] leading-relaxed">
                 A collaborative sandbox whiteboard and video sync player is currently in demonstration mode. Play Space Invaders 🚀 or Cookie Clicker 🍪 for actual game controls!
               </p>
               <button
                 onClick={() => launchActivity('cookie-clicker')}
-                className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-sm py-2 px-6 rounded transition-all"
+                className="bg-discord-brand hover:bg-discord-brand/90 text-white font-bold text-xs sm:text-sm py-2 px-5 sm:px-6 rounded transition-all"
               >
                 Switch to Cookie Clicker Activity
               </button>
@@ -1092,8 +1116,8 @@ export const ActivityModal: React.FC = () => {
 
         </div>
 
-        {/* Right Comments/Activity Sidebar */}
-        <div className="w-64 bg-discord-dark-300 p-4 flex flex-col text-left">
+        {/* Right Comments/Activity Sidebar - Hidden on mobile screens */}
+        <div className="w-64 bg-discord-dark-300 p-4 flex flex-col text-left shrink-0 hidden md:flex">
           <div className="font-extrabold text-sm border-b border-discord-dark-500 pb-2 mb-3 flex items-center gap-1.5 text-discord-light-100">
             <Volume2 className="w-4 h-4 text-discord-green" />
             Voice Lobby Chat
